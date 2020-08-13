@@ -1,16 +1,16 @@
 PODS:
-  - JoyConSwift (0.2.1)
+  - JoyConSwift (0.2.0)
 
 DEPENDENCIES:
-  - JoyConSwift (= 0.2.1)
+  - JoyConSwift (from `../JoyConSwift/`)
 
-SPEC REPOS:
-  trunk:
-    - JoyConSwift
+EXTERNAL SOURCES:
+  JoyConSwift:
+    :path: "../JoyConSwift/"
 
 SPEC CHECKSUMS:
-  JoyConSwift: a8025cc234394cbc38fc1b48cfe1de8de6f66551
+  JoyConSwift: 2b99a6fad0e843a4babe0b08f5df706237e86689
 
-PODFILE CHECKSUM: f077d9a7d63235de745659f9e64c4c8ec6de86af
+PODFILE CHECKSUM: faaeb2269dc0023e4ddd303d3ddc615af87acbb5
 
 COCOAPODS: 1.9.3

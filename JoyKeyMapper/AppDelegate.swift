@@ -102,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, UNUserNoti
             // Enable key mappings menu
             let enabled = NSMenuItem()
             enabled.title = NSLocalizedString("Enable key mappings", comment: "Enable key mappings")
-            enabled.action = Selector(("toggleEnableKeyMappings"))
+            enabled.action = #selector(GameController.toggleEnableKeyMappings)
             enabled.state = controller.isEnabled ? .on : .off
             enabled.target = controller
             item.submenu?.addItem(enabled)
@@ -110,7 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, UNUserNoti
             // Disconnect menu
             let disconnect = NSMenuItem()
             disconnect.title = NSLocalizedString("Disconnect", comment: "Disconnect")
-            disconnect.action = Selector(("disconnect"))
+            disconnect.action = #selector(GameController.disconnect)
             disconnect.target = controller
             item.submenu?.addItem(disconnect)
             

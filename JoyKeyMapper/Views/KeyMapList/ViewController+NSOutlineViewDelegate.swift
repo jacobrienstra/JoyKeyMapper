@@ -275,9 +275,9 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
             }
             
             if stick == .LStick {
-                selection.action = Selector(("leftStickTypeDidChange:"))
+                selection.action = #selector(self.leftStickTypeDidChange(_:))
             } else if stick == .RStick {
-                selection.action = Selector(("rightStickTypeDidChange:"))
+                selection.action = #selector(self.rightStickTypeDidChange(_:))
             }
             selection.target = self
                 
@@ -387,9 +387,9 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
             itemView.buttonName.state = keyMap.isEnabled ? .on : .off
             itemView.buttonName.title = NSLocalizedString(directionName, comment: "")
             if stick == .LStick {
-                itemView.buttonName.action = Selector(("leftStickDirectionCheckDidChange:"))
+                itemView.buttonName.action = #selector(self.leftStickDirectionCheckDidChange(_:))
             } else if stick == .RStick {
-                itemView.buttonName.action = Selector(("rightStickDirectionCheckDidChange:"))
+                itemView.buttonName.action = #selector(self.rightStickDirectionCheckDidChange(_:))
             }
             itemView.buttonName.target = self
             
@@ -450,7 +450,7 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
             
             itemView.buttonName.state = (keyMap?.isEnabled ?? false) ? .on : .off
             itemView.buttonName.title = NSLocalizedString(buttonNames[button] ?? "", comment: "")
-            itemView.buttonName.action = Selector(("checkDidChange:"))
+            itemView.buttonName.action = #selector(self.checkDidChange(_:))
             itemView.buttonName.target = self
             
             return itemView

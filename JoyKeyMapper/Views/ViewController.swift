@@ -183,7 +183,7 @@ class ViewController: NSViewController {
     }
     
     @objc func controllerIconChanged(_ notification: NSNotification) {
-        guard let gameController = notification.object as? GameController else { return }
+        guard (notification.object as? GameController) != nil else { return }
         
         DispatchQueue.main.async { [weak self] in
             self?.controllerCollectionView.reloadData()

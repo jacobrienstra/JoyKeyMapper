@@ -46,14 +46,14 @@ class ControllerViewItem: NSCollectionViewItem {
         
         // Enable key mappings menu
         let enableTitle = NSLocalizedString("Enable key mappings", comment: "Enable key mappings")
-        let enableMenu = NSMenuItem(title: enableTitle, action: Selector(("enableKeyMappings")), keyEquivalent: "")
+        let enableMenu = NSMenuItem(title: enableTitle, action: #selector(self.enableKeyMappings), keyEquivalent: "")
         enableMenu.target = self
         enableMenu.state = (self.controller?.isEnabled ?? false) ? .on : .off
         menu.addItem(enableMenu)
 
         // Disconnect menu
         let disconnectTitle = NSLocalizedString("Disconnect", comment: "Disconnect")
-        let disconnectMenu = NSMenuItem(title: disconnectTitle, action: Selector(("disconnect")), keyEquivalent: "")
+        let disconnectMenu = NSMenuItem(title: disconnectTitle, action: #selector(self.disconnect), keyEquivalent: "")
         if self.controller?.controller != nil {
             disconnectMenu.target = self
         }
@@ -81,7 +81,7 @@ class ControllerViewItem: NSCollectionViewItem {
 
         // Remove menu
         let removeTitle = NSLocalizedString("Remove", comment: "Remove")
-        let removeMenu = NSMenuItem(title: removeTitle, action: Selector(("remove")), keyEquivalent: "")
+        let removeMenu = NSMenuItem(title: removeTitle, action: #selector(self.remove), keyEquivalent: "")
         removeMenu.target = self
         menu.addItem(removeMenu)
 
