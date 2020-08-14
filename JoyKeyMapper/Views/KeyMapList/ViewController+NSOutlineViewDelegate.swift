@@ -41,6 +41,7 @@ let directionNames: [JoyCon.StickDirection: String]  = [
     .Down: "Down",
     .Left: "Left"
 ]
+let gyro: Bool = false
 let leftStickName = NSLocalizedString("Left Stick", comment: "Left Stick")
 let rightStickName = NSLocalizedString("Right Stick", comment: "Right Stick")
 
