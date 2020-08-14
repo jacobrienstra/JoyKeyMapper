@@ -26,6 +26,7 @@ class ViewController: NSViewController {
             self.appTableView.reloadData()
             self.configTableView.reloadData()
             self.updateAppAddRemoveButtonState()
+            self.updateGyroButtonState()
         }
     }
     var selectedControllerData: ControllerData? {
@@ -64,6 +65,7 @@ class ViewController: NSViewController {
         self.configTableView.dataSource = self
         
         self.updateAppAddRemoveButtonState()
+        self.updateGyroButtonState()
 
         NotificationCenter.default.addObserver(self, selector: #selector(controllerAdded), name: .controllerAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(controllerRemoved), name: .controllerRemoved, object: nil)
@@ -92,6 +94,11 @@ class ViewController: NSViewController {
         } else if selectedSegment == 1 {
             self.removeApp()
         }
+    }
+    
+    
+    @IBAction func toggleGyroButton(_ sender: NSButton) {
+        self.selectedKeyConfig?.gyro = sender.state == .on
     }
     
     func updateAppAddRemoveButtonState() {
@@ -147,6 +154,14 @@ class ViewController: NSViewController {
     }
     
     // MARK: - Controllers
+    
+    func updateGyroButtonState() {
+        if selectedController?.controller?.type == .JoyConR {
+            gyroButton.isEnabled = true
+        } else {
+            gyroButton.isEnabled = false
+        }
+    }
     
     @objc func controllerAdded() {
         DispatchQueue.main.async { [weak self] in
