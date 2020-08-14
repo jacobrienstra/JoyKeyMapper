@@ -16,6 +16,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var appTableView: NSTableView!
     @IBOutlet weak var appAddRemoveButton: NSSegmentedControl!
     @IBOutlet weak var configTableView: NSOutlineView!
+    @IBOutlet weak var gyroButton: NSButton!
     
     var appDelegate: AppDelegate? {
         return NSApplication.shared.delegate as? AppDelegate
