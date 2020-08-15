@@ -8,6 +8,7 @@
 
 import Foundation
 import InputMethodKit
+import SceneKit
 
 let mouseButtonNames: [String] = [
     "Left Click",
@@ -91,4 +92,76 @@ func getFrontmostWinodowNumber() -> Int? {
     let window = windowList.first { ($0[kCGWindowOwnerPID] as? Int64 ?? -1) == pid }
 
     return window?[kCGWindowNumber] as? Int
+}
+
+func clamp<T: Comparable>(value: T, lower: T, upper: T) -> T {
+    return min(max(value, lower), upper)
+}
+
+extension SCNVector3 {
+    /**
+     * Adds two SCNVector3 vectors and returns the result as a new SCNVector3.
+     */
+    static func + (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+        return SCNVector3Make(left.x + right.x, left.y + right.y, left.z + right.z)
+    }
+
+    /**
+     * Increments a SCNVector3 with the value of another.
+     */
+    static func += ( left: inout SCNVector3, right: SCNVector3) {
+        left = left + right
+    }
+
+    /**
+     * Subtracts two SCNVector3 vectors and returns the result as a new SCNVector3.
+     */
+    static func - (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+        return SCNVector3Make(left.x - right.x, left.y - right.y, left.z - right.z)
+    }
+
+    /**
+     * Decrements a SCNVector3 with the value of another.
+     */
+    static func -= ( left: inout SCNVector3, right: SCNVector3) {
+        left = left - right
+    }
+
+    /**
+     * Multiplies two SCNVector3 vectors and returns the result as a new SCNVector3.
+     */
+    static func * (left: SCNVector3, right: SCNVector3) -> SCNVector3 {
+        return SCNVector3Make(left.x * right.x, left.y * right.y, left.z * right.z)
+    }
+
+    /**
+     * Multiplies a SCNVector3 with another.
+     */
+    static func *= ( left: inout SCNVector3, right: SCNVector3) {
+        left = left * right
+    }
+
+    /**
+     * Multiplies the x, y and z fields of a SCNVector3 with the same scalar value and
+     * returns the result as a new SCNVector3.
+     */
+    static func * (vector: SCNVector3, scalar: CGFloat) -> SCNVector3 {
+        return SCNVector3Make(vector.x * scalar, vector.y * scalar, vector.z * scalar)
+    }
+    
+    /**
+     * Divides the x, y and z fields of a SCNVector3 by the same scalar value and
+     * returns the result as a new SCNVector3.
+     */
+    static func / (vector: SCNVector3, scalar: CGFloat) -> SCNVector3 {
+        return SCNVector3Make(vector.x / scalar, vector.y / scalar, vector.z / scalar)
+    }
+
+    /**
+     * Divides the x, y and z of a SCNVector3 by the same scalar value.
+     */
+    static func /= ( vector: inout SCNVector3, scalar: CGFloat) {
+        vector = vector / scalar
+    }
+
 }
