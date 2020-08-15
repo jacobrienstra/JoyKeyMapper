@@ -303,40 +303,44 @@ class GameController {
     }
     
     func stickMouseHandler(pos: CGPoint, speed: CGFloat) {
-        if pos.x == 0 && pos.y == 0 {
-            return
-        }
-        let mousePos = NSEvent.mouseLocation
-        let newX = mousePos.x + pos.x * speed
-        let newY = NSScreen.main!.frame.maxY - mousePos.y - pos.y * speed
-        
-        let newPos = CGPoint(x: newX, y: newY)
-        
-        let source = CGEventSource(stateID: .hidSystemState)
-        if self.isLeftDragging {
-            let event = CGEvent(mouseEventSource: source, mouseType: .leftMouseDragged, mouseCursorPosition: newPos, mouseButton: .left)
-            event?.post(tap: .cghidEventTap)
-        } else if self.isRightDragging {
-            let event = CGEvent(mouseEventSource: source, mouseType: .rightMouseDragged, mouseCursorPosition: newPos, mouseButton: .right)
-            event?.post(tap: .cghidEventTap)
-        } else if self.isCenterDragging {
-            let event = CGEvent(mouseEventSource: source, mouseType: .otherMouseDragged, mouseCursorPosition: newPos, mouseButton: .center)
-            event?.post(tap: .cghidEventTap)
-        } else {
-            CGDisplayMoveCursorToPoint(CGMainDisplayID(), newPos)
+        DispatchQueue.main.async {
+            if pos.x == 0 && pos.y == 0 {
+                return
+            }
+            let mousePos = NSEvent.mouseLocation
+            let newX = mousePos.x + pos.x * speed
+            let newY = NSScreen.main!.frame.maxY - mousePos.y - pos.y * speed
+            
+            let newPos = CGPoint(x: newX, y: newY)
+            
+            let source = CGEventSource(stateID: .hidSystemState)
+            if self.isLeftDragging {
+                let event = CGEvent(mouseEventSource: source, mouseType: .leftMouseDragged, mouseCursorPosition: newPos, mouseButton: .left)
+                event?.post(tap: .cghidEventTap)
+            } else if self.isRightDragging {
+                let event = CGEvent(mouseEventSource: source, mouseType: .rightMouseDragged, mouseCursorPosition: newPos, mouseButton: .right)
+                event?.post(tap: .cghidEventTap)
+            } else if self.isCenterDragging {
+                let event = CGEvent(mouseEventSource: source, mouseType: .otherMouseDragged, mouseCursorPosition: newPos, mouseButton: .center)
+                event?.post(tap: .cghidEventTap)
+            } else {
+                CGDisplayMoveCursorToPoint(CGMainDisplayID(), newPos)
+            }
         }
     }
     
     func stickMouseWheelHandler(pos: CGPoint, speed: CGFloat) {
-        if pos.x == 0 && pos.y == 0 {
-            return
+        DispatchQueue.main.async {
+            if pos.x == 0 && pos.y == 0 {
+                return
+            }
+            let wheelX = Int32(pos.x * speed)
+            let wheelY = Int32(pos.y * speed)
+            
+            let source = CGEventSource(stateID: .hidSystemState)
+            let event = CGEvent(scrollWheelEvent2Source: source, units: .pixel, wheelCount: 2, wheel1: wheelY, wheel2: wheelX, wheel3: 0)
+            event?.post(tap: .cghidEventTap)
         }
-        let wheelX = Int32(pos.x * speed)
-        let wheelY = Int32(pos.y * speed)
-        
-        let source = CGEventSource(stateID: .hidSystemState)
-        let event = CGEvent(scrollWheelEvent2Source: source, units: .pixel, wheelCount: 2, wheel1: wheelY, wheel2: wheelX, wheel3: 0)
-        event?.post(tap: .cghidEventTap)
     }
     
     func leftStickHandler(newDirection: JoyCon.StickDirection, oldDirection: JoyCon.StickDirection) {
