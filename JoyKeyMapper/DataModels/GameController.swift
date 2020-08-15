@@ -50,6 +50,7 @@ class GameController {
     var currentLStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
     var currentRStickMode: StickType = .None
     var currentRStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
+    var currentGyroConfig: Bool = false
 
     var isEnabled: Bool = true {
         didSet {
@@ -497,6 +498,8 @@ class GameController {
             newRightStickMap[direction] = keyMap
         }
         self.currentRStickConfig = newRightStickMap
+        
+        self.currentGyroConfig = self.currentConfigData.gyro
     }
     
     func addApp(url: URL) {

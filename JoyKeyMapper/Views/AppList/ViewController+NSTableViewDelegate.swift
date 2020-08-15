@@ -75,7 +75,7 @@ extension ViewController: NSTableViewDelegate, NSTableViewDataSource {
 
     func tableViewSelectionDidChange(_ notification: Notification) {
         self.updateAppAddRemoveButtonState()
-        //TODO: self.updateGyroData()
-        self.configTableView.reloadData()
+        self.reloadKeyConfigTableData()
+        self.updateGyroButtonState()
     }
 }

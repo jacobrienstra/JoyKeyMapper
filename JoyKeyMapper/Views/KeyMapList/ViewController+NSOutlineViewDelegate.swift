@@ -559,7 +559,7 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
     }
     
     func setKeyConfig(controller: KeyConfigViewController) {
-        self.configTableView.reloadData()
+        self.reloadKeyConfigTableData()
     }
     
     @objc func checkDidChange(_ sender: NSButton) {

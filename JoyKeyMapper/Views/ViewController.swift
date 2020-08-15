@@ -24,7 +24,7 @@ class ViewController: NSViewController {
     var selectedController: GameController? {
         didSet {
             self.appTableView.reloadData()
-            self.configTableView.reloadData()
+            self.reloadKeyConfigTableData()
             self.updateAppAddRemoveButtonState()
             self.updateGyroButtonState()
         }
@@ -97,10 +97,6 @@ class ViewController: NSViewController {
     }
     
     
-    @IBAction func toggleGyroButton(_ sender: NSButton) {
-        self.selectedKeyConfig?.gyro = sender.state == .on
-    }
-    
     func updateAppAddRemoveButtonState() {
         if self.selectedController == nil {
             self.appAddRemoveButton.setEnabled(false, forSegment: 0)
@@ -149,18 +145,35 @@ class ViewController: NSViewController {
         if result == .alertSecondButtonReturn {
             controller.removeApp(appConfig)
             self.appTableView.reloadData()
-            self.configTableView.reloadData()
+            self.reloadKeyConfigTableData()
         }
     }
     
     // MARK: - Controllers
     
     func updateGyroButtonState() {
-        if selectedController?.controller?.type == .JoyConR {
+        guard self.selectedKeyConfig != nil else {
+            gyroButton.isEnabled = false
+            gyroButton.state = .off
+            return
+        }
+        if selectedController?.controller?.type == .JoyConR  {
             gyroButton.isEnabled = true
+            gyroButton.state = selectedKeyConfig?.gyro == true ? .on : .off
         } else {
             gyroButton.isEnabled = false
+            gyroButton.state = .off
         }
+    }
+    
+    @IBAction func toggleGyroButton(_ sender: NSButton) {
+        guard self.selectedKeyConfig != nil else { return }
+        self.selectedKeyConfig?.gyro = sender.state == .on
+    }
+    
+    func reloadKeyConfigTableData() {
+        self.configTableView.reloadData()
+        self.updateGyroButtonState()
     }
     
     @objc func controllerAdded() {
