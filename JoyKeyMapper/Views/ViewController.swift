@@ -159,7 +159,8 @@ class ViewController: NSViewController {
         }
         if selectedController?.controller?.type == .JoyConR  {
             gyroButton.isEnabled = true
-            gyroButton.state = selectedKeyConfig?.gyro == true ? .on : .off
+            gyroButton.state = .off
+//            selectedKeyConfig?.gyro == true ? .on : .off
         } else {
             gyroButton.isEnabled = false
             gyroButton.state = .off
@@ -168,7 +169,7 @@ class ViewController: NSViewController {
     
     @IBAction func toggleGyroButton(_ sender: NSButton) {
         guard self.selectedKeyConfig != nil else { return }
-        self.selectedKeyConfig?.gyro = sender.state == .on
+//        self.selectedKeyConfig?.gyro = sender.state == .on
     }
     
     func reloadKeyConfigTableData() {
@@ -242,8 +243,14 @@ class ViewController: NSViewController {
         */
     }
     
-    // MARK: - Options
+    @IBAction func didPushGyroSettings(_ sender: NSButton) {
+        guard let controller = self.storyboard?.instantiateController(withIdentifier: "GyroConfigViewController") as? GyroConfigViewController else { return }
+
+        self.presentAsSheet(controller)
+    }
     
+    // MARK: - Options
+
     @IBAction func didPushOptions(_ sender: NSButton) {
         guard let controller = self.storyboard?.instantiateController(withIdentifier: "AppSettingsViewController") as? AppSettingsViewController else { return }
         

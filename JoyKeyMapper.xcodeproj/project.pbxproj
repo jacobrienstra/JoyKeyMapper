@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */; };
 		93256183A11EAD19ADC85FF9 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480DB1F0DAF805C943A9656A /* Pods_JoyKeyMapper.framework */; };
 		DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0389E72497D911009090BE /* MetaKeyState.swift */; };
 		DD05303224272D7A0091B3C6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05302D24272D7A0091B3C6 /* DataManager.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroConfigViewController.swift; sourceTree = "<group>"; };
 		16A44BF624E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16A44BF724E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		475E07CC10AB2EDFD3A1DE83 /* Pods-JoyKeyMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.release.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1696E52E24E8E4C500CF5C16 /* GyroConfigView */ = {
+			isa = PBXGroup;
+			children = (
+				1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */,
+			);
+			path = GyroConfigView;
+			sourceTree = "<group>";
+		};
 		7165849BB23611CC6D049234 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 			children = (
 				DD0AE2ED22DAB13200B68F05 /* Main.storyboard */,
 				DD05303C24272DAA0091B3C6 /* ViewController.swift */,
+				1696E52E24E8E4C500CF5C16 /* GyroConfigView */,
 				DD05304B24272DAA0091B3C6 /* ControllerList */,
 				DD05304824272DAA0091B3C6 /* AppList */,
 				DD05304324272DAA0091B3C6 /* KeyMapList */,
@@ -454,6 +465,7 @@
 				DD05305724272DAA0091B3C6 /* ViewController+NSOutlineViewDelegate.swift in Sources */,
 				DD0AE2E522DAB13100B68F05 /* AppDelegate.swift in Sources */,
 				DD05305124272DAA0091B3C6 /* KeyConfigViewController.swift in Sources */,
+				1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */,
 				DD05305624272DAA0091B3C6 /* SpecialKeyName.swift in Sources */,
 				DD05305524272DAA0091B3C6 /* StickConfigCellView.swift in Sources */,
 				DDAC3B4024151C350022FF32 /* AppNotifications.swift in Sources */,

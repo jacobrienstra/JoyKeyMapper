@@ -21,9 +21,21 @@
         <relationship name="appConfigs" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AppConfig" inverseName="owner" inverseEntity="AppConfig"/>
         <relationship name="defaultConfig" maxCount="1" deletionRule="Nullify" destinationEntity="KeyConfig" inverseName="defaultConfigOwner" inverseEntity="KeyConfig"/>
     </entity>
+    <entity name="GyroConfig" representedClassName="GyroConfig" syncable="YES" codeGenerationType="class">
+        <attribute name="defaultSensitivity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fastAccSensitivity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fastAccThreshold" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="slowAccSensitivity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="slowAccThreshold" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="smoothThreshold" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="tightenThreshold" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="useAcceleration" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="useSmoothing" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="useTightening" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <entity name="KeyConfig" representedClassName="KeyConfig" syncable="YES" codeGenerationType="class">
-        <attribute name="gyro" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="defaultConfigOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ControllerData" inverseName="defaultConfig" inverseEntity="ControllerData"/>
+        <relationship name="gyroConfig" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GyroConfig"/>
         <relationship name="keyMaps" toMany="YES" deletionRule="Nullify" destinationEntity="KeyMap" inverseName="owner" inverseEntity="KeyMap"/>
         <relationship name="leftStick" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StickConfig" inverseName="leftStickOwner" inverseEntity="StickConfig"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AppConfig" inverseName="config" inverseEntity="AppConfig"/>
@@ -35,6 +47,7 @@
         <attribute name="keyCode" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="modifiers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mouseButton" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
+        <relationship name="gyro" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StickConfig"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeyConfig" inverseName="keyMaps" inverseEntity="KeyConfig"/>
         <relationship name="stick" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StickConfig" inverseName="keyMaps" inverseEntity="StickConfig"/>
     </entity>
@@ -49,8 +62,9 @@
         <element name="AppConfig" positionX="-85.96484375" positionY="15.00390625" width="128" height="90"/>
         <element name="AppData" positionX="120.7578125" positionY="-16.3203125" width="128" height="105"/>
         <element name="ControllerData" positionX="-306.46484375" positionY="66.05078125" width="128" height="163"/>
-        <element name="KeyConfig" positionX="-27.51953125" positionY="176.2734375" width="128" height="133"/>
-        <element name="KeyMap" positionX="191.609375" positionY="191.7109375" width="128" height="148"/>
+        <element name="KeyConfig" positionX="-27.51953125" positionY="176.2734375" width="128" height="28"/>
+        <element name="KeyMap" positionX="191.609375" positionY="191.7109375" width="128" height="28"/>
         <element name="StickConfig" positionX="-23.2109375" positionY="354.82421875" width="128" height="118"/>
+        <element name="GyroConfig" positionX="-108" positionY="126" width="128" height="28"/>
     </elements>
 </model>

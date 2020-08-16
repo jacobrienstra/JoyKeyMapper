@@ -14,10 +14,10 @@ class GyroContCalibration {
     public var dt: Int
     var numWindows: Int
     var frontIndex: Int = 0
-    var windowLength: Int // in seconds
+    var windowLength: CGFloat // in seconds
     var windows: [GyroAveragingWindow]
     
-    init(dt: Int, numWindows: Int, windowLength: Int) {
+    init(dt: Int, numWindows: Int, windowLength: CGFloat) {
         self.dt = dt
         self.numWindows = numWindows
         self.windowLength = windowLength
@@ -124,8 +124,7 @@ let MIN_GYRO_THRESHOLD: CGFloat = 0
 let MAX_GYRO_THRESHOLD: CGFloat = 75
 
 let GYRO_USER_SENS: CGFloat = 1
-let GYRO_SENS: CGFloat = 50
-//let GYRO_CUTOFF_SPEED: CGFloat = 0
+let GYRO_ADJUSTMENT_FACTOR: CGFloat = 50
 let GYRO_CUTOFF_RECOVERY: CGFloat = 1.0
 let GYRO_SMOOTH_THRESHOLD: CGFloat = 5.0
 let GYRO_SMOOTH_LOW_THRESHOLD: CGFloat = GYRO_SMOOTH_THRESHOLD / 2.0
@@ -156,11 +155,11 @@ class GameController {
     var currentRStickMode: StickType = .None
     var currentRStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
     var currentGyroConfig: Bool = false
-    var isCalibrating: Bool = true
+    var isCalibrating: Bool = false
     var gyroContCalibration: GyroContCalibration = GyroContCalibration(
         dt: 15,
         numWindows: 16,
-        windowLength: 600
+        windowLength: 0.6
     )
 
     var isEnabled: Bool = true {
@@ -568,7 +567,7 @@ class GameController {
                     pos.y = gyro.y * newSensitivity * dt
                 }
 
-                self.stickMouseHandler(pos: pos, speed: GYRO_SENS * GYRO_USER_SENS)
+                self.stickMouseHandler(pos: pos, speed: GYRO_ADJUSTMENT_FACTOR * GYRO_USER_SENS)
             }
         }
     }
@@ -693,7 +692,8 @@ class GameController {
         }
         self.currentRStickConfig = newRightStickMap
         
-        self.currentGyroConfig = self.currentConfigData.gyro
+        self.currentGyroConfig = false
+//        self.currentConfigData.gyro
     }
     
     func addApp(url: URL) {
