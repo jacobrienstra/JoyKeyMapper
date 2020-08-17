@@ -13,8 +13,8 @@ import Cocoa
 public class CustomKnob: NSView {
     
     
-    var color:NSColor           = NSColor.white
-    var borderColor: NSColor    = NSColor.lightGray.withAlphaComponent(0.5)
+    var color: NSColor = NSColor.white
+    var borderColor: NSColor = NSColor.lightGray.withAlphaComponent(0.5)
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -26,14 +26,14 @@ public class CustomKnob: NSView {
     
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        self.wantsLayer             = true
-        self.layer?.cornerRadius    = self.frame.height / 2
-        self.layer?.borderColor     = borderColor.cgColor
-        self.layer?.borderWidth     = 1.2
-        self.layer?.backgroundColor = color.cgColor
-        self.layer?.masksToBounds = false
-        
-        
+//        self.wantsLayer = true
+//        self.layer?.cornerRadius = self.frame.height / 2
+//        self.layer?.backgroundColor = color.cgColor
+//        self.layer?.masksToBounds = false
+        let fillColor = NSColor.white
+        let path = NSBezierPath(ovalIn: dirtyRect)
+        fillColor.setFill()
+        path.fill()
     }
     
 }

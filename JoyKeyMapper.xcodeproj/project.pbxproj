@@ -3,15 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		160398B524EA3E4F00DDCAC5 /* DoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 160398A524EA3E4F00DDCAC5 /* DoubleSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		160398B824EA3E4F00DDCAC5 /* DoubleSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */; };
-		160398B924EA3E4F00DDCAC5 /* DoubleSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		160398B924EA3E4F00DDCAC5 /* DoubleSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		160398C124EA3E9900DDCAC5 /* DoubleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */; };
 		160398C224EA3E9900DDCAC5 /* CustomKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320624EA2A37003F9BD9 /* CustomKnob.swift */; };
+		161AEE2F24EA5C8500F9C950 /* DoubleSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		161AEE3024EA5C8500F9C950 /* CustomKnob.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320624EA2A37003F9BD9 /* CustomKnob.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */; };
 		81C735E74A1EB18B514366F9 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */; };
 		DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0389E72497D911009090BE /* MetaKeyState.swift */; };
@@ -338,6 +340,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				160398B524EA3E4F00DDCAC5 /* DoubleSlider.h in Headers */,
+				161AEE2F24EA5C8500F9C950 /* DoubleSlider.swift in Headers */,
+				161AEE3024EA5C8500F9C950 /* CustomKnob.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +433,7 @@
 				};
 			};
 			buildConfigurationList = DD0AE2DC22DAB13100B68F05 /* Build configuration list for PBXProject "JoyKeyMapper" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -648,8 +652,8 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = rsa.DoubleSlider;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.0spec.DoubleSlider;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -677,8 +681,8 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = rsa.DoubleSlider;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.0spec.DoubleSlider;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

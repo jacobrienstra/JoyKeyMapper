@@ -244,10 +244,10 @@ class ViewController: NSViewController {
     }
     
     @IBAction func didPushGyroSettings(_ sender: NSButton) {
-        guard let gyroConfig = self.selectedController?.currentGyroConfig else { return }
+//        guard let gyroConfig = self.selectedController?.currentGyroConfig else { return }
         guard let controller = self.storyboard?.instantiateController(withIdentifier: "GyroConfigViewController") as? GyroConfigViewController else { return }
         
-        controller.gyroConfig = gyroConfig
+        controller.gyroConfig = self.selectedController?.currentGyroConfig
         
         self.presentAsSheet(controller)
     }
