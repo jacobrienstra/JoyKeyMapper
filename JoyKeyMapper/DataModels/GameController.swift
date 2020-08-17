@@ -154,7 +154,7 @@ class GameController {
     var currentLStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
     var currentRStickMode: StickType = .None
     var currentRStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
-    var currentGyroConfig: Bool = false
+    var currentGyroConfig: GyroConfig?
     var isCalibrating: Bool = false
     var gyroContCalibration: GyroContCalibration = GyroContCalibration(
         dt: 15,
@@ -189,10 +189,12 @@ class GameController {
     init(data: ControllerData) {
         self.data = data
         
+        
         guard let defaultConfig = self.data.defaultConfig else {
             fatalError("Failed to get defaultConfig")
         }
         self.currentConfigData = defaultConfig
+        self.currentGyroConfig = self.currentConfigData.gyroConfig
 
         let type = JoyCon.ControllerType(rawValue: data.type ?? "")
         self.type = type ?? JoyCon.ControllerType(rawValue: "unknown")!
@@ -499,7 +501,7 @@ class GameController {
     }
     
     func sensorHandler(accData: SCNVector3, gyroData: SCNVector3) {
-        if self.currentGyroConfig == true {
+        if self.currentGyroConfig?.enabled == true {
             DispatchQueue.main.async {
                 var gyro = gyroData
                 if (self.isCalibrating) {
@@ -692,8 +694,7 @@ class GameController {
         }
         self.currentRStickConfig = newRightStickMap
         
-        self.currentGyroConfig = false
-//        self.currentConfigData.gyro
+//        self.currentGyroConfig = self.currentConfigData.gyroConfig ?? [:]
     }
     
     func addApp(url: URL) {

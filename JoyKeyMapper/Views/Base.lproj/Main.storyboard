@@ -1214,7 +1214,7 @@
         <!--Window Controller-->
         <scene sceneID="Ycz-Vn-jpo">
             <objects>
-                <windowController id="6PT-v1-eeQ" customClass="KeyConfigWindowController" customModule="JoyKeyMapper" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="KeyConfigWindowController" id="6PT-v1-eeQ" customClass="KeyConfigWindowController" customModule="JoyKeyMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" identifier="KeyConfigWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Wio-Qt-d5P">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="240" height="200"/>
@@ -1234,7 +1234,7 @@
         <!--Window Controller-->
         <scene sceneID="AUB-ND-Vzy">
             <objects>
-                <windowController id="xKj-W8-67R" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="AppSettingsWindowController" id="xKj-W8-67R" sceneMemberID="viewController">
                     <window key="window" identifier="AppSettingsWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="dbE-EQ-GX5">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="260" y="301" width="254" height="214"/>
@@ -1254,7 +1254,7 @@
         <!--Window Controller-->
         <scene sceneID="MEJ-Hy-yHx">
             <objects>
-                <windowController id="DFb-bZ-x1z" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="GyroConfigWindowController" id="DFb-bZ-x1z" sceneMemberID="viewController">
                     <window key="window" identifier="GyroConfigWindow" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Xau-ef-PXq">
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="260" y="301" width="254" height="214"/>
@@ -1279,15 +1279,15 @@
         <scene sceneID="Kl4-rt-pC3">
             <objects>
                 <viewController storyboardIdentifier="GyroConfigViewController" id="dyT-mO-LtB" customClass="GyroConfigViewController" customModule="JoyKeyMapper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="Jcs-uX-glh">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="495"/>
+                    <view key="view" id="Jcs-uX-glh">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="566"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KS4-rI-kGk">
-                                <rect key="frame" x="20" y="20" width="440" height="455"/>
+                                <rect key="frame" x="20" y="20" width="440" height="526"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-wN-1Lt">
-                                        <rect key="frame" x="-2" y="439" width="119" height="16"/>
+                                        <rect key="frame" x="-2" y="510" width="119" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Gyro Configuration" id="vti-6E-cBr">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1295,16 +1295,16 @@
                                         </textFieldCell>
                                     </textField>
                                     <box verticalHuggingPriority="750" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1mk-JT-Syr">
-                                        <rect key="frame" x="-3" y="25" width="446" height="408"/>
+                                        <rect key="frame" x="-3" y="64" width="446" height="440"/>
                                         <view key="contentView" id="bk6-tP-2yN">
-                                            <rect key="frame" x="3" y="3" width="440" height="402"/>
+                                            <rect key="frame" x="3" y="3" width="440" height="434"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="cGo-pY-SUg">
-                                                    <rect key="frame" x="20" y="20" width="400" height="362"/>
+                                                    <rect key="frame" x="20" y="20" width="400" height="394"/>
                                                     <subviews>
                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eJ-6z-lfK">
-                                                            <rect key="frame" x="0.0" y="346" width="164" height="16"/>
+                                                            <rect key="frame" x="0.0" y="378" width="164" height="16"/>
                                                             <subviews>
                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lNW-uf-Brs">
                                                                     <rect key="frame" x="-6" y="-7" width="95" height="27"/>
@@ -1346,14 +1346,14 @@
                                                             </customSpacing>
                                                         </stackView>
                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-sh-xrj">
-                                                            <rect key="frame" x="0.0" y="314" width="400" height="16"/>
+                                                            <rect key="frame" x="0.0" y="346" width="400" height="16"/>
                                                             <subviews>
                                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gun-1a-Bhp">
                                                                     <rect key="frame" x="-2" y="-1" width="204" height="19"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="200" id="Qd5-cj-SbM"/>
                                                                     </constraints>
-                                                                    <sliderCell key="cell" state="on" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="C06-tE-14Z">
+                                                                    <sliderCell key="cell" alignment="left" maxValue="2" doubleValue="0.99628586065573765" tickMarkPosition="above" sliderType="linear" id="C06-tE-14Z">
                                                                         <connections>
                                                                             <action selector="defaultSensitivityChanged:" target="dyT-mO-LtB" id="okP-7c-0H7"/>
                                                                         </connections>
@@ -1390,6 +1390,9 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
+                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="dE8-Zf-DOb" customClass="MBDoubleSlider" customModule="JoyKeyMapper" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="314" width="163" height="16"/>
+                                                        </customView>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PKk-an-h8F">
                                                             <rect key="frame" x="-2" y="282" width="142" height="18"/>
                                                             <buttonCell key="cell" type="check" title="Enable Acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="32O-Lo-4cc">
@@ -1454,7 +1457,7 @@
                                                                     </constraints>
                                                                     <sliderCell key="cell" state="on" alignment="left" minValue="20" maxValue="125" doubleValue="75" tickMarkPosition="above" sliderType="linear" id="Szd-lE-aoV"/>
                                                                     <connections>
-                                                                        <action selector="fastAccThresholdChanged:" target="dyT-mO-LtB" id="njX-hX-6Mm"/>
+                                                                        <action selector="fastAccThresholdSlider:" target="dyT-mO-LtB" id="KzD-Vn-wQ0"/>
                                                                     </connections>
                                                                 </slider>
                                                                 <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="bKg-Jq-UsG">
@@ -1724,8 +1727,10 @@
                                                         <integer value="1000"/>
                                                         <integer value="1000"/>
                                                         <integer value="1000"/>
+                                                        <integer value="1000"/>
                                                     </visibilityPriorities>
                                                     <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
                                                         <real value="3.4028234663852886e+38"/>
                                                         <real value="3.4028234663852886e+38"/>
                                                         <real value="3.4028234663852886e+38"/>
@@ -1750,10 +1755,10 @@
                                         </view>
                                     </box>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="218" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7v-88-MnN">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="60"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="On5-AS-ogv">
-                                                <rect key="frame" x="-6" y="-7" width="144" height="32"/>
+                                                <rect key="frame" x="-6" y="32" width="144" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nYu-Hr-LrG">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -1763,7 +1768,7 @@
                                                 </connections>
                                             </button>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKJ-Lw-AWU">
-                                                <rect key="frame" x="344" y="-7" width="102" height="32"/>
+                                                <rect key="frame" x="344" y="32" width="102" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="6WR-gc-qiF"/>
                                                 </constraints>
@@ -1816,17 +1821,28 @@ DQ
                         <outlet property="calibrateButton" destination="lNW-uf-Brs" id="Hxy-hI-aBo"/>
                         <outlet property="calibrateProgressIcon" destination="N2c-V2-ObT" id="PoL-Rk-B8t"/>
                         <outlet property="defaultSensitivityLabel" destination="8ne-Qe-0nH" id="NuR-Ak-9Lx"/>
+                        <outlet property="defaultSensitivitySlider" destination="gun-1a-Bhp" id="j4w-CU-2O7"/>
+                        <outlet property="enableAccelerationButton" destination="PKk-an-h8F" id="WsD-zq-QLw"/>
+                        <outlet property="enableSmoothButton" destination="OKS-BR-lFX" id="bM5-us-85X"/>
+                        <outlet property="enableTightenButton" destination="4oz-mR-ycc" id="yv8-wT-06g"/>
                         <outlet property="fastAccSensitivityLabel" destination="3x9-h6-e8T" id="1Ea-Ud-OQC"/>
+                        <outlet property="fastAccSensitivitySlider" destination="Vcj-Ul-T5b" id="Ox1-FU-wXf"/>
                         <outlet property="fastAccThresholdLabel" destination="bKg-Jq-UsG" id="QJi-bo-EwM"/>
+                        <outlet property="fastAccThresholdSlider" destination="Jay-GE-GFo" id="AUO-bQ-z1z"/>
                         <outlet property="slowAccSensitivityLabel" destination="dlr-dr-BkK" id="R3z-6N-4vb"/>
+                        <outlet property="slowAccSensitivitySlider" destination="9Ad-Hc-IaB" id="ERl-XH-vvH"/>
                         <outlet property="slowAccThresholdLabel" destination="g82-bd-oOw" id="OnU-Wb-uHh"/>
+                        <outlet property="slowAccThresholdSlider" destination="5lt-dW-eTc" id="3HA-9A-Pji"/>
+                        <outlet property="slowThresholdSlider" destination="sdl-9V-ZRP" id="NzM-PL-iIe"/>
                         <outlet property="smoothThresholdLabel" destination="P1h-ke-4B7" id="3Oz-f9-ExL"/>
+                        <outlet property="smoothThresholdSlider" destination="Zix-tB-IFV" id="rB9-GX-QVK"/>
                         <outlet property="tightenThresholdLabel" destination="5Hm-Dm-3Uk" id="nxk-xv-z0F"/>
+                        <outlet property="tightenThresholdSlider" destination="LYO-E8-Mrn" id="K9y-hR-GSX"/>
                     </connections>
                 </viewController>
                 <customObject id="pM3-69-3U6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581" y="849.5"/>
+            <point key="canvasLocation" x="1581" y="885"/>
         </scene>
         <!--App Settings View Controller-->
         <scene sceneID="CXt-7b-kNs">

@@ -210,6 +210,9 @@ class DataManager: NSObject {
         
         keyConfig.keyMaps = []
         
+        let gyroConfig = self.createGyroConfig()
+        keyConfig.gyroConfig = gyroConfig
+        
         return keyConfig
     }
 
@@ -246,6 +249,12 @@ class DataManager: NSObject {
         stickConfig.addToKeyMaps(down)
         
         return stickConfig
+    }
+    
+    // MARK: - GyroConfig
+    func createGyroConfig() -> GyroConfig {
+        let gyroConfig = GyroConfig(context: self.container.viewContext)
+        return gyroConfig
     }
     
     // MARK: - Common

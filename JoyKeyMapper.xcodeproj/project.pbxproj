@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */; };
+		16CE9B1324EA312B00C08E39 /* DoubleSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CE9B1224EA312B00C08E39 /* DoubleSlider.xib */; };
+		16CE9B1524EA314D00C08E39 /* CustomKnob.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CE9B1424EA314D00C08E39 /* CustomKnob.xib */; };
+		16ED320524EA2A2B003F9BD9 /* DoubleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */; };
+		16ED320724EA2A37003F9BD9 /* CustomKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320624EA2A37003F9BD9 /* CustomKnob.swift */; };
 		93256183A11EAD19ADC85FF9 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480DB1F0DAF805C943A9656A /* Pods_JoyKeyMapper.framework */; };
 		DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0389E72497D911009090BE /* MetaKeyState.swift */; };
 		DD05303224272D7A0091B3C6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05302D24272D7A0091B3C6 /* DataManager.swift */; };
@@ -59,6 +63,10 @@
 		1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroConfigViewController.swift; sourceTree = "<group>"; };
 		16A44BF624E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16A44BF724E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		16CE9B1224EA312B00C08E39 /* DoubleSlider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleSlider.xib; sourceTree = "<group>"; };
+		16CE9B1424EA314D00C08E39 /* CustomKnob.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomKnob.xib; sourceTree = "<group>"; };
+		16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSlider.swift; sourceTree = "<group>"; };
+		16ED320624EA2A37003F9BD9 /* CustomKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKnob.swift; sourceTree = "<group>"; };
 		475E07CC10AB2EDFD3A1DE83 /* Pods-JoyKeyMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.release.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.release.xcconfig"; sourceTree = "<group>"; };
 		480DB1F0DAF805C943A9656A /* Pods_JoyKeyMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoyKeyMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0B679D3FC9AD29E57D0287 /* Pods-JoyKeyMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.debug.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +136,17 @@
 			path = GyroConfigView;
 			sourceTree = "<group>";
 		};
+		16ED31FF24EA2680003F9BD9 /* Sliders */ = {
+			isa = PBXGroup;
+			children = (
+				16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */,
+				16ED320624EA2A37003F9BD9 /* CustomKnob.swift */,
+				16CE9B1224EA312B00C08E39 /* DoubleSlider.xib */,
+				16CE9B1424EA314D00C08E39 /* CustomKnob.xib */,
+			);
+			path = Sliders;
+			sourceTree = "<group>";
+		};
 		7165849BB23611CC6D049234 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,10 +191,11 @@
 			children = (
 				DD0AE2ED22DAB13200B68F05 /* Main.storyboard */,
 				DD05303C24272DAA0091B3C6 /* ViewController.swift */,
-				1696E52E24E8E4C500CF5C16 /* GyroConfigView */,
+				16ED31FF24EA2680003F9BD9 /* Sliders */,
 				DD05304B24272DAA0091B3C6 /* ControllerList */,
 				DD05304824272DAA0091B3C6 /* AppList */,
 				DD05304324272DAA0091B3C6 /* KeyMapList */,
+				1696E52E24E8E4C500CF5C16 /* GyroConfigView */,
 				DD05303D24272DAA0091B3C6 /* KeyConfigView */,
 				DD05304024272DAA0091B3C6 /* AppSettings */,
 			);
@@ -368,6 +388,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0AE2EF22DAB13200B68F05 /* Main.storyboard in Resources */,
+				16CE9B1324EA312B00C08E39 /* DoubleSlider.xib in Resources */,
+				16CE9B1524EA314D00C08E39 /* CustomKnob.xib in Resources */,
 				DDA072B1246699C500F9B80B /* Localizable.strings in Resources */,
 				DD8744732412941B00B3AB11 /* Assets.xcassets in Resources */,
 				DD05305D24272DAA0091B3C6 /* ControllerViewItem.xib in Resources */,
@@ -466,8 +488,10 @@
 				DD0AE2E522DAB13100B68F05 /* AppDelegate.swift in Sources */,
 				DD05305124272DAA0091B3C6 /* KeyConfigViewController.swift in Sources */,
 				1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */,
+				16ED320724EA2A37003F9BD9 /* CustomKnob.swift in Sources */,
 				DD05305624272DAA0091B3C6 /* SpecialKeyName.swift in Sources */,
 				DD05305524272DAA0091B3C6 /* StickConfigCellView.swift in Sources */,
+				16ED320524EA2A2B003F9BD9 /* DoubleSlider.swift in Sources */,
 				DDAC3B4024151C350022FF32 /* AppNotifications.swift in Sources */,
 				DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */,
 				DD05305424272DAA0091B3C6 /* AppSettingsViewController.swift in Sources */,

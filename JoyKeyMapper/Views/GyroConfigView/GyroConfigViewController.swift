@@ -9,19 +9,39 @@
 import Cocoa
 
 class GyroConfigViewController: NSViewController {
-
+    
+    var gyroConfig: GyroConfig!
     
     @IBOutlet weak var calibrateButton: NSButton!
     @IBOutlet weak var calibrateProgressIcon: NSProgressIndicator!
+    @IBOutlet weak var defaultSensitivitySlider: NSSlider!
     @IBOutlet weak var defaultSensitivityLabel: NSTextField!
+    @IBOutlet weak var enableAccelerationButton: NSButton!
+    @IBOutlet weak var slowAccThresholdSlider: NSSliderCell!
     @IBOutlet weak var slowAccThresholdLabel: NSTextField!
+    @IBOutlet weak var fastAccThresholdSlider: NSSlider!
     @IBOutlet weak var fastAccThresholdLabel: NSTextField!
+    @IBOutlet weak var slowAccSensitivitySlider: NSSlider!
     @IBOutlet weak var slowAccSensitivityLabel: NSTextField!
+    @IBOutlet weak var fastAccSensitivitySlider: NSSlider!
     @IBOutlet weak var fastAccSensitivityLabel: NSTextField!
+    @IBOutlet weak var enableSmoothButton: NSButton!
+    @IBOutlet weak var smoothThresholdSlider: NSSlider!
     @IBOutlet weak var smoothThresholdLabel: NSTextField!
+    @IBOutlet weak var enableTightenButton: NSButton!
+    @IBOutlet weak var tightenThresholdSlider: NSSlider!
     @IBOutlet weak var tightenThresholdLabel: NSTextField!
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let gyroConfig = self.gyroConfig else { return }
+        
+
+        
+        
+        // Do view setup here.
+    }
     
     
     @IBAction func calibrateButtonPressed(_ sender: NSButton) {
@@ -57,16 +77,10 @@ class GyroConfigViewController: NSViewController {
    
     @IBAction func resetToDefaultButtonPress(_ sender: NSButton) {
     }
+    
     @IBAction func okButtonPress(_ sender: NSButton) {
-    }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        // Do view setup here.
+        guard let window = self.view.window else { return }
+        window.sheetParent?.endSheet(window, returnCode: .OK)
     }
     
 }
