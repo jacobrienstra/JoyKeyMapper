@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1390,8 +1390,8 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
-                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="dE8-Zf-DOb" customClass="MBDoubleSlider" customModule="JoyKeyMapper" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="314" width="163" height="16"/>
+                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="FSR-GY-5oi" customClass="DoubleSlider" customModule="DoubleSlider">
+                                                            <rect key="frame" x="0.0" y="314" width="400" height="16"/>
                                                         </customView>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PKk-an-h8F">
                                                             <rect key="frame" x="-2" y="282" width="142" height="18"/>
@@ -1864,7 +1864,7 @@ DQ
                                 <rect key="frame" x="180" y="219" width="140" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="Disabled" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="S65-Hi-lo0" id="uJu-Ia-utn">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="uJg-by-oE8">
                                         <items>
                                             <menuItem title="Disabled" state="on" id="S65-Hi-lo0"/>
@@ -2128,7 +2128,7 @@ Gw
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Left Button" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k0S-HH-PzZ" id="dQ0-Cr-1Yo">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="system"/>
                                                 <menu key="menu" id="tEN-88-w1w">
                                                     <items>
                                                         <menuItem title="Left Button" state="on" id="k0S-HH-PzZ">

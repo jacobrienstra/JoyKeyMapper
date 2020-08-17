@@ -13,16 +13,16 @@ import Cocoa
 public class CustomKnob: NSView {
     
     
-    @IBOutlet var CustomKnobBaseView: CustomKnob!
-    
     var color:NSColor           = NSColor.white
     var borderColor: NSColor    = NSColor.lightGray.withAlphaComponent(0.5)
     
-//    public required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        let newNib = NSNib(nibNamed: "CustomKnob", bundle: Bundle(for: type(of: self)))
-//        newNib?.instantiate(withOwner: self, topLevelObjects: nil)
-//    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+    }
     
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

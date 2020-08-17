@@ -16,8 +16,6 @@ protocol DoubleSliderDelegate {
 
 @IBDesignable
 public class DoubleSlider: NSControl {
-
-    @IBOutlet var DoubleSliderBaseView: DoubleSlider!
     
     @IBInspectable var backgroundLineColor: NSColor = NSColor(red:0.780, green:0.780, blue:0.780, alpha:1)
     @IBInspectable var selectionLineColor: NSColor  = NSColor(red:0.231, green:0.600, blue:0.988, alpha:1)
@@ -66,12 +64,14 @@ public class DoubleSlider: NSControl {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setUp()
+        setUpLabels()
+        initViews()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setUp()
+        setUpLabels()
+        initViews()
     }
     
     public override func draw(_ dirtyRect: NSRect) {
@@ -213,7 +213,6 @@ public class DoubleSlider: NSControl {
         selectionLineColor.setStroke()
         selectionLine.stroke()
         
-//        Swift.print(self.subviews.count)
         self.addSubview(firstKnob)
         self.addSubview(secondKnob)
         self.addSubview(firstLabel)
@@ -221,24 +220,7 @@ public class DoubleSlider: NSControl {
     }
     
     
-    func setUp() {
-        let myName = type(of: self).className().components(separatedBy: ".").last!
-        let newNib = NSNib(nibNamed: myName, bundle: Bundle(for: type(of: self)))
-        newNib?.instantiate(withOwner: self, topLevelObjects: nil)
-        
-        var newConstraints: [NSLayoutConstraint] = []
-        for oldConstraint in DoubleSliderBaseView.constraints {
-            let firstItem = oldConstraint.firstItem === DoubleSliderBaseView ? self : oldConstraint.firstItem!
-            let secondItem = oldConstraint.secondItem === DoubleSliderBaseView ? self : oldConstraint.secondItem
-            newConstraints.append(NSLayoutConstraint(item: firstItem, attribute: oldConstraint.firstAttribute, relatedBy: oldConstraint.relation, toItem: secondItem, attribute: oldConstraint.secondAttribute, multiplier: oldConstraint.multiplier, constant: oldConstraint.constant))
-        }
-        
-        for newView in DoubleSliderBaseView.subviews {
-            self.addSubview(newView)
-        }
-        
-        self.addConstraints(newConstraints)
-        
+    func setUpLabels() {
         firstLabel.isBordered       = false
         firstLabel.identifier       = NSUserInterfaceItemIdentifier(rawValue: "10")
         firstLabel.isEditable       = false
