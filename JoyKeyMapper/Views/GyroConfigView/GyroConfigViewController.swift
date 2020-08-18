@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import DoubleSlider
+import RangeSlider
 
 class GyroConfigViewController: NSViewController {
     
@@ -24,10 +24,10 @@ class GyroConfigViewController: NSViewController {
     @IBOutlet weak var enableTightenButton: NSButton!
     @IBOutlet weak var tightenThresholdSlider: NSSlider!
     @IBOutlet weak var tightenThresholdLabel: NSTextField!
-    @IBOutlet weak var AccThresholdSlider: DoubleSlider!
-    @IBAction func AccThresholdSliderChanged(_ sender: DoubleSlider) {
-        print(sender.lower)
-        print(sender.upper)
+    @IBOutlet weak var AccThresholdSlider: RangeSlider!
+    @IBAction func AccThresholdSliderChanged(_ sender: RangeSlider) {
+        print(sender.lowerValue)
+        print(sender.upperValue)
     }
     
     override func viewDidLoad() {

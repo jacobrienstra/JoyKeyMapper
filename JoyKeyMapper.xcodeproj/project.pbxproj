@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160398B524EA3E4F00DDCAC5 /* DoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 160398A524EA3E4F00DDCAC5 /* DoubleSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		160398B824EA3E4F00DDCAC5 /* DoubleSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */; };
-		160398B924EA3E4F00DDCAC5 /* DoubleSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		160398C124EA3E9900DDCAC5 /* DoubleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */; };
-		160398C224EA3E9900DDCAC5 /* CustomKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320624EA2A37003F9BD9 /* CustomKnob.swift */; };
-		161AEE2F24EA5C8500F9C950 /* DoubleSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		161AEE3024EA5C8500F9C950 /* CustomKnob.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320624EA2A37003F9BD9 /* CustomKnob.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		160398B524EA3E4F00DDCAC5 /* RangeSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 160398A524EA3E4F00DDCAC5 /* RangeSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		160398C124EA3E9900DDCAC5 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */; };
+		161AEE2F24EA5C8500F9C950 /* RangeSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		1675DB2E24EB7A9C00FDD97A /* RangeSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; };
+		1675DB2F24EB7A9C00FDD97A /* RangeSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1675DB3424EB892D00FDD97A /* NSBezierPathCGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */; };
 		1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */; };
 		81C735E74A1EB18B514366F9 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */; };
 		DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0389E72497D911009090BE /* MetaKeyState.swift */; };
@@ -50,23 +49,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		160398B624EA3E4F00DDCAC5 /* PBXContainerItemProxy */ = {
+		1675DB3024EB7A9C00FDD97A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DD0AE2D922DAB13100B68F05 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 160398A224EA3E4F00DDCAC5;
-			remoteInfo = DoubleSlider;
+			remoteInfo = RangeSlider;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		160398BA24EA3E4F00DDCAC5 /* Embed Frameworks */ = {
+		1675DB3224EB7A9C00FDD97A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				160398B924EA3E4F00DDCAC5 /* DoubleSlider.framework in Embed Frameworks */,
+				1675DB2F24EB7A9C00FDD97A /* RangeSlider.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,14 +83,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DoubleSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		160398A524EA3E4F00DDCAC5 /* DoubleSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoubleSlider.h; sourceTree = "<group>"; };
+		160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		160398A524EA3E4F00DDCAC5 /* RangeSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeSlider.h; sourceTree = "<group>"; };
 		160398A624EA3E4F00DDCAC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPathCGExtension.swift; sourceTree = "<group>"; };
 		1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroConfigViewController.swift; sourceTree = "<group>"; };
 		16A44BF624E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16A44BF724E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSlider.swift; sourceTree = "<group>"; };
-		16ED320624EA2A37003F9BD9 /* CustomKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKnob.swift; sourceTree = "<group>"; };
+		16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		92B11B8363A76135B5DE1000 /* Pods-JoyKeyMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.debug.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.debug.xcconfig"; sourceTree = "<group>"; };
 		C737591699D28638657D15A2 /* Pods-JoyKeyMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.release.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.release.xcconfig"; sourceTree = "<group>"; };
 		D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoyKeyMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				160398B824EA3E4F00DDCAC5 /* DoubleSlider.framework in Frameworks */,
 				81C735E74A1EB18B514366F9 /* Pods_JoyKeyMapper.framework in Frameworks */,
+				1675DB2E24EB7A9C00FDD97A /* RangeSlider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,15 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		160398A424EA3E4F00DDCAC5 /* DoubleSlider */ = {
+		160398A424EA3E4F00DDCAC5 /* RangeSlider */ = {
 			isa = PBXGroup;
 			children = (
-				16ED320424EA2A2B003F9BD9 /* DoubleSlider.swift */,
-				16ED320624EA2A37003F9BD9 /* CustomKnob.swift */,
-				160398A524EA3E4F00DDCAC5 /* DoubleSlider.h */,
+				16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */,
+				1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */,
+				160398A524EA3E4F00DDCAC5 /* RangeSlider.h */,
 				160398A624EA3E4F00DDCAC5 /* Info.plist */,
 			);
-			path = DoubleSlider;
+			path = RangeSlider;
 			sourceTree = "<group>";
 		};
 		1696E52E24E8E4C500CF5C16 /* GyroConfigView */ = {
@@ -288,7 +287,7 @@
 			children = (
 				DD0AE2E322DAB13100B68F05 /* JoyKeyMapper */,
 				DD87447B241495A700B3AB11 /* JoyKeyMapperLauncher */,
-				160398A424EA3E4F00DDCAC5 /* DoubleSlider */,
+				160398A424EA3E4F00DDCAC5 /* RangeSlider */,
 				DD0AE2E222DAB13100B68F05 /* Products */,
 				822205FE79640986B57D9BA4 /* Pods */,
 				C1A30469E11AF08BB417318D /* Frameworks */,
@@ -300,7 +299,7 @@
 			children = (
 				DD0AE2E122DAB13100B68F05 /* JoyKeyMapper.app */,
 				DD87447A241495A700B3AB11 /* JoyKeyMapperLauncher.app */,
-				160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */,
+				160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,18 +338,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				160398B524EA3E4F00DDCAC5 /* DoubleSlider.h in Headers */,
-				161AEE2F24EA5C8500F9C950 /* DoubleSlider.swift in Headers */,
-				161AEE3024EA5C8500F9C950 /* CustomKnob.swift in Headers */,
+				160398B524EA3E4F00DDCAC5 /* RangeSlider.h in Headers */,
+				161AEE2F24EA5C8500F9C950 /* RangeSlider.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		160398A224EA3E4F00DDCAC5 /* DoubleSlider */ = {
+		160398A224EA3E4F00DDCAC5 /* RangeSlider */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 160398BF24EA3E4F00DDCAC5 /* Build configuration list for PBXNativeTarget "DoubleSlider" */;
+			buildConfigurationList = 160398BF24EA3E4F00DDCAC5 /* Build configuration list for PBXNativeTarget "RangeSlider" */;
 			buildPhases = (
 				1603989E24EA3E4F00DDCAC5 /* Headers */,
 				1603989F24EA3E4F00DDCAC5 /* Sources */,
@@ -361,9 +359,9 @@
 			);
 			dependencies = (
 			);
-			name = DoubleSlider;
+			name = RangeSlider;
 			productName = DoubleSlider;
-			productReference = 160398A324EA3E4F00DDCAC5 /* DoubleSlider.framework */;
+			productReference = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DD0AE2E022DAB13100B68F05 /* JoyKeyMapper */ = {
@@ -377,12 +375,12 @@
 				DD87448D2414B89600B3AB11 /* CopyFiles */,
 				DD1025F0244CAD01006CD0F4 /* Set build number */,
 				BCA6955C4FF9CAF0FC5C2B36 /* [CP] Embed Pods Frameworks */,
-				160398BA24EA3E4F00DDCAC5 /* Embed Frameworks */,
+				1675DB3224EB7A9C00FDD97A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				160398B724EA3E4F00DDCAC5 /* PBXTargetDependency */,
+				1675DB3124EB7A9C00FDD97A /* PBXTargetDependency */,
 			);
 			name = JoyKeyMapper;
 			productName = JoyKeyMapper;
@@ -448,7 +446,7 @@
 			targets = (
 				DD0AE2E022DAB13100B68F05 /* JoyKeyMapper */,
 				DD874479241495A700B3AB11 /* JoyKeyMapperLauncher */,
-				160398A224EA3E4F00DDCAC5 /* DoubleSlider */,
+				160398A224EA3E4F00DDCAC5 /* RangeSlider */,
 			);
 		};
 /* End PBXProject section */
@@ -548,8 +546,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				160398C224EA3E9900DDCAC5 /* CustomKnob.swift in Sources */,
-				160398C124EA3E9900DDCAC5 /* DoubleSlider.swift in Sources */,
+				1675DB3424EB892D00FDD97A /* NSBezierPathCGExtension.swift in Sources */,
+				160398C124EA3E9900DDCAC5 /* RangeSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,10 +593,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		160398B724EA3E4F00DDCAC5 /* PBXTargetDependency */ = {
+		1675DB3124EB7A9C00FDD97A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 160398A224EA3E4F00DDCAC5 /* DoubleSlider */;
-			targetProxy = 160398B624EA3E4F00DDCAC5 /* PBXContainerItemProxy */;
+			target = 160398A224EA3E4F00DDCAC5 /* RangeSlider */;
+			targetProxy = 1675DB3024EB7A9C00FDD97A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -645,7 +643,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DoubleSlider/Info.plist;
+				INFOPLIST_FILE = RangeSlider/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -653,7 +651,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.0spec.DoubleSlider;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.0spec.RangeSlider;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -674,7 +672,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DoubleSlider/Info.plist;
+				INFOPLIST_FILE = RangeSlider/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -682,7 +680,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.0spec.DoubleSlider;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.0spec.RangeSlider;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -919,7 +917,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		160398BF24EA3E4F00DDCAC5 /* Build configuration list for PBXNativeTarget "DoubleSlider" */ = {
+		160398BF24EA3E4F00DDCAC5 /* Build configuration list for PBXNativeTarget "RangeSlider" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				160398BB24EA3E4F00DDCAC5 /* Debug */,

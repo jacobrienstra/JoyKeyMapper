@@ -1,66 +1,127 @@
 //
-//  DoubleSlider.swift
+//  RangeSlider.swift
 //  JoyKeyMapper
 //
-//  Created by Viorel Porumbescu on 18/10/15.
-//  Copyright (c) 2015 Viorel Porumbescu. All rights reserved.
+//  Created by Jacob Rienstra on 8/15/20.
 //
 
 import Cocoa
 
-protocol MBDoubleSliderDelegate {
-    func controller(_ controller: DoubleSlider , didChangeFirstValue: CGFloat , secondValue: CGFloat)
-    // TODO: shold be an optional protocol.
-    // func controller(_ controller: MBDoubleSlider, willBeginChangeValues first:CGFloat, second:CGFloat)
+@IBDesignable public class CustomKnob: NSView {
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+    }
+    
+    public override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+    
+        let path = NSBezierPath(ovalIn: dirtyRect.insetBy(dx: 1.0, dy: 1.0))
+        let fillColor = NSColor.white
+        let borderColor = NSColor(red: 177, green: 177, blue: 177, alpha: 1)
+        fillColor.setFill()
+        path.fill()
+        path.lineWidth = 0.25
+        borderColor.setStroke()
+        path.stroke()
+        
+    }
+    
 }
 
-@IBDesignable public class DoubleSlider: NSControl {
+class RangeSliderTrackLayer: CALayer {
+    weak var rangeSlider: RangeSlider?
     
-    @IBInspectable public var backgroundLineColor: NSColor = NSColor(red:0.780, green:0.780, blue:0.780, alpha:1)
-    @IBInspectable public var selectionLineColor: NSColor  = NSColor(red:0.231, green:0.600, blue:0.988, alpha:1)
-    @IBInspectable public var textColor: NSColor = NSColor.controlTextColor
+    override func draw(in ctx: CGContext) {
+        guard let slider = rangeSlider else { return }
+        let path = NSBezierPath(rect: bounds)
+        ctx.addPath(path.cgPath)
+        ctx.setFillColor(slider.trackColor.cgColor)
+        ctx.fillPath()
+        self.cornerRadius = 2.0
+        self.masksToBounds = true
+        
+        ctx.setFillColor(slider.selectedColor.cgColor)
+        let lowerValuePosition = slider.positionForValue(slider.lowerValue)
+        let upperValuePosition = slider.positionForValue(slider.upperValue)
+        let rect = CGRect(x: lowerValuePosition, y: 0, width: upperValuePosition - lowerValuePosition, height: bounds.height)
+        ctx.fill(rect)
+    }
+}
+
+public protocol RangeSliderDelegate {
+    func controller(_ controller: RangeSlider , didChangeFirstValue: CGFloat , secondValue: CGFloat)
+    // TODO: shold be an optional protocol.
+    // func controller(_ controller: RangeSlider, willBeginChangeValues first:CGFloat, second:CGFloat)
+}
+
+@IBDesignable public class RangeSlider: NSControl, CALayerDelegate {
+   
     
+    @IBInspectable public var trackColor: NSColor = NSColor.disabledControlTextColor {
+        didSet {
+            trackLayer.setNeedsDisplay()
+        }
+    }
+    @IBInspectable public var selectedColor: NSColor  = NSColor.controlAccentColor {
+        didSet {
+            trackLayer.setNeedsDisplay()
+        }
+    }
+    @IBInspectable public var textColor: NSColor = NSColor.controlTextColor {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+    
+    @IBInspectable public var size = CGSize(width: 18.0, height: 18.0) {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+
     private var previousLocation = CGPoint()
-    var delegate: MBDoubleSliderDelegate?
+    var delegate: RangeSliderDelegate?
+    var shouldMoveFirst: Bool = false
+    var shouldMoveLast: Bool = false
 
     // TODO: Add option to hide info labels
     
-    public var minValue: CGFloat = 0
     @IBInspectable public var min: CGFloat = 0 {
         didSet {
-            self.minValue = min
+            updateLayerFrames()
         }
     }
-    public var maxValue: CGFloat = 1
     @IBInspectable public var max: CGFloat = 1 {
         didSet {
-            self.maxValue = max
+            updateLayerFrames()
         }
     }
         
-    public var lower: CGFloat = 0.2
     @IBInspectable public var lowerValue: CGFloat = 0.2 {
         didSet {
-            self.lower = lowerValue
+            updateLayerFrames()
         }
     }
     
-    public var upper: CGFloat = 0.8
     @IBInspectable public var upperValue: CGFloat = 0.8 {
         didSet {
-            self.upper = upperValue
+            updateLayerFrames()
         }
     }
     
     private let baseLayer = CALayer()
-    private let trackLayer = CALayer()
+    private let trackLayer = RangeSliderTrackLayer()
     private let lowerKnob = CustomKnob()
     private let upperKnob = CustomKnob()
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-
     }
     
     required public init?(coder: NSCoder) {
@@ -71,7 +132,10 @@ protocol MBDoubleSliderDelegate {
     func commonInit() {
         self.wantsLayer = true
         self.canDrawSubviewsIntoLayer = true
-        trackLayer.backgroundColor = NSColor.blue.cgColor
+        trackLayer.rangeSlider = self
+        trackLayer.delegate = self
+        trackLayer.needsDisplayOnBoundsChange = true
+        trackLayer.cornerRadius = 2.0
         baseLayer.addSublayer(trackLayer)
         self.layer = baseLayer
         self.isEnabled = true
@@ -90,14 +154,16 @@ protocol MBDoubleSliderDelegate {
     
     // 1
     private func updateLayerFrames() {
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
         trackLayer.frame = CGRect(x: bounds.origin.x, y: bounds.midY - 1.5, width: bounds.width, height: 3.0)
-        trackLayer.cornerRadius = 2.0
         baseLayer.setNeedsDisplay()
-        lowerKnob.frame = CGRect(origin: thumbOriginForValue(lower), size: size)
-        upperKnob.frame = CGRect(origin: thumbOriginForValue(upper), size: size)
+        trackLayer.setNeedsDisplay()
+        lowerKnob.frame = CGRect(origin: thumbOriginForValue(lowerValue), size: size)
+        upperKnob.frame = CGRect(origin: thumbOriginForValue(upperValue), size: size)
+        CATransaction.commit()
     }
     
-    let size = CGSize(width: 15.0, height: 15.0)
     // 2
     func positionForValue(_ value: CGFloat) -> CGFloat {
         return bounds.width * value
@@ -117,9 +183,6 @@ protocol MBDoubleSliderDelegate {
         trackingArea = NSTrackingArea(rect: self.bounds, options: [NSTrackingArea.Options.enabledDuringMouseDrag , NSTrackingArea.Options.mouseMoved, NSTrackingArea.Options.activeAlways, .cursorUpdate], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea)
     }
-//    
-    var shouldMoveFirst: Bool = false
-    var shouldMoveLast: Bool = false
 
     
     /// Mouse down event : We test if current mouse location is inside of first or second knob. If yes, then we
@@ -144,12 +207,12 @@ protocol MBDoubleSliderDelegate {
         previousLocation = loc
 
         if shouldMoveFirst {
-            lower += deltaValue
-            lower = boundValue(lower, toLowerValue: min, upperValue: upper)
+            lowerValue += deltaValue
+            lowerValue = boundValue(lowerValue, toLowerValue: min, upperValue: upperValue)
         }
         if shouldMoveLast {
-            upper += deltaValue
-            upper = boundValue(upper, toLowerValue: lower,
+            upperValue += deltaValue
+            upperValue = boundValue(upperValue, toLowerValue: lowerValue,
                                        upperValue: max)
         }
         // 3
@@ -186,7 +249,7 @@ protocol MBDoubleSliderDelegate {
     
     
 //    var minimValue: CGFloat = 10
-//    var delegate: DoubleSliderDelegate?
+//    var delegate: RangeSliderDelegate?
 //
 //    var firstKnob: CustomKnob = CustomKnob()
 //    var secondKnob: CustomKnob = CustomKnob()
