@@ -1280,34 +1280,40 @@
             <objects>
                 <viewController storyboardIdentifier="GyroConfigViewController" id="dyT-mO-LtB" customClass="GyroConfigViewController" customModule="JoyKeyMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Jcs-uX-glh">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="469"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="498"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KS4-rI-kGk">
-                                <rect key="frame" x="20" y="20" width="440" height="429"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" detachesHiddenViews="YES" id="KS4-rI-kGk">
+                                <rect key="frame" x="20" y="20" width="440" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-wN-1Lt">
-                                        <rect key="frame" x="-2" y="413" width="119" height="16"/>
+                                    <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" id="Pun-wN-1Lt">
+                                        <rect key="frame" x="-2" y="442" width="119" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Gyro Configuration" id="vti-6E-cBr">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <box verticalHuggingPriority="750" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1mk-JT-Syr">
-                                        <rect key="frame" x="-3" y="66" width="446" height="341"/>
-                                        <view key="contentView" id="bk6-tP-2yN">
-                                            <rect key="frame" x="3" y="3" width="440" height="335"/>
+                                    <box horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" borderType="line" titlePosition="noTitle" id="1mk-JT-Syr">
+                                        <rect key="frame" x="-3" y="33" width="446" height="395"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <view key="contentView" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="bk6-tP-2yN">
+                                            <rect key="frame" x="3" y="3" width="440" height="389"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="cGo-pY-SUg">
-                                                    <rect key="frame" x="20" y="20" width="400" height="295"/>
+                                                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" id="cGo-pY-SUg">
+                                                    <rect key="frame" x="20" y="29" width="400" height="331"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <subviews>
-                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eJ-6z-lfK">
-                                                            <rect key="frame" x="0.0" y="279" width="164" height="16"/>
+                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" id="7eJ-6z-lfK">
+                                                            <rect key="frame" x="0.0" y="299" width="164" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <subviews>
-                                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lNW-uf-Brs">
-                                                                    <rect key="frame" x="-6" y="-7" width="95" height="27"/>
+                                                                <button horizontalHuggingPriority="1000" verticalHuggingPriority="750" id="lNW-uf-Brs">
+                                                                    <rect key="frame" x="-6" y="4" width="95" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="push" title="Calibrate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V7s-KK-DxU">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
@@ -1316,24 +1322,20 @@
                                                                         <action selector="calibrateButtonPressed:" target="dyT-mO-LtB" id="5g9-9B-IgR"/>
                                                                     </connections>
                                                                 </button>
-                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="3yf-IA-bx9">
-                                                                    <rect key="frame" x="89" y="0.0" width="37" height="16"/>
+                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="3yf-IA-bx9">
+                                                                    <rect key="frame" x="89" y="16" width="37" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" placeholderString="Label" usesSingleLineMode="YES" id="I8h-49-9WA">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="N2c-V2-ObT">
-                                                                    <rect key="frame" x="132" y="0.0" width="32" height="16"/>
+                                                                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" id="N2c-V2-ObT">
+                                                                    <rect key="frame" x="132" y="0.0" width="32" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 </progressIndicator>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="lNW-uf-Brs" firstAttribute="top" secondItem="7eJ-6z-lfK" secondAttribute="top" id="49h-JG-M5q"/>
-                                                                <constraint firstAttribute="bottom" secondItem="3yf-IA-bx9" secondAttribute="bottom" id="PsM-BA-4GW"/>
-                                                                <constraint firstItem="3yf-IA-bx9" firstAttribute="top" secondItem="7eJ-6z-lfK" secondAttribute="top" id="gDU-hi-nUk"/>
-                                                                <constraint firstItem="lNW-uf-Brs" firstAttribute="leading" secondItem="7eJ-6z-lfK" secondAttribute="leading" id="v1w-Zu-fH8"/>
-                                                            </constraints>
                                                             <visibilityPriorities>
                                                                 <integer value="1000"/>
                                                                 <integer value="1000"/>
@@ -1345,30 +1347,31 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
-                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-sh-xrj">
-                                                            <rect key="frame" x="0.0" y="247" width="400" height="16"/>
+                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" id="Qqc-sh-xrj">
+                                                            <rect key="frame" x="0.0" y="267" width="339" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <subviews>
-                                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gun-1a-Bhp">
+                                                                <slider verticalHuggingPriority="750" id="gun-1a-Bhp">
                                                                     <rect key="frame" x="-2" y="-1" width="204" height="19"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="200" id="Qd5-cj-SbM"/>
-                                                                    </constraints>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <sliderCell key="cell" alignment="left" maxValue="2" doubleValue="0.93160860655737709" tickMarkPosition="above" sliderType="linear" id="C06-tE-14Z">
                                                                         <connections>
                                                                             <action selector="defaultSensitivityChanged:" target="dyT-mO-LtB" id="okP-7c-0H7"/>
                                                                         </connections>
                                                                     </sliderCell>
                                                                 </slider>
-                                                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8ne-Qe-0nH">
+                                                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="8ne-Qe-0nH">
                                                                     <rect key="frame" x="206" y="0.0" width="10" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="1" id="BTF-ce-2Zy">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="seJ-6V-5eg">
-                                                                    <rect key="frame" x="220" y="0.0" width="182" height="16"/>
+                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="seJ-6V-5eg">
+                                                                    <rect key="frame" x="220" y="0.0" width="121" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title=": Default Sensitivity" id="u4M-S9-src">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1376,9 +1379,6 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="seJ-6V-5eg" firstAttribute="leading" secondItem="8ne-Qe-0nH" secondAttribute="trailing" constant="8" id="BmG-KY-zRg"/>
-                                                            </constraints>
                                                             <visibilityPriorities>
                                                                 <integer value="1000"/>
                                                                 <integer value="1000"/>
@@ -1390,28 +1390,16 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
-                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="xu1-by-Opf" customClass="RangeSlider" customModule="RangeSlider">
-                                                            <rect key="frame" x="0.0" y="186" width="400" height="45"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="min">
-                                                                    <real key="value" value="0.0"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="max">
-                                                                    <real key="value" value="1"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="lowerValue">
-                                                                    <real key="value" value="0.5"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                    <color key="value" red="0.69410914180000005" green="0.69411325450000005" blue="0.69412404299999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
+                                                        <customView horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="xu1-by-Opf" customClass="RangeSlider" customModule="RangeSlider">
+                                                            <rect key="frame" x="0.0" y="189" width="400" height="62"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <connections>
                                                                 <action selector="AccThresholdSliderChanged:" target="dyT-mO-LtB" id="wVk-lV-WoO"/>
                                                             </connections>
                                                         </customView>
-                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PKk-an-h8F">
+                                                        <button horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="PKk-an-h8F">
                                                             <rect key="frame" x="-2" y="154" width="142" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="check" title="Enable Acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="32O-Lo-4cc">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
@@ -1420,8 +1408,9 @@
                                                                 <action selector="enableAccelerationToggle:" target="dyT-mO-LtB" id="aYT-2f-h1A"/>
                                                             </connections>
                                                         </button>
-                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OKS-BR-lFX">
+                                                        <button horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="OKS-BR-lFX">
                                                             <rect key="frame" x="-2" y="124" width="132" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="check" title="Enable Smoothing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="l0X-Zw-SuE">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
@@ -1430,29 +1419,30 @@
                                                                 <action selector="enableSmoothingTogle:" target="dyT-mO-LtB" id="s7o-tL-PKJ"/>
                                                             </connections>
                                                         </button>
-                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jFf-US-yA3">
-                                                            <rect key="frame" x="0.0" y="94" width="400" height="16"/>
+                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" id="jFf-US-yA3">
+                                                            <rect key="frame" x="0.0" y="94" width="362" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <subviews>
-                                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zix-tB-IFV">
+                                                                <slider verticalHuggingPriority="750" id="Zix-tB-IFV">
                                                                     <rect key="frame" x="-2" y="-1" width="204" height="19"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="200" id="3wY-nW-VVx"/>
-                                                                    </constraints>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="10" doubleValue="5" tickMarkPosition="above" sliderType="linear" id="n2e-RC-I38"/>
                                                                     <connections>
                                                                         <action selector="smoothThresholdChanged:" target="dyT-mO-LtB" id="SnX-t7-sen"/>
                                                                     </connections>
                                                                 </slider>
-                                                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-ke-4B7">
+                                                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="P1h-ke-4B7">
                                                                     <rect key="frame" x="206" y="0.0" width="12" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="5" id="90o-EE-MM7">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="L1L-Iv-ThU">
-                                                                    <rect key="frame" x="222" y="0.0" width="180" height="16"/>
+                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="L1L-Iv-ThU">
+                                                                    <rect key="frame" x="222" y="0.0" width="142" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title=": Smoothing Threshold" id="UpN-Xb-i8w">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1460,9 +1450,6 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="L1L-Iv-ThU" firstAttribute="leading" secondItem="P1h-ke-4B7" secondAttribute="trailing" constant="8" id="6g0-Gw-tHW"/>
-                                                            </constraints>
                                                             <visibilityPriorities>
                                                                 <integer value="1000"/>
                                                                 <integer value="1000"/>
@@ -1474,8 +1461,9 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
-                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-mR-ycc">
+                                                        <button horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="4oz-mR-ycc">
                                                             <rect key="frame" x="-2" y="62" width="131" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <buttonCell key="cell" type="check" title="Enable Tightening" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="zCu-Bj-kmJ">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
@@ -1484,29 +1472,30 @@
                                                                 <action selector="enableTighteningToggle:" target="dyT-mO-LtB" id="Bc7-KP-k3G"/>
                                                             </connections>
                                                         </button>
-                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QGm-lU-8Ax">
+                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" id="QGm-lU-8Ax">
                                                             <rect key="frame" x="0.0" y="32" width="400" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <subviews>
-                                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LYO-E8-Mrn">
+                                                                <slider verticalHuggingPriority="750" id="LYO-E8-Mrn">
                                                                     <rect key="frame" x="-2" y="-1" width="204" height="19"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="200" id="5hp-4p-ufP"/>
-                                                                    </constraints>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="Pny-Qk-UBv"/>
                                                                     <connections>
                                                                         <action selector="tightenThresholdChanged:" target="dyT-mO-LtB" id="wlg-Bf-lzL"/>
                                                                     </connections>
                                                                 </slider>
-                                                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5Hm-Dm-3Uk">
+                                                                <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="5Hm-Dm-3Uk">
                                                                     <rect key="frame" x="206" y="0.0" width="10" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="1" id="n5s-cG-N5E">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ouS-9N-hkU">
+                                                                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" id="ouS-9N-hkU">
                                                                     <rect key="frame" x="220" y="0.0" width="182" height="16"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title=": Tightening Upper Threshold" id="g7Z-hZ-dGD">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1514,9 +1503,6 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="ouS-9N-hkU" firstAttribute="leading" secondItem="5Hm-Dm-3Uk" secondAttribute="trailing" constant="8" id="qF5-Lf-Law"/>
-                                                            </constraints>
                                                             <visibilityPriorities>
                                                                 <integer value="1000"/>
                                                                 <integer value="1000"/>
@@ -1528,8 +1514,9 @@
                                                                 <real value="3.4028234663852886e+38"/>
                                                             </customSpacing>
                                                         </stackView>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Rwb-QQ-NQQ">
+                                                        <textField horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="Rwb-QQ-NQQ">
                                                             <rect key="frame" x="-2" y="0.0" width="147" height="16"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" selectable="YES" title="*Threshold units are º/s" id="Q3w-eW-Khx">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1537,16 +1524,6 @@
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="7eJ-6z-lfK" firstAttribute="leading" secondItem="cGo-pY-SUg" secondAttribute="leading" id="5Vj-mm-RpV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="jFf-US-yA3" secondAttribute="trailing" id="7Ry-hc-hG0"/>
-                                                        <constraint firstItem="Qqc-sh-xrj" firstAttribute="leading" secondItem="cGo-pY-SUg" secondAttribute="leading" id="CVs-zF-Tvs"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Qqc-sh-xrj" secondAttribute="trailing" id="Dgm-xY-LXO"/>
-                                                        <constraint firstItem="7eJ-6z-lfK" firstAttribute="top" secondItem="cGo-pY-SUg" secondAttribute="top" id="KrN-I1-hXY"/>
-                                                        <constraint firstItem="QGm-lU-8Ax" firstAttribute="leading" secondItem="cGo-pY-SUg" secondAttribute="leading" id="huO-7u-sAR"/>
-                                                        <constraint firstAttribute="trailing" secondItem="QGm-lU-8Ax" secondAttribute="trailing" id="sdI-c1-N3Y"/>
-                                                        <constraint firstItem="jFf-US-yA3" firstAttribute="leading" secondItem="cGo-pY-SUg" secondAttribute="leading" id="zFQ-KI-HFB"/>
-                                                    </constraints>
                                                     <visibilityPriorities>
                                                         <integer value="1000"/>
                                                         <integer value="1000"/>
@@ -1571,19 +1548,15 @@
                                                     </customSpacing>
                                                 </stackView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="cGo-pY-SUg" firstAttribute="leading" secondItem="bk6-tP-2yN" secondAttribute="leading" constant="20" symbolic="YES" id="4Qh-9V-2Ot"/>
-                                                <constraint firstItem="cGo-pY-SUg" firstAttribute="top" secondItem="bk6-tP-2yN" secondAttribute="top" constant="20" symbolic="YES" id="i4p-n8-Wlp"/>
-                                                <constraint firstAttribute="bottom" secondItem="cGo-pY-SUg" secondAttribute="bottom" constant="20" symbolic="YES" id="ka4-PQ-ZZw"/>
-                                                <constraint firstAttribute="trailing" secondItem="cGo-pY-SUg" secondAttribute="trailing" constant="20" symbolic="YES" id="vF9-CV-mQN"/>
-                                            </constraints>
                                         </view>
                                     </box>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="218" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7v-88-MnN">
-                                        <rect key="frame" x="0.0" y="41" width="440" height="21"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="218" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="1000" detachesHiddenViews="YES" id="R7v-88-MnN">
+                                        <rect key="frame" x="0.0" y="0.0" width="397" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="On5-AS-ogv">
+                                            <button verticalHuggingPriority="750" id="On5-AS-ogv">
                                                 <rect key="frame" x="-6" y="-7" width="144" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nYu-Hr-LrG">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -1592,11 +1565,9 @@
                                                     <action selector="resetToDefaultButtonPress:" target="dyT-mO-LtB" id="ylZ-iO-uS6"/>
                                                 </connections>
                                             </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKJ-Lw-AWU">
-                                                <rect key="frame" x="344" y="-7" width="102" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="6WR-gc-qiF"/>
-                                                </constraints>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="WKJ-Lw-AWU">
+                                                <rect key="frame" x="344" y="-7" width="59" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="41R-rd-2kI">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -1619,13 +1590,6 @@ DQ
                                         </customSpacing>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="1mk-JT-Syr" firstAttribute="leading" secondItem="KS4-rI-kGk" secondAttribute="leading" id="CSw-BH-wSU"/>
-                                    <constraint firstAttribute="bottom" secondItem="R7v-88-MnN" secondAttribute="bottom" constant="20" symbolic="YES" id="JbN-AF-K7F"/>
-                                    <constraint firstItem="1mk-JT-Syr" firstAttribute="top" secondItem="Pun-wN-1Lt" secondAttribute="bottom" constant="8" symbolic="YES" id="LBc-kf-mfs"/>
-                                    <constraint firstItem="R7v-88-MnN" firstAttribute="top" secondItem="1mk-JT-Syr" secondAttribute="bottom" constant="8" symbolic="YES" id="Zri-Tm-bnU"/>
-                                    <constraint firstAttribute="trailing" secondItem="1mk-JT-Syr" secondAttribute="trailing" id="qR6-J6-Ny2"/>
-                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -1638,12 +1602,6 @@ DQ
                                 </customSpacing>
                             </stackView>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KS4-rI-kGk" secondAttribute="trailing" constant="20" symbolic="YES" id="RcV-QI-hJ5"/>
-                            <constraint firstItem="KS4-rI-kGk" firstAttribute="leading" secondItem="Jcs-uX-glh" secondAttribute="leading" constant="20" symbolic="YES" id="gn6-6T-kzx"/>
-                            <constraint firstItem="KS4-rI-kGk" firstAttribute="top" secondItem="Jcs-uX-glh" secondAttribute="top" constant="20" symbolic="YES" id="nEc-n5-GA1"/>
-                            <constraint firstAttribute="bottom" secondItem="KS4-rI-kGk" secondAttribute="bottom" constant="20" symbolic="YES" id="opz-B1-R8Q"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="AccThresholdSlider" destination="xu1-by-Opf" id="ciM-HB-uHB"/>
@@ -1662,7 +1620,7 @@ DQ
                 </viewController>
                 <customObject id="pM3-69-3U6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581" y="825.5"/>
+            <point key="canvasLocation" x="1581" y="827"/>
         </scene>
         <!--App Settings View Controller-->
         <scene sceneID="CXt-7b-kNs">
