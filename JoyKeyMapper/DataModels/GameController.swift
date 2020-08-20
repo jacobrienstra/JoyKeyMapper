@@ -312,6 +312,7 @@ class GameController {
     
     func buttonPressHandler(config: KeyMap) {
         DispatchQueue.main.async {
+            print(config.keyCode, "pressed")
             let source = CGEventSource(stateID: .hidSystemState)
 
             if config.keyCode >= 0 {
@@ -371,6 +372,7 @@ class GameController {
     func buttonReleaseHandler(config: KeyMap) {
         DispatchQueue.main.async {
             let source = CGEventSource(stateID: .hidSystemState)
+            print(config.keyCode, "release")
             
             if config.keyCode >= 0 {
                 if let systemKey = systemDefinedKey[Int(config.keyCode)] {

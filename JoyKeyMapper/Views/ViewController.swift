@@ -26,7 +26,6 @@ class ViewController: NSViewController {
             self.appTableView.reloadData()
             self.reloadKeyConfigTableData()
             self.updateAppAddRemoveButtonState()
-            self.updateGyroButtonState()
         }
     }
     var selectedControllerData: ControllerData? {

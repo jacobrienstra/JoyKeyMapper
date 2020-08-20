@@ -17,11 +17,12 @@ import Cocoa
         super.init(frame: frameRect)
     }
     
+    public var fillColor: NSColor = NSColor.white
+
+    
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-    
         let path = NSBezierPath(ovalIn: dirtyRect.insetBy(dx: 1.0, dy: 1.0))
-        let fillColor = NSColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
         let borderColor = NSColor(red: 177/255, green: 177/255, blue: 177/255, alpha: 1)
         fillColor.setFill()
         path.fill()
@@ -66,8 +67,13 @@ extension CGFloat {
 }
 
 @IBDesignable public class RangeSlider: NSControl, CALayerDelegate {
-   
     
+    @IBInspectable public var knobColor: NSColor = NSColor.white {
+        didSet {
+            updateLayerFrames()
+        }
+    }
+
     @IBInspectable public var trackColor: NSColor = NSColor.disabledControlTextColor {
         didSet {
             trackLayer.setNeedsDisplay()
@@ -128,7 +134,8 @@ extension CGFloat {
     private let upperKnob = CustomKnob()
     var firstLabel: NSTextField = NSTextField(frame: NSMakeRect(0, -2, 30, 20))
     var secondLabel: NSTextField = NSTextField(frame: NSMakeRect(0, -2, 30, 20))
-    let textYOrigin: CGFloat = 0
+    var textYOrigin: CGFloat = 0
+    var trackYOrigin: CGFloat = 0
     var maxLineWidth: CGFloat {
         get {
             return self.bounds.width - size.width
@@ -193,11 +200,14 @@ extension CGFloat {
     private func updateLayerFrames() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        trackLayer.frame = CGRect(x: bounds.origin.x, y: bounds.midY - 1.5, width: bounds.width, height: 3.0)
+        trackYOrigin = bounds.minY + size.height / 2 + 3.0 / 2 + 24
+        trackLayer.frame = CGRect(x: bounds.origin.x, y: trackYOrigin, width: bounds.width, height: 3.0)
         baseLayer.setNeedsDisplay()
         trackLayer.setNeedsDisplay()
         lowerKnob.frame = CGRect(origin: thumbOriginForValue(lowerValue), size: size)
         upperKnob.frame = CGRect(origin: thumbOriginForValue(upperValue), size: size)
+        upperKnob.fillColor = knobColor
+        lowerKnob.fillColor = knobColor
         firstLabel.stringValue  = "\(lowerValue.clean)"
         secondLabel.stringValue = "\(upperValue.clean)"
         firstLabel.setFrameOrigin(NSMakePoint(lowerKnob.frame.midX - firstLabel.frame.width / 2, textYOrigin))
@@ -223,7 +233,7 @@ extension CGFloat {
     // 3
     private func thumbOriginForValue(_ value: CGFloat) -> CGPoint {
         let x = positionForValue(value) - size.width / 2.0
-        return CGPoint(x: x, y: (bounds.height - size.height) / 2.0)
+        return CGPoint(x: x, y: trackYOrigin + 3.0 / 2 - size.height / 2)
     }
     
     var trackingArea: NSTrackingArea!
@@ -252,21 +262,15 @@ extension CGFloat {
     public override func mouseDragged(with theEvent: NSEvent) {
         let loc = self.convert(theEvent.locationInWindow, from: self.window?.contentView)
         // 1
-//        let deltaLocation = loc.x - previousLocation.x
-//        let deltaValue = (max - min) * deltaLocation / maxLineWidth
         previousLocation = loc
 
         if shouldMoveFirst {
-//            lowerValue += deltaValue
-            let realMaxVal = valueForPosition(upperKnob.frame.minX - size.width / 2)
-//            lowerValue = boundValueStepped(lowerValue, toLowerValue: min, upperValue: realMaxVal)
-            lowerValue = boundValueStepped(valueForPosition(loc.x), toLowerValue: min, upperValue: realMaxVal)
+//            let realMaxVal = valueForPosition(upperKnob.frame.minX - size.width / 2)
+            lowerValue = boundValueStepped(valueForPosition(loc.x), toLowerValue: min, upperValue: upperValue)
         }
         if shouldMoveLast {
-//            upperValue += deltaValue
-            let realMinVal = valueForPosition(lowerKnob.frame.maxX + (size.width / 2))
-//            // if you chose step value such that max != min + step * [INT] that's your problem not mine
-            upperValue = boundValueStepped(valueForPosition(loc.x), toLowerValue: realMinVal, upperValue: max)
+//            let realMinVal = valueForPosition(lowerKnob.frame.maxX + (size.width / 2))
+            upperValue = boundValueStepped(valueForPosition(loc.x), toLowerValue: lowerValue, upperValue: max)
         }
         // 3
         sendAction(self.action!, to: self.target)
@@ -295,34 +299,4 @@ extension CGFloat {
     }
 
 }
-// Center text Label if is posible
-//if firstX > 8 {
-//    firstLabel.setFrameOrigin(NSMakePoint(firstX - 8, textOrigin))
-//}
-//if secondX < lineMaxWidth - 8 {
-//    secondLabel.setFrameOrigin(NSMakePoint(secondX - 8, textOrigin))
-//}
-//
-//if secondX > lineMaxWidth - 8 {
-//    secondLabel.setFrameOrigin(NSMakePoint(lineMaxWidth - 16, textOrigin))
-//}
-//// Prevent collisions
-//if (firstLabel.frame.origin.x + NSWidth(firstLabel.frame) ) > secondLabel.frame.origin.x {
-//    let size  = (secondLabel.frame.origin.x  - (firstLabel.frame.origin.x + NSWidth(firstLabel.frame) )) / 2
-//    var state = true
-//    if firstX < 8 {
-//        state = false
-//        secondLabel.setFrameOrigin(NSMakePoint(secondLabel.frame.origin.x - size - size, textOrigin))
-//    }
-//    if secondX > lineMaxWidth - 8 {
-//        state = false
-//        firstLabel.setFrameOrigin(NSMakePoint(firstLabel.frame.origin.x + size + size, textOrigin))
-//    }
-//    if state {
-//        firstLabel.setFrameOrigin(NSMakePoint(firstLabel.frame.origin.x + size, textOrigin))
-//        secondLabel.setFrameOrigin(NSMakePoint(secondLabel.frame.origin.x - size, textOrigin))
-//    }
-//}
-//
-//}
 
