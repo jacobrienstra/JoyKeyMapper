@@ -1418,6 +1418,9 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                                            <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                             </subviews>
@@ -1446,9 +1449,6 @@
                                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zix-tB-IFV">
                                                                     <rect key="frame" x="-2" y="-1" width="204" height="19"/>
                                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="10" doubleValue="5" tickMarkPosition="above" sliderType="linear" id="n2e-RC-I38"/>
-                                                                    <connections>
-                                                                        <action selector="smoothThresholdChanged:" target="dyT-mO-LtB" id="SnX-t7-sen"/>
-                                                                    </connections>
                                                                 </slider>
                                                                 <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-ke-4B7">
                                                                     <rect key="frame" x="206" y="0.0" width="12" height="16"/>
@@ -1494,9 +1494,6 @@
                                                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LYO-E8-Mrn">
                                                                     <rect key="frame" x="-2" y="-1" width="204" height="19"/>
                                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="Pny-Qk-UBv"/>
-                                                                    <connections>
-                                                                        <action selector="tightenThresholdChanged:" target="dyT-mO-LtB" id="wlg-Bf-lzL"/>
-                                                                    </connections>
                                                                 </slider>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Hm-Dm-3Uk">
                                                                     <rect key="frame" x="206" y="0.0" width="10" height="16"/>
@@ -1647,10 +1644,6 @@ DQ
                         <outlet property="enableAccelerationButton" destination="PKk-an-h8F" id="WsD-zq-QLw"/>
                         <outlet property="enableSmoothButton" destination="OKS-BR-lFX" id="bM5-us-85X"/>
                         <outlet property="enableTightenButton" destination="4oz-mR-ycc" id="yv8-wT-06g"/>
-                        <outlet property="smoothThresholdLabel" destination="P1h-ke-4B7" id="3Oz-f9-ExL"/>
-                        <outlet property="smoothThresholdSlider" destination="Zix-tB-IFV" id="rB9-GX-QVK"/>
-                        <outlet property="tightenThresholdLabel" destination="5Hm-Dm-3Uk" id="nxk-xv-z0F"/>
-                        <outlet property="tightenThresholdSlider" destination="LYO-E8-Mrn" id="K9y-hR-GSX"/>
                     </connections>
                 </viewController>
                 <customObject id="pM3-69-3U6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -84,7 +84,7 @@ extension CGFloat {
             trackLayer.setNeedsDisplay()
         }
     }
-    @IBInspectable public var textColor: NSColor = NSColor.controlTextColor {
+    @IBInspectable public var textColor: NSColor = NSColor.textColor {
         didSet {
             updateLayerFrames()
         }

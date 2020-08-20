@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		160398B524EA3E4F00DDCAC5 /* RangeSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 160398A524EA3E4F00DDCAC5 /* RangeSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		160398C124EA3E9900DDCAC5 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */; };
+		160CEF6524EE23DA00EF18F9 /* LabelledSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */; };
 		161AEE2F24EA5C8500F9C950 /* RangeSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		1675DB2E24EB7A9C00FDD97A /* RangeSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; };
 		1675DB2F24EB7A9C00FDD97A /* RangeSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -86,6 +87,7 @@
 		160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		160398A524EA3E4F00DDCAC5 /* RangeSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeSlider.h; sourceTree = "<group>"; };
 		160398A624EA3E4F00DDCAC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelledSlider.swift; sourceTree = "<group>"; };
 		1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPathCGExtension.swift; sourceTree = "<group>"; };
 		1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroConfigViewController.swift; sourceTree = "<group>"; };
 		16A44BF624E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */,
+				160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */,
 			);
 			path = GyroConfigView;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				DD05305924272DAA0091B3C6 /* ViewController+NSTableViewDelegate.swift in Sources */,
 				DD05303324272D7A0091B3C6 /* GameController.swift in Sources */,
 				DD05303424272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld in Sources */,
+				160CEF6524EE23DA00EF18F9 /* LabelledSlider.swift in Sources */,
 				DD05305724272DAA0091B3C6 /* ViewController+NSOutlineViewDelegate.swift in Sources */,
 				DD0AE2E522DAB13100B68F05 /* AppDelegate.swift in Sources */,
 				DD05305124272DAA0091B3C6 /* KeyConfigViewController.swift in Sources */,

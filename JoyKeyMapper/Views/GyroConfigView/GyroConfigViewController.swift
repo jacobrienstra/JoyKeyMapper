@@ -15,16 +15,9 @@ class GyroConfigViewController: NSViewController {
     
     @IBOutlet weak var calibrateButton: NSButton!
     @IBOutlet weak var calibrateProgressIcon: NSProgressIndicator!
-    @IBOutlet weak var defaultSensitivitySlider: NSSlider!
-    @IBOutlet weak var defaultSensitivityLabel: NSTextField!
     @IBOutlet weak var enableAccelerationButton: NSButton!
     @IBOutlet weak var enableSmoothButton: NSButton!
-    @IBOutlet weak var smoothThresholdSlider: NSSlider!
-    @IBOutlet weak var smoothThresholdLabel: NSTextField!
     @IBOutlet weak var enableTightenButton: NSButton!
-    @IBOutlet weak var tightenThresholdSlider: NSSlider!
-    @IBOutlet weak var tightenThresholdLabel: NSTextField!
-    @IBOutlet weak var AccThresholdSlider: RangeSlider!
     @IBAction func AccThresholdSliderChanged(_ sender: RangeSlider) {
         print(sender.lowerValue)
         print(sender.upperValue)
