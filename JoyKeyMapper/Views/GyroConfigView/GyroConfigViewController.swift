@@ -13,20 +13,27 @@ class GyroConfigViewController: NSViewController {
     
     var gyroConfig: GyroConfig!
     
+    @IBOutlet weak var CalibrateLabel: NSTextField!
     @IBOutlet weak var calibrateButton: NSButton!
     @IBOutlet weak var calibrateProgressIcon: NSProgressIndicator!
+    @IBAction func DefaultSensitivitySliderChanged(_ sender: Any) {
+    }
     @IBOutlet weak var enableAccelerationButton: NSButton!
+    @IBAction func AccelerationSensitivitiesSliderChanged(_ sender: Any) {
+    }
+    @IBAction func AccelerationThresholdsSliderChanged(_ sender: Any) {
+    }
     @IBOutlet weak var enableSmoothButton: NSButton!
+    @IBAction func SmoothingThresholdSliderChanged(_ sender: Any) {
+    }
     @IBOutlet weak var enableTightenButton: NSButton!
-    @IBAction func AccThresholdSliderChanged(_ sender: RangeSlider) {
-        print(sender.lowerValue)
-        print(sender.upperValue)
+    @IBAction func TighteningThresholdSliderChanged(_ sender: Any) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let gyroConfig = self.gyroConfig else { return }
+        guard self.gyroConfig != nil else { return }
 
         
         // Do view setup here.

@@ -273,7 +273,7 @@ extension CGFloat {
             upperValue = boundValueStepped(valueForPosition(loc.x), toLowerValue: lowerValue, upperValue: max)
         }
         // 3
-        sendAction(self.action!, to: self.target)
+        sendAction(self.action ?? nil, to: self.target)
     }
     
     private func boundValue(_ value: CGFloat, toLowerValue lowerValue: CGFloat, upperValue: CGFloat) -> CGFloat {

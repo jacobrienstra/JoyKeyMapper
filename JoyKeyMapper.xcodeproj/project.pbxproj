@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		160398B524EA3E4F00DDCAC5 /* RangeSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 160398A524EA3E4F00DDCAC5 /* RangeSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		160398C124EA3E9900DDCAC5 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */; };
-		160CEF6524EE23DA00EF18F9 /* LabelledSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */; };
 		161AEE2F24EA5C8500F9C950 /* RangeSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		1675DB2E24EB7A9C00FDD97A /* RangeSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; };
 		1675DB2F24EB7A9C00FDD97A /* RangeSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1675DB3424EB892D00FDD97A /* NSBezierPathCGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */; };
 		1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */; };
+		16D0A18024EE2E7D007C5098 /* LabelledSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */; };
+		16D0A18124EE2F58007C5098 /* LabelledSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		81C735E74A1EB18B514366F9 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */; };
 		DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0389E72497D911009090BE /* MetaKeyState.swift */; };
 		DD05303224272D7A0091B3C6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05302D24272D7A0091B3C6 /* DataManager.swift */; };
@@ -166,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */,
+				160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */,
 				1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */,
 				160398A524EA3E4F00DDCAC5 /* RangeSlider.h */,
 				160398A624EA3E4F00DDCAC5 /* Info.plist */,
@@ -177,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */,
-				160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */,
 			);
 			path = GyroConfigView;
 			sourceTree = "<group>";
@@ -342,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				160398B524EA3E4F00DDCAC5 /* RangeSlider.h in Headers */,
+				16D0A18124EE2F58007C5098 /* LabelledSlider.swift in Headers */,
 				161AEE2F24EA5C8500F9C950 /* RangeSlider.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D0A18024EE2E7D007C5098 /* LabelledSlider.swift in Sources */,
 				1675DB3424EB892D00FDD97A /* NSBezierPathCGExtension.swift in Sources */,
 				160398C124EA3E9900DDCAC5 /* RangeSlider.swift in Sources */,
 			);
@@ -570,7 +573,6 @@
 				DD05305924272DAA0091B3C6 /* ViewController+NSTableViewDelegate.swift in Sources */,
 				DD05303324272D7A0091B3C6 /* GameController.swift in Sources */,
 				DD05303424272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld in Sources */,
-				160CEF6524EE23DA00EF18F9 /* LabelledSlider.swift in Sources */,
 				DD05305724272DAA0091B3C6 /* ViewController+NSOutlineViewDelegate.swift in Sources */,
 				DD0AE2E522DAB13100B68F05 /* AppDelegate.swift in Sources */,
 				DD05305124272DAA0091B3C6 /* KeyConfigViewController.swift in Sources */,
