@@ -27,19 +27,20 @@ import Cocoa
         }
     }
     
-    private var value: CGFloat = 50 {
+    @IBInspectable public var value: CGFloat = 50 {
         didSet {
-            self.label.stringValue = "\(value.clean)"
+            self.label.stringValue = "\(steppedValue.clean)"
+            slider.floatValue = Float(steppedValue)
             updateLayerFrames()
         }
     }
     
-    @IBInspectable public var startValue: CGFloat = 50 {
-        didSet {
-            self.value = startValue
-            slider.floatValue = Float(getSteppedValue(value, rule: .toNearestOrAwayFromZero))
+    public var steppedValue: CGFloat {
+        get {
+            getSteppedValue(self.value, rule: .toNearestOrAwayFromZero)
         }
     }
+
     @IBInspectable public var step: CGFloat = 1 {
         didSet {
             slider.altIncrementValue = Double(step)
@@ -58,7 +59,7 @@ import Cocoa
     }
     
     @objc func didSliderChange(_ sender: NSSlider) {
-        self.value = getSteppedValue(CGFloat(sender.floatValue), rule: .toNearestOrAwayFromZero)
+        self.value = CGFloat(sender.floatValue)
         self.sendAction(self.action, to: self.target)
     }
     
@@ -81,12 +82,12 @@ import Cocoa
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.backgroundColor = .none
         label.textColor = NSColor.textColor
-        label.stringValue = "\(value.clean)"
+        label.stringValue = "\(steppedValue.clean)"
         slider.target = self
         slider.action = #selector(self.didSliderChange(_:))
         slider.minValue = Double(min)
         slider.maxValue = Double(max)
-        slider.floatValue = Float(value)
+        slider.floatValue = Float(steppedValue)
         label.target = self
         addSubview(slider)
         addSubview(label)

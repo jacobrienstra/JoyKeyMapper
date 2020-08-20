@@ -1371,6 +1371,9 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="startValue">
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="DefaultSensitivitySliderChanged:" target="dyT-mO-LtB" id="V73-uh-Fn6"/>
@@ -1545,6 +1548,9 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
                                                                             <real key="value" value="0.5"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                            <real key="value" value="5"/>
+                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="SmoothingThresholdSliderChanged:" target="dyT-mO-LtB" id="Fwx-FV-qDJ"/>
@@ -1602,7 +1608,10 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
-                                                                            <real key="value" value="0.25"/>
+                                                                            <real key="value" value="0.20000000000000001"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                            <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                     <connections>
