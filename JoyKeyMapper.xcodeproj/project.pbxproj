@@ -14,13 +14,14 @@
 		1675DB2F24EB7A9C00FDD97A /* RangeSlider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1675DB3424EB892D00FDD97A /* NSBezierPathCGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675DB3324EB892D00FDD97A /* NSBezierPathCGExtension.swift */; };
 		1696E53624E8E7E200CF5C16 /* GyroConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */; };
+		16BB28AB24F0EE53007AE49F /* GyroCalibration+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D0A19224F0E6DE007C5098 /* GyroCalibration+CoreDataClass.swift */; };
 		16D0A18024EE2E7D007C5098 /* LabelledSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */; };
 		16D0A18124EE2F58007C5098 /* LabelledSlider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 160CEF6424EE23DA00EF18F9 /* LabelledSlider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		81C735E74A1EB18B514366F9 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */; };
+		16D0A19824F0E7E4007C5098 /* JoyKeyMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD05302F24272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld */; };
+		AF5BEE87541EDC3DDEF76AF7 /* Pods_JoyKeyMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01474982E9B0731D85250EAF /* Pods_JoyKeyMapper.framework */; };
 		DD0389E82497D911009090BE /* MetaKeyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0389E72497D911009090BE /* MetaKeyState.swift */; };
 		DD05303224272D7A0091B3C6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05302D24272D7A0091B3C6 /* DataManager.swift */; };
 		DD05303324272D7A0091B3C6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05302E24272D7A0091B3C6 /* GameController.swift */; };
-		DD05303424272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD05302F24272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld */; };
 		DD05303524272D7A0091B3C6 /* GameControllerIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05303124272D7A0091B3C6 /* GameControllerIcon.swift */; };
 		DD05303924272D920091B3C6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05303724272D920091B3C6 /* Notifications.swift */; };
 		DD05303A24272D920091B3C6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05303824272D920091B3C6 /* Utils.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01474982E9B0731D85250EAF /* Pods_JoyKeyMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoyKeyMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		160398A324EA3E4F00DDCAC5 /* RangeSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RangeSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		160398A524EA3E4F00DDCAC5 /* RangeSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RangeSlider.h; sourceTree = "<group>"; };
 		160398A624EA3E4F00DDCAC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,10 +95,9 @@
 		1696E53524E8E7E200CF5C16 /* GyroConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroConfigViewController.swift; sourceTree = "<group>"; };
 		16A44BF624E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16A44BF724E70C1C00DA437B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		16D0A19224F0E6DE007C5098 /* GyroCalibration+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GyroCalibration+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		16ED320424EA2A2B003F9BD9 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
-		92B11B8363A76135B5DE1000 /* Pods-JoyKeyMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.debug.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.debug.xcconfig"; sourceTree = "<group>"; };
-		C737591699D28638657D15A2 /* Pods-JoyKeyMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.release.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.release.xcconfig"; sourceTree = "<group>"; };
-		D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JoyKeyMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD82B00DB9E32A82D2E3523C /* Pods-JoyKeyMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.debug.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.debug.xcconfig"; sourceTree = "<group>"; };
 		DD0389E72497D911009090BE /* MetaKeyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaKeyState.swift; sourceTree = "<group>"; };
 		DD05302D24272D7A0091B3C6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DD05302E24272D7A0091B3C6 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		DDA072B2246699C500F9B80B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DDA072B4246699CA00F9B80B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DDAC3B3F24151C350022FF32 /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
+		F51A1395AD8420B15A8CF7B2 /* Pods-JoyKeyMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JoyKeyMapper.release.xcconfig"; path = "Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C735E74A1EB18B514366F9 /* Pods_JoyKeyMapper.framework in Frameworks */,
 				1675DB2E24EB7A9C00FDD97A /* RangeSlider.framework in Frameworks */,
+				AF5BEE87541EDC3DDEF76AF7 /* Pods_JoyKeyMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,27 +185,28 @@
 			path = GyroConfigView;
 			sourceTree = "<group>";
 		};
+		5AFA5D60C4B84FB37C6C1905 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01474982E9B0731D85250EAF /* Pods_JoyKeyMapper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		822205FE79640986B57D9BA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				92B11B8363A76135B5DE1000 /* Pods-JoyKeyMapper.debug.xcconfig */,
-				C737591699D28638657D15A2 /* Pods-JoyKeyMapper.release.xcconfig */,
+				BD82B00DB9E32A82D2E3523C /* Pods-JoyKeyMapper.debug.xcconfig */,
+				F51A1395AD8420B15A8CF7B2 /* Pods-JoyKeyMapper.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C1A30469E11AF08BB417318D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D5A87690CD24D7534FFB001D /* Pods_JoyKeyMapper.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DD05302C24272D7A0091B3C6 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
 				DD05302F24272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld */,
+				16D0A19224F0E6DE007C5098 /* GyroCalibration+CoreDataClass.swift */,
 				DD05302D24272D7A0091B3C6 /* DataManager.swift */,
 				DD05302E24272D7A0091B3C6 /* GameController.swift */,
 				DD05303124272D7A0091B3C6 /* GameControllerIcon.swift */,
@@ -294,7 +297,7 @@
 				160398A424EA3E4F00DDCAC5 /* RangeSlider */,
 				DD0AE2E222DAB13100B68F05 /* Products */,
 				822205FE79640986B57D9BA4 /* Pods */,
-				C1A30469E11AF08BB417318D /* Frameworks */,
+				5AFA5D60C4B84FB37C6C1905 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -373,14 +376,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD0AE2F422DAB13200B68F05 /* Build configuration list for PBXNativeTarget "JoyKeyMapper" */;
 			buildPhases = (
-				58C50E6795CA86F6B8EEAC0C /* [CP] Check Pods Manifest.lock */,
+				D1C51A7C3D827505410CA615 /* [CP] Check Pods Manifest.lock */,
 				DD0AE2DD22DAB13100B68F05 /* Sources */,
 				DD0AE2DE22DAB13100B68F05 /* Frameworks */,
 				DD0AE2DF22DAB13100B68F05 /* Resources */,
 				DD87448D2414B89600B3AB11 /* CopyFiles */,
 				DD1025F0244CAD01006CD0F4 /* Set build number */,
-				BCA6955C4FF9CAF0FC5C2B36 /* [CP] Embed Pods Frameworks */,
 				1675DB3224EB7A9C00FDD97A /* Embed Frameworks */,
+				79E3FBBEB8D0E5AC01264683 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -487,7 +490,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58C50E6795CA86F6B8EEAC0C /* [CP] Check Pods Manifest.lock */ = {
+		79E3FBBEB8D0E5AC01264683 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1C51A7C3D827505410CA615 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -507,23 +527,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BCA6955C4FF9CAF0FC5C2B36 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JoyKeyMapper/Pods-JoyKeyMapper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD1025F0244CAD01006CD0F4 /* Set build number */ = {
@@ -561,6 +564,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16BB28AB24F0EE53007AE49F /* GyroCalibration+CoreDataClass.swift in Sources */,
+				16D0A19824F0E7E4007C5098 /* JoyKeyMapper.xcdatamodeld in Sources */,
 				DD05305324272DAA0091B3C6 /* AppSettings.swift in Sources */,
 				DD05305024272DAA0091B3C6 /* ViewController.swift in Sources */,
 				DD05303924272D920091B3C6 /* Notifications.swift in Sources */,
@@ -572,7 +577,6 @@
 				DD05305B24272DAA0091B3C6 /* ViewController+NSCollectionViewDelegate.swift in Sources */,
 				DD05305924272DAA0091B3C6 /* ViewController+NSTableViewDelegate.swift in Sources */,
 				DD05303324272D7A0091B3C6 /* GameController.swift in Sources */,
-				DD05303424272D7A0091B3C6 /* JoyKeyMapper.xcdatamodeld in Sources */,
 				DD05305724272DAA0091B3C6 /* ViewController+NSOutlineViewDelegate.swift in Sources */,
 				DD0AE2E522DAB13100B68F05 /* AppDelegate.swift in Sources */,
 				DD05305124272DAA0091B3C6 /* KeyConfigViewController.swift in Sources */,
@@ -640,7 +644,7 @@
 		160398BB24EA3E4F00DDCAC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -669,7 +673,7 @@
 		160398BC24EA3E4F00DDCAC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -698,6 +702,7 @@
 		DD0AE2F222DAB13200B68F05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -761,6 +766,7 @@
 		DD0AE2F322DAB13200B68F05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -816,7 +822,7 @@
 		};
 		DD0AE2F522DAB13200B68F05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92B11B8363A76135B5DE1000 /* Pods-JoyKeyMapper.debug.xcconfig */;
+			baseConfigurationReference = BD82B00DB9E32A82D2E3523C /* Pods-JoyKeyMapper.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -843,7 +849,7 @@
 		};
 		DD0AE2F622DAB13200B68F05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C737591699D28638657D15A2 /* Pods-JoyKeyMapper.release.xcconfig */;
+			baseConfigurationReference = F51A1395AD8420B15A8CF7B2 /* Pods-JoyKeyMapper.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

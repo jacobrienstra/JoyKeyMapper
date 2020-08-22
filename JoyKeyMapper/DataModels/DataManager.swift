@@ -254,7 +254,14 @@ class DataManager: NSObject {
     // MARK: - GyroConfig
     func createGyroConfig() -> GyroConfig {
         let gyroConfig = GyroConfig(context: self.container.viewContext)
+        let gyroCalibration = self.createGyroCalibration()
+        gyroConfig.calibration = gyroCalibration
         return gyroConfig
+    }
+//    
+    func createGyroCalibration() -> GyroCalibration {
+        let gyroCalibration = GyroCalibration(context: self.container.viewContext)
+        return gyroCalibration
     }
     
     // MARK: - Common

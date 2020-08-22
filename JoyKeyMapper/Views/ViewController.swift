@@ -17,6 +17,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var appAddRemoveButton: NSSegmentedControl!
     @IBOutlet weak var configTableView: NSOutlineView!
     @IBOutlet weak var gyroButton: NSButton!
+    @IBOutlet weak var gyroSettingsButton: NSButton!
     
     var appDelegate: AppDelegate? {
         return NSApplication.shared.delegate as? AppDelegate
@@ -153,15 +154,17 @@ class ViewController: NSViewController {
     func updateGyroButtonState() {
         guard self.selectedKeyConfig != nil else {
             gyroButton.isEnabled = false
-            gyroButton.state = .off
+            gyroSettingsButton.isEnabled = false
             return
         }
         if self.selectedController?.type == .JoyConR  {
             gyroButton.isEnabled = true
-            gyroButton.state = .off
+            gyroSettingsButton.isEnabled = true
+
         } else {
             gyroButton.isEnabled = false
-            gyroButton.state = .off
+            gyroSettingsButton.isEnabled = false
+
         }
     }
     

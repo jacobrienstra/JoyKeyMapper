@@ -10,95 +10,6 @@ import JoyConSwift
 import InputMethodKit
 import SceneKit
 
-class GyroContCalibration {
-    public var dt: Int
-    var numWindows: Int
-    var frontIndex: Int = 0
-    var windowLength: CGFloat // in seconds
-    var windows: [GyroAveragingWindow]
-    
-    init(dt: Int, numWindows: Int, windowLength: CGFloat) {
-        self.dt = dt
-        self.numWindows = numWindows
-        self.windowLength = windowLength
-        self.windows = [GyroAveragingWindow](repeating: GyroAveragingWindow(), count: numWindows)
-    }
-    
-    struct GyroAveragingWindow {
-        var x: CGFloat = 0
-        var y: CGFloat = 0
-        var z: CGFloat = 0
-        var numSamples: Int = 0
-    }
-    
-    public func resetContCalibration() {
-        for i in 0...self.numWindows {
-            self.windows[i] = GyroAveragingWindow()
-        }
-    }
-    
-    func getNumTotalSamples() -> Int { // dt in ms
-        return Int(round(1000.0 / CGFloat(self.dt) * CGFloat(self.windowLength)))
-    }
-    
-    func getNumSingleSamples() -> Int {
-        return Int(self.getNumTotalSamples() / (self.numWindows - 2))
-    }
-    
-    public func pushSensorSamples(x: CGFloat, y: CGFloat, z: CGFloat) {
-            if self.windows[self.frontIndex].numSamples >= self.getNumSingleSamples() {
-                // next
-                self.frontIndex = (self.frontIndex + self.numWindows - 1) % self.numWindows
-                self.windows[self.frontIndex] = GyroAveragingWindow()
-            }
-            self.windows[self.frontIndex].numSamples += 1
-            self.windows[self.frontIndex].x += x
-            self.windows[self.frontIndex].y += y
-            self.windows[self.frontIndex].z += z
-    }
-    
-    public func getAverage() -> SCNVector3? {
-        var weight: CGFloat = 0.0
-        var totalX: CGFloat = 0.0
-        var totalY: CGFloat = 0.0
-        var totalZ: CGFloat = 0.0
-        var samplesWanted: Int = self.getNumTotalSamples()
-        let samplesPerWindow: CGFloat = CGFloat(self.getNumSingleSamples())
-        
-        // get the average of each window
-        // and a weighted average of all those averages, weighted by the number of samples it has compared to how many samples a full window will have.
-        // this isn't a perfect rolling average. the last window, which has more samples than we need, will have its contribution weighted according to how many samples it would ideally have for the current span of time.
-        for i in 0..<self.numWindows {
-            if (samplesWanted == 0) { break }
-            let cycledIndex: Int = (i + self.frontIndex) % self.numWindows
-            let window = self.windows[cycledIndex]
-            if window.numSamples == 0 {
-                continue;
-            }
-            var thisWeight: CGFloat = 1.0
-            if (samplesWanted < window.numSamples) {
-                thisWeight = CGFloat(samplesWanted) / CGFloat(window.numSamples)
-                samplesWanted = 0
-            } else {
-                thisWeight = CGFloat(window.numSamples) / samplesPerWindow
-                samplesWanted -= window.numSamples
-            }
-            
-            totalX += window.x / CGFloat(window.numSamples) * thisWeight
-            totalY += window.y / CGFloat(window.numSamples) * thisWeight
-            totalZ += window.z / CGFloat(window.numSamples) * thisWeight
-            weight += thisWeight
-        }
-        if weight > 0.0 {
-            let x = totalX / weight
-            let y = totalY / weight
-            let z = totalZ / weight
-            return SCNVector3(x: x, y: y, z: z)
-        }
-        return nil
-    }
-}
-
 extension JoyCon.BatteryStatus {
     static let stringMap: [JoyCon.BatteryStatus: String] = [
         .empty: "Empty",
@@ -118,16 +29,7 @@ extension JoyCon.BatteryStatus {
     }
 }
 
-let MIN_GYRO_SENS: CGFloat = 1
-let MAX_GYRO_SENS: CGFloat = 2
-let MIN_GYRO_THRESHOLD: CGFloat = 0
-let MAX_GYRO_THRESHOLD: CGFloat = 75
-
-let GYRO_USER_SENS: CGFloat = 1
 let GYRO_ADJUSTMENT_FACTOR: CGFloat = 50
-let GYRO_CUTOFF_RECOVERY: CGFloat = 1.0
-let GYRO_SMOOTH_THRESHOLD: CGFloat = 5.0
-let GYRO_SMOOTH_LOW_THRESHOLD: CGFloat = GYRO_SMOOTH_THRESHOLD / 2.0
 let MaxSmoothingSamples: Int = 64
 var GyroSmoothingBuffer: [SCNVector3] = [SCNVector3](repeating: SCNVector3(0,0,0), count: MaxSmoothingSamples)
 let GyroSmoothingIndex: Int = 0
@@ -155,12 +57,6 @@ class GameController {
     var currentRStickMode: StickType = .None
     var currentRStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
     var currentGyroConfig: GyroConfig?
-    var isCalibrating: Bool = false
-    var gyroContCalibration: GyroContCalibration = GyroContCalibration(
-        dt: 15,
-        numWindows: 16,
-        windowLength: 0.6
-    )
 
     var isEnabled: Bool = true {
         didSet {
@@ -505,21 +401,25 @@ class GameController {
     func sensorHandler(accData: SCNVector3, gyroData: SCNVector3) {
         if self.currentGyroConfig?.enabled == true {
             DispatchQueue.main.async {
+                guard let gyroConfig = self.currentGyroConfig else { return }
                 var gyro = gyroData
-                if (self.isCalibrating) {
-                    self.gyroContCalibration.pushSensorSamples(x: gyro.x, y: gyro.y, z: gyro.z)
+                var dt: CGFloat = 15
+                if let calibration = gyroConfig.calibration {
+                    if (calibration.isCalibrating) {
+                        calibration.pushSensorSamples(x: gyro.x, y: gyro.y, z: gyro.z)
+                    }
+                    
+                    let offset = gyroConfig.calibration!.getAverage()
+                    dt = CGFloat(Double(gyroConfig.calibration!.dt) / 1000.0)
+
+                    if offset != nil {
+                        gyro.x -= offset?.x ?? 0
+                        gyro.y -= offset?.y ?? 0
+                        gyro.z -= offset?.z ?? 0
+                        print(String(format: "%.2f, %.2f", offset?.z ?? 0, offset?.y ?? 0))
+                    }
                 }
                 
-                let offset = self.gyroContCalibration.getAverage()
-                let dt: CGFloat = CGFloat(self.gyroContCalibration.dt) / 1000.0
-                
-                if offset != nil {
-                    gyro.x -= offset?.x ?? 0
-                    gyro.y -= offset?.y ?? 0
-                    gyro.z -= offset?.z ?? 0
-                    print(String(format: "%.2f, %.2f", offset?.z ?? 0, offset?.y ?? 0))
-                }
-                        
                 let GetSmoothedInput: (SCNVector3) -> SCNVector3 = { input in
                     let CurrentIndex: Int = (GyroSmoothingIndex + 1) % MaxSmoothingSamples
                     GyroSmoothingBuffer[CurrentIndex] = input
@@ -535,7 +435,7 @@ class GameController {
                 
                 let GetTieredSmoothedInput: (SCNVector3) -> SCNVector3 = { input in
                     let magnitude: CGFloat = sqrt(input.z * input.z + input.y * input.y)
-                    var directWeight = (magnitude - GYRO_SMOOTH_LOW_THRESHOLD) / (GYRO_SMOOTH_THRESHOLD - GYRO_SMOOTH_LOW_THRESHOLD)
+                    var directWeight = (magnitude - CGFloat(gyroConfig.smoothThreshold / 2)) / (CGFloat(gyroConfig.smoothThreshold) - CGFloat(gyroConfig.smoothThreshold / 2))
                     directWeight = clamp(value: directWeight, lower: 0.0, upper: 1.0)
 
                     return input * (directWeight) + GetSmoothedInput(input * (1.0 - directWeight))
@@ -543,35 +443,35 @@ class GameController {
                 
                 let GetTightenedInput: (SCNVector3) -> SCNVector3 = { input in
                     let magnitude: CGFloat = sqrt(input.z * input.z + input.y * input.y)
-                    if magnitude < GYRO_CUTOFF_RECOVERY {
-                        let inputScale = magnitude / GYRO_CUTOFF_RECOVERY
+                    if magnitude < CGFloat(gyroConfig.tightenThreshold) {
+                        let inputScale = magnitude / CGFloat(gyroConfig.tightenThreshold)
                         return input * inputScale
                     }
                     return input
                 }
                 
-                if (GYRO_SMOOTH_THRESHOLD > 0) {
+                if (gyroConfig.useSmoothing) {
                     gyro = GetTieredSmoothedInput(gyro)
                 }
                 
-                if (GYRO_CUTOFF_RECOVERY > 0) {
+                if (gyroConfig.useTightening) {
                     gyro = GetTightenedInput(gyro)
                 }
                 
                 var pos: CGPoint = CGPoint(x: gyro.z * dt, y: gyro.y * dt)
                 
-                if (true) { // acceleration enabled
+                if (gyroConfig.useAcceleration) { // acceleration enabled
                     let speed: CGFloat = sqrt(gyro.z * gyro.z + gyro.y * gyro.y)
 
-                    var slowFastFactor: CGFloat = (speed - MIN_GYRO_THRESHOLD) / (MAX_GYRO_THRESHOLD - MIN_GYRO_THRESHOLD)
+                    var slowFastFactor: CGFloat = (speed - CGFloat(gyroConfig.slowAccThreshold)) / (CGFloat(gyroConfig.fastAccThreshold) - CGFloat(gyroConfig.slowAccThreshold))
                     slowFastFactor = clamp(value: slowFastFactor, lower: 0.0, upper: 1.0)
-                    let newSensitivity: CGFloat = MIN_GYRO_SENS * (1 - slowFastFactor) + MAX_GYRO_SENS * slowFastFactor
+                    let newSensitivity: CGFloat = CGFloat(gyroConfig.slowAccSensitivity) * (1 - slowFastFactor) + CGFloat(gyroConfig.fastAccSensitivity) * slowFastFactor
                     
                     pos.x = gyro.z * newSensitivity * dt
                     pos.y = gyro.y * newSensitivity * dt
                 }
 
-                self.stickMouseHandler(pos: pos, speed: GYRO_ADJUSTMENT_FACTOR * GYRO_USER_SENS)
+                self.stickMouseHandler(pos: pos, speed: GYRO_ADJUSTMENT_FACTOR * CGFloat(gyroConfig.defaultSensitivity))
             }
         }
     }
@@ -714,7 +614,6 @@ class GameController {
         }
         
         let appConfig = manager.createAppConfig(type: self.type)
-        // appConfig.config = manager.createKeyConfig()
 
         let displayName = FileManager.default.displayName(atPath: url.absoluteString)
         let iconFile = info["CFBundleIconFile"] as? String ?? ""

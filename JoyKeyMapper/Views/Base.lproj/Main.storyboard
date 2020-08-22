@@ -1155,6 +1155,7 @@
                         <outlet property="configTableView" destination="DUf-fb-qNP" id="eR2-68-sRs"/>
                         <outlet property="controllerCollectionView" destination="Nfq-U0-gS2" id="GwI-jv-FDl"/>
                         <outlet property="gyroButton" destination="Gpa-XB-pDZ" id="7ui-iz-r2C"/>
+                        <outlet property="gyroSettingsButton" destination="MC8-08-tin" id="Vy8-FF-B2c"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

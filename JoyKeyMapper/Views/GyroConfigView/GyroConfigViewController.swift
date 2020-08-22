@@ -76,7 +76,9 @@ class GyroConfigViewController: NSViewController {
 
     @IBAction func resetToDefaultButtonPress(_ sender: NSButton) {
         for key in gyroConfig!.entity.attributesByName.keys {
-            gyroConfig?.setValue(gyroConfig!.entity.attributesByName[key]?.defaultValue, forKey: key)
+            if key != "calibration" && key != "enabled" {
+                gyroConfig?.setValue(gyroConfig!.entity.attributesByName[key]?.defaultValue, forKey: key)
+            }
         }
         setValues()
     }
