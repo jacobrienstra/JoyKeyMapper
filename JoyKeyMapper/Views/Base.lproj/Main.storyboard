@@ -1362,22 +1362,13 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="max">
                                                                             <real key="value" value="5"/>
                                                                         </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="setValue">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
                                                                             <real key="value" value="0.5"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startValue">
-                                                                            <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="value">
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="DefaultSensitivitySliderChanged:" target="dyT-mO-LtB" id="V73-uh-Fn6"/>
-                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
@@ -1399,9 +1390,6 @@
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
-                                                            <connections>
-                                                                <action selector="enableAccelerationToggle:" target="dyT-mO-LtB" id="aYT-2f-h1A"/>
-                                                            </connections>
                                                         </button>
                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HIu-iF-623">
                                                             <rect key="frame" x="0.0" y="250" width="406" height="70"/>
@@ -1436,9 +1424,6 @@
                                                                             <real key="value" value="0.5"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="AccelerationSensitivitiesSliderChanged:" target="dyT-mO-LtB" id="Icg-o7-6qT"/>
-                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
@@ -1486,13 +1471,7 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                            <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="AccelerationThresholdsSliderChanged:" target="dyT-mO-LtB" id="bvY-he-APH"/>
-                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
@@ -1515,9 +1494,6 @@
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
-                                                            <connections>
-                                                                <action selector="enableSmoothingTogle:" target="dyT-mO-LtB" id="s7o-tL-PKJ"/>
-                                                            </connections>
                                                         </button>
                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-6C-iBF">
                                                             <rect key="frame" x="0.0" y="100" width="406" height="46"/>
@@ -1542,9 +1518,6 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="max">
                                                                             <real key="value" value="10"/>
                                                                         </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startValue">
-                                                                            <real key="value" value="5"/>
-                                                                        </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
                                                                             <real key="value" value="0.5"/>
                                                                         </userDefinedRuntimeAttribute>
@@ -1552,9 +1525,6 @@
                                                                             <real key="value" value="5"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="SmoothingThresholdSliderChanged:" target="dyT-mO-LtB" id="Fwx-FV-qDJ"/>
-                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
@@ -1577,9 +1547,6 @@
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
-                                                            <connections>
-                                                                <action selector="enableTighteningToggle:" target="dyT-mO-LtB" id="Bc7-KP-k3G"/>
-                                                            </connections>
                                                         </button>
                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-x7-ls7">
                                                             <rect key="frame" x="0.0" y="24" width="406" height="46"/>
@@ -1604,9 +1571,6 @@
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="max">
                                                                             <real key="value" value="3"/>
                                                                         </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="startValue">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
                                                                             <real key="value" value="0.20000000000000001"/>
                                                                         </userDefinedRuntimeAttribute>
@@ -1614,9 +1578,6 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="TighteningThresholdSliderChanged:" target="dyT-mO-LtB" id="gXy-wg-l8D"/>
-                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
@@ -1758,13 +1719,17 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AccelerationSensitivitiesSlider" destination="LLR-xg-6jo" id="9Tq-EN-HhN"/>
+                        <outlet property="AccelerationThresholdsSlider" destination="RgG-tq-Bd0" id="Xzk-e3-wKh"/>
                         <outlet property="CalibrateLabel" destination="3yf-IA-bx9" id="Qq9-Ev-12C"/>
-                        <outlet property="DefaultSensitivitySlider" destination="Cxk-hr-IVM" id="MpM-S9-TbV"/>
+                        <outlet property="DefaultSensitivitySlider" destination="Cxk-hr-IVM" id="hCe-aI-eQM"/>
+                        <outlet property="EnableAccelerationButton" destination="PKk-an-h8F" id="LXB-qd-0ZW"/>
+                        <outlet property="EnableSmoothingButton" destination="OKS-BR-lFX" id="2fv-M4-TEc"/>
+                        <outlet property="EnableTighteningButton" destination="4oz-mR-ycc" id="tzo-cX-2VB"/>
+                        <outlet property="SmoothingThresholdSlider" destination="6Ef-B6-jOc" id="tNs-Hc-APp"/>
+                        <outlet property="TighteningThresholdSlider" destination="XFo-KN-Jag" id="0yO-Il-dLH"/>
                         <outlet property="calibrateButton" destination="lNW-uf-Brs" id="Hxy-hI-aBo"/>
                         <outlet property="calibrateProgressIcon" destination="N2c-V2-ObT" id="PoL-Rk-B8t"/>
-                        <outlet property="enableAccelerationButton" destination="PKk-an-h8F" id="WsD-zq-QLw"/>
-                        <outlet property="enableSmoothButton" destination="OKS-BR-lFX" id="bM5-us-85X"/>
-                        <outlet property="enableTightenButton" destination="4oz-mR-ycc" id="yv8-wT-06g"/>
                     </connections>
                 </viewController>
                 <customObject id="pM3-69-3U6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

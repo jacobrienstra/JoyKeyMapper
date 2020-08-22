@@ -695,8 +695,6 @@ class GameController {
             newRightStickMap[direction] = keyMap
         }
         self.currentRStickConfig = newRightStickMap
-        
-//        self.currentGyroConfig = self.currentConfigData.gyroConfig ?? [:]
     }
     
     func addApp(url: URL) {
