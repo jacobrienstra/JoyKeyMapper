@@ -1386,6 +1386,9 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="valueChanged:" target="dyT-mO-LtB" id="0RO-TX-fun"/>
+                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <visibilityPriorities>
@@ -1403,6 +1406,9 @@
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="valueChanged:" target="dyT-mO-LtB" id="q0r-1L-vfB"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HIu-iF-623">
                                                             <rect key="frame" x="0.0" y="278" width="406" height="70"/>
@@ -1431,9 +1437,12 @@
                                                                             <real key="value" value="2"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="step">
-                                                                            <real key="value" value="0.5"/>
+                                                                            <real key="value" value="0.20000000000000001"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="valueChanged:" target="dyT-mO-LtB" id="oKi-51-gLw"/>
+                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <visibilityPriorities>
@@ -1475,6 +1484,9 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="valueChanged:" target="dyT-mO-LtB" id="4wz-YZ-fKI"/>
+                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <visibilityPriorities>
@@ -1492,6 +1504,9 @@
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="valueChanged:" target="dyT-mO-LtB" id="tL4-SU-J16"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-6C-iBF">
                                                             <rect key="frame" x="0.0" y="128" width="406" height="46"/>
@@ -1520,6 +1535,9 @@
                                                                             <real key="value" value="5"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="valueChanged:" target="dyT-mO-LtB" id="vqp-gd-bbf"/>
+                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <visibilityPriorities>
@@ -1537,6 +1555,9 @@
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
+                                                            <connections>
+                                                                <action selector="valueChanged:" target="dyT-mO-LtB" id="XQA-qg-mKW"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vz4-x7-ls7">
                                                             <rect key="frame" x="0.0" y="24" width="406" height="74"/>
@@ -1565,6 +1586,9 @@
                                                                             <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="valueChanged:" target="dyT-mO-LtB" id="CbS-1E-rQ3"/>
+                                                                    </connections>
                                                                 </customView>
                                                             </subviews>
                                                             <visibilityPriorities>
@@ -2031,6 +2055,41 @@ Gw
                                                 </allowedInputSourceLocales>
                                             </comboBoxCell>
                                         </comboBox>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuW-ys-H2q">
+                                            <rect key="frame" x="19" y="52" width="51" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="Gyro" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Tee-1f-TK5">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="didPushRadioButton:" target="QdI-e0-9PQ" id="cvh-Er-Iqy"/>
+                                            </connections>
+                                        </button>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIN-RI-Lwy">
+                                            <rect key="frame" x="86" y="48" width="105" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Toggle" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NZu-hP-1G2" id="gal-8J-Fsd">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="ZPb-Oq-IYr">
+                                                    <items>
+                                                        <menuItem title="Toggle" state="on" identifier="Toggle" id="NZu-hP-1G2">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="Keep On" tag="1" identifier="Keep On" id="vSv-zG-TOF">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="Keep Off" tag="2" identifier="Keep Off" id="35X-ig-t3M">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="Center" tag="3" identifier="Center" id="PFD-hE-3CI">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
                                     </subviews>
                                 </view>
                             </box>
@@ -2056,6 +2115,8 @@ Gw
                     <connections>
                         <outlet property="commandKey" destination="mVK-lW-lbl" id="ngw-0n-puk"/>
                         <outlet property="controlKey" destination="Z4b-P4-h1x" id="zhJ-bM-uKh"/>
+                        <outlet property="gyroAction" destination="LIN-RI-Lwy" id="tgN-EA-hKI"/>
+                        <outlet property="gyroRadioButton" destination="AuW-ys-H2q" id="UfW-v1-R3R"/>
                         <outlet property="keyAction" destination="XUh-WT-7Zv" id="huk-78-NB7"/>
                         <outlet property="keyRadioButton" destination="Bq5-IR-POi" id="agg-v0-ySN"/>
                         <outlet property="mouseAction" destination="vHi-du-evn" id="hfc-BF-RQ2"/>

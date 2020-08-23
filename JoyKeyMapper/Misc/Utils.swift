@@ -47,6 +47,11 @@ func convertKeyName(keyMap: KeyMap?) -> String {
         return "\(modifiers)\(keyName)"
     }
     
+    if map.gyroAction >= 0 {
+        let buttonName = getGyroActionName(GyroAction.init(rawValue: Int(map.gyroAction)))
+        return buttonName
+    }
+    
     if map.mouseButton >= 0 {
         let buttonName = localizedMouseButtonNames[Int(map.mouseButton)]
         if modifiers != "" {

@@ -30,8 +30,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, UNUserNoti
         // Window initialization
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         self.windowController = storyboard.instantiateController(withIdentifier: "JoyKeyMapperWindowController") as? NSWindowController
+//        let handler: (NSEvent?) -> () = { (mouseEvent: NSEvent?) in
+//            print(NSEvent.mouseLocation)
+//            print("(\(mouseEvent?.deltaX), \(mouseEvent?.deltaY))")
+//        }
+//        let monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: handler)
 
-        
         // Menu settings
         let icon = NSImage(named: "menu_icon")
         icon?.size = NSSize(width: 24, height: 24)

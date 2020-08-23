@@ -13,6 +13,28 @@ protocol KeyConfigSetDelegate {
     func setKeyConfig(controller: KeyConfigViewController)
 }
 
+public enum GyroAction: Int {
+    case Toggle = 0
+    case KeepOn = 1
+    case KeepOff = 2
+    case Center = 3
+}
+
+public func getGyroActionName(_ val: GyroAction?) -> String {
+    switch(val) {
+        case .Toggle:
+            return "Toggle"
+        case .KeepOn:
+            return "Keep On"
+        case .KeepOff:
+            return "Keep Off"
+        case .Center:
+            return "Center"
+        case .none:
+            return ""
+    }
+}
+
 class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigComboBoxDelegate {
     var delegate: KeyConfigSetDelegate?
     var keyMap: KeyMap?
@@ -26,10 +48,12 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
     @IBOutlet weak var commandKey: NSButton!
 
     @IBOutlet weak var keyRadioButton: NSButton!
+    @IBOutlet weak var gyroRadioButton: NSButton!
     @IBOutlet weak var mouseRadioButton: NSButton!
     
     @IBOutlet weak var keyAction: KeyConfigComboBox!
     @IBOutlet weak var mouseAction: NSPopUpButton!
+    @IBOutlet weak var gyroAction: NSPopUpButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +73,9 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
         if keyMap.keyCodes?[0] ?? -1 >= 0 {
             self.keyRadioButton.state = .on
             self.keyAction.stringValue = getKeyName(keyCode: UInt16(keyMap.keyCodes![0]))
+        } else if keyMap.gyroAction >= 0 {
+            self.gyroRadioButton.state = .on
+            self.gyroAction.selectItem(withTag: Int(keyMap.gyroAction))
         } else {
             self.mouseRadioButton.state = .on
             self.mouseAction.selectItem(withTag: Int(keyMap.mouseButton))
@@ -93,9 +120,15 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
         if self.keyRadioButton.state == .on {
             keyMap.keyCodes = self.keyCodes
             keyMap.mouseButton = -1
-        } else {
+            keyMap.gyroAction = -1
+        } else if mouseRadioButton.state == .on {
             keyMap.keyCodes?[0] = -1
+            keyMap.gyroAction = -1
             keyMap.mouseButton = Int16(self.mouseAction.selectedTag())
+        } else {
+            keyMap.gyroAction = Int16(self.gyroAction.selectedTag())
+            keyMap.keyCodes?[0] = -1
+            keyMap.mouseButton = -1
         }
         
         keyMap.isEnabled = true

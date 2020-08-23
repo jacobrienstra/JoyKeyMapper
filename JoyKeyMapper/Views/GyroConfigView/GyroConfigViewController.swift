@@ -90,6 +90,10 @@ class GyroConfigViewController: NSViewController {
         TighteningThresholdSlider.value = CGFloat(gyroConfig!.tightenThreshold)
     }
     
+    @IBAction func valueChanged(_ sender: Any) {
+        saveValues()
+    }
+    
     func saveValues() {
         guard self.gyroConfig != nil else { return }
         gyroConfig!.defaultSensitivity = Float(DefaultSensitivitySlider.value)

@@ -29,6 +29,9 @@ extension JoyCon.BatteryStatus {
     }
 }
 
+let diagonals: [JoyCon.StickDirection:[JoyCon.StickDirection]] = [.DownRight: [.Down, .Right], .DownLeft: [.Down, .Left], .UpLeft: [.Up, .Left], .UpRight: [.Up, .Right]
+]
+
 let GYRO_ADJUSTMENT_FACTOR: CGFloat = 50
 let MaxSmoothingSamples: Int = 64
 var GyroSmoothingBuffer: [SCNVector3] = [SCNVector3](repeating: SCNVector3(0,0,0), count: MaxSmoothingSamples)
@@ -57,6 +60,7 @@ class GameController {
     var currentRStickMode: StickType = .None
     var currentRStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
     var currentGyroConfig: GyroConfig?
+    var tempGyroEnabled: Bool? = nil
 
     var isEnabled: Bool = true {
         didSet {
@@ -204,9 +208,56 @@ class GameController {
     
     func buttonPressHandler(button: JoyCon.Button) {
         guard let config = self.currentConfig[button] else { return }
-        for i in 0..<config.keyCodes!.count {
-            self.buttonPressHandler(config: config, index: i)
+        if config.gyroAction >= 0 {
+            let action = GyroAction.init(rawValue: Int(config.gyroAction))
+            switch(action) {
+                case .Toggle:
+                    self.currentGyroConfig?.enabled = self.currentGyroConfig?.enabled == false
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Gyro Enabled Changed"), object: self.currentGyroConfig)
+                    break
+                case .KeepOn:
+                    tempGyroEnabled = true
+                    break
+                case .KeepOff:
+                    tempGyroEnabled = false
+                    break
+                case .Center:
+                    let source = CGEventSource(stateID: .hidSystemState)
+                    let pos = CGPoint(x: NSScreen.main!.frame.midX, y: NSScreen.main!.frame.midY)
+                    let loc = NSEvent.mouseLocation
+                    let speed = GYRO_ADJUSTMENT_FACTOR * CGFloat(self.currentGyroConfig?.defaultSensitivity ?? 1)
+                    let delta = CGPoint(x: (pos.x - loc.x) / speed, y: (767 - pos.y - loc.y) / speed)
+                    if self.isLeftDragging {
+                        let event = CGEvent(mouseEventSource: source, mouseType: .leftMouseDragged, mouseCursorPosition: pos, mouseButton: .left)
+                        event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(delta.x))
+                        event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(delta.y))
+                        event?.post(tap: .cghidEventTap)
+                    } else if self.isRightDragging {
+                        let event = CGEvent(mouseEventSource: source, mouseType: .rightMouseDragged, mouseCursorPosition: pos, mouseButton: .right)
+                        event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(delta.x))
+                        event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(delta.y))
+                        event?.post(tap: .cghidEventTap)
+                    } else if self.isCenterDragging {
+                        let event = CGEvent(mouseEventSource: source, mouseType: .otherMouseDragged, mouseCursorPosition: pos, mouseButton: .center)
+                        event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(delta.x))
+                        event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(delta.y))
+                        event?.post(tap: .cghidEventTap)
+                    } else {
+                        let event = CGEvent(mouseEventSource: source, mouseType: .mouseMoved, mouseCursorPosition: pos, mouseButton: .left)
+                        event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(delta.x))
+                        event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(delta.y))
+                        event?.post(tap: .cghidEventTap)
+                    }
+                    break
+                case .none:
+                    break
+            }
+        } else {
+            for i in 0..<config.keyCodes!.count {
+                self.buttonPressHandler(config: config, index: i)
+            }
         }
+        
         
     }
     
@@ -216,7 +267,7 @@ class GameController {
 
             if config.keyCodes?[0] ?? -1 >= 0 {
                 for code in config.keyCodes! {
-                    print(getKeyName(keyCode: UInt16(code)), "pressed")
+//                    print(getKeyName(keyCode: UInt16(code)), "pressed")
                 }
                 metaKeyEvent(config: config, keyDown: true)
                 
@@ -268,8 +319,26 @@ class GameController {
     
     func buttonReleaseHandler(button: JoyCon.Button) {
         guard let config = self.currentConfig[button] else { return }
-        for i in 0..<config.keyCodes!.count {
-            self.buttonReleaseHandler(config: config, index: i)
+        if config.gyroAction > 0 {
+            let action = GyroAction.init(rawValue: Int(config.gyroAction))
+            switch(action) {
+                case .Toggle:
+                    break
+                case .KeepOn:
+                    tempGyroEnabled = nil
+                    break
+                case .KeepOff:
+                    tempGyroEnabled = nil
+                    break
+                case .Center:
+                    break
+                case .none:
+                    break
+            }
+        } else {
+            for i in 0..<config.keyCodes!.count {
+                self.buttonReleaseHandler(config: config, index: i)
+            }
         }
     }
     
@@ -279,7 +348,7 @@ class GameController {
             
             if config.keyCodes?[index] ?? -1 >= 0 {
                 for code in config.keyCodes! {
-                    print(getKeyName(keyCode: UInt16(code)), "released")
+//                    print(getKeyName(keyCode: UInt16(code)), "released")
                 }
                 if let systemKey = systemDefinedKey[Int(config.keyCodes![index])] {
                     let mousePos = NSEvent.mouseLocation
@@ -332,24 +401,36 @@ class GameController {
                 return
             }
             let mousePos = NSEvent.mouseLocation
-            let newX = mousePos.x + pos.x * speed
-            let newY = NSScreen.main!.frame.maxY - mousePos.y - pos.y * speed
-            
+            var newX = mousePos.x + pos.x * speed
+            var newY = NSScreen.main!.frame.maxY - mousePos.y - pos.y * speed
+            newX = max(min(newX, NSScreen.main!.frame.maxX - 1), 0)
+            newY = max(min(newY, 767), 0) //NSScreen.main!.frame.maxY
             let newPos = CGPoint(x: newX, y: newY)
             
             let source = CGEventSource(stateID: .hidSystemState)
             if self.isLeftDragging {
                 let event = CGEvent(mouseEventSource: source, mouseType: .leftMouseDragged, mouseCursorPosition: newPos, mouseButton: .left)
+                event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
                 event?.post(tap: .cghidEventTap)
             } else if self.isRightDragging {
                 let event = CGEvent(mouseEventSource: source, mouseType: .rightMouseDragged, mouseCursorPosition: newPos, mouseButton: .right)
+                event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
                 event?.post(tap: .cghidEventTap)
             } else if self.isCenterDragging {
                 let event = CGEvent(mouseEventSource: source, mouseType: .otherMouseDragged, mouseCursorPosition: newPos, mouseButton: .center)
+                event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
                 event?.post(tap: .cghidEventTap)
             } else {
-                CGDisplayMoveCursorToPoint(CGMainDisplayID(), newPos)
+                let event = CGEvent(mouseEventSource: source, mouseType: .mouseMoved, mouseCursorPosition: newPos, mouseButton: .left)
+                event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
+                event?.post(tap: .cghidEventTap)
+//                CGDisplayMoveCursorToPoint(CGMainDisplayID(), newPos)
             }
+//            print(Int64(pos.x * speed), Int64(pos.y * speed))
         }
     }
     
@@ -370,19 +451,61 @@ class GameController {
     
     func leftStickHandler(newDirection: JoyCon.StickDirection, oldDirection: JoyCon.StickDirection) {
         if self.currentLStickMode == .Key {
-            if let config = self.currentLStickConfig[oldDirection] {
-                self.buttonReleaseHandler(config: config, index: 0)
-            }
-            if let config = self.currentLStickConfig[newDirection] {
-                self.buttonPressHandler(config: config, index: 0)
+            if self.currentConfigData.leftStick?.diagonalsCombine == true {
+                // from normal to diagonal
+                if diagonals.keys.contains(newDirection) && !diagonals.keys.contains(oldDirection) {
+                    // we filter out already pressed directions, and only press new ones
+                    var keepOld: Bool = false
+                    for dir in diagonals[newDirection]! {
+                        if dir == oldDirection { keepOld = true; continue }
+                        if let config = self.currentLStickConfig[dir] {
+                            self.buttonPressHandler(config: config, index: 0)
+                        }
+                    }
+                    if keepOld == false {
+                        if let config = self.currentLStickConfig[oldDirection] {
+                            self.buttonReleaseHandler(config: config, index: 0)
+                        }
+                    }
+                    
+                }
+                // from diagonal to normal
+                else if diagonals.keys.contains(oldDirection) && !diagonals.keys.contains(newDirection) {
+                    // we filter out already pressed directions, and only press new ones
+                    var keepNew: Bool = false
+                    for dir in diagonals[oldDirection]! {
+                        if dir == newDirection { keepNew = true; continue }
+                        if let config = self.currentLStickConfig[dir] {
+                            self.buttonReleaseHandler(config: config, index: 0)
+                        }
+                    }
+                    if keepNew == false {
+                        if let config = self.currentLStickConfig[newDirection] {
+                            self.buttonPressHandler(config: config, index: 0)
+                        }
+                    }
+                    
+                } else {
+                    if let config = self.currentLStickConfig[oldDirection] {
+                        self.buttonReleaseHandler(config: config, index: 0)
+                    }
+                    if let config = self.currentLStickConfig[newDirection] {
+                        self.buttonPressHandler(config: config, index: 0)
+                    }
+                }
+            } else {
+                if let config = self.currentLStickConfig[oldDirection] {
+                    self.buttonReleaseHandler(config: config, index: 0)
+                }
+                if let config = self.currentLStickConfig[newDirection] {
+                    self.buttonPressHandler(config: config, index: 0)
+                }
             }
         }
     }
 
     func rightStickHandler(newDirection: JoyCon.StickDirection, oldDirection: JoyCon.StickDirection) {
         if self.currentRStickMode == .Key {
-            let diagonals: [JoyCon.StickDirection:[JoyCon.StickDirection]] = [.DownRight: [.Down, .Right], .DownLeft: [.Down, .Left], .UpLeft: [.Up, .Left], .UpRight: [.Up, .Right]
-            ]
             if self.currentConfigData.rightStick?.diagonalsCombine == true {
                 // from normal to diagonal
                 if diagonals.keys.contains(newDirection) && !diagonals.keys.contains(oldDirection) {
@@ -460,7 +583,7 @@ class GameController {
             if self.currentGyroConfig?.enabled == false && self.currentGyroConfig?.calibration?.isCalibrating == true {
                 self.currentGyroConfig?.calibration?.pushSensorSamples(x: gyroData.x, y: gyroData.y, z: gyroData.z)
             }
-            if self.currentGyroConfig?.enabled == true {
+            if (self.currentGyroConfig?.enabled == true && self.tempGyroEnabled != false) || (self.currentGyroConfig?.enabled == false && self.tempGyroEnabled == true) {
                 guard let gyroConfig = self.currentGyroConfig else { return }
                 var gyro = gyroData
                 var dt: CGFloat = 15

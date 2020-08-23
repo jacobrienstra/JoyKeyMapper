@@ -10,6 +10,7 @@ import AppKit
 import InputMethodKit
 import JoyConSwift
 
+
 class ViewController: NSViewController {
     
     @IBOutlet weak var controllerCollectionView: NSCollectionView!
@@ -48,7 +49,9 @@ class ViewController: NSViewController {
         }
         return self.selectedAppConfig?.config ?? self.selectedControllerData?.defaultConfig
     }
+    
     var keyDownHandler: Any?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +75,7 @@ class ViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(controllerConnected), name: .controllerConnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(controllerDisconnected), name: .controllerDisconnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(controllerIconChanged), name: .controllerIconChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gyroEnabledChanged), name: NSNotification.Name(rawValue: "Gyro Enabled Changed"), object: nil)
     }
     
     override func viewDidDisappear() {
@@ -214,6 +218,11 @@ class ViewController: NSViewController {
             }
             self?.controllerCollectionView.reloadData()
         }
+    }
+    
+    @objc func gyroEnabledChanged(_ notification: NSNotification) {
+        guard let gyroConfig = notification.object as? GyroConfig else { return }
+        updateGyroButtonState()
     }
     
     @objc func controllerIconChanged(_ notification: NSNotification) {
