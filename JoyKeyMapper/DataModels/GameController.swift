@@ -204,18 +204,23 @@ class GameController {
     
     func buttonPressHandler(button: JoyCon.Button) {
         guard let config = self.currentConfig[button] else { return }
-        self.buttonPressHandler(config: config)
+        for i in 0..<config.keyCodes!.count {
+            self.buttonPressHandler(config: config, index: i)
+        }
+        
     }
     
-    func buttonPressHandler(config: KeyMap) {
+    func buttonPressHandler(config: KeyMap, index: Int) {
         DispatchQueue.main.async {
-            print(config.keyCodes?[0] ?? -1, "pressed")
             let source = CGEventSource(stateID: .hidSystemState)
 
             if config.keyCodes?[0] ?? -1 >= 0 {
+                for code in config.keyCodes! {
+                    print(getKeyName(keyCode: UInt16(code)), "pressed")
+                }
                 metaKeyEvent(config: config, keyDown: true)
                 
-                if let systemKey = systemDefinedKey[Int(config.keyCodes![0])] {
+                if let systemKey = systemDefinedKey[Int(config.keyCodes![index])] {
                     let mousePos = NSEvent.mouseLocation
                     let flags = NSEvent.ModifierFlags(rawValue: 0x0a00)
                     let data1 = Int((systemKey << 16) | 0x0a00)
@@ -232,7 +237,7 @@ class GameController {
                         data2: -1)
                     ev?.cgEvent?.post(tap: .cghidEventTap)
                 } else {
-                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCodes![0]), keyDown: true)
+                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCodes![index]), keyDown: true)
                     event?.flags = CGEventFlags(rawValue: CGEventFlags.RawValue(config.modifiers))
                     event?.post(tap: .cghidEventTap)
                 }
@@ -263,16 +268,20 @@ class GameController {
     
     func buttonReleaseHandler(button: JoyCon.Button) {
         guard let config = self.currentConfig[button] else { return }
-        self.buttonReleaseHandler(config: config)
+        for i in 0..<config.keyCodes!.count {
+            self.buttonReleaseHandler(config: config, index: i)
+        }
     }
     
-    func buttonReleaseHandler(config: KeyMap) {
+    func buttonReleaseHandler(config: KeyMap, index: Int) {
         DispatchQueue.main.async {
             let source = CGEventSource(stateID: .hidSystemState)
-            print(config.keyCodes?[0] ?? -1, "release")
             
-            if config.keyCodes?[0] ?? -1 >= 0 {
-                if let systemKey = systemDefinedKey[Int(config.keyCodes![0])] {
+            if config.keyCodes?[index] ?? -1 >= 0 {
+                for code in config.keyCodes! {
+                    print(getKeyName(keyCode: UInt16(code)), "released")
+                }
+                if let systemKey = systemDefinedKey[Int(config.keyCodes![index])] {
                     let mousePos = NSEvent.mouseLocation
                     let flags = NSEvent.ModifierFlags(rawValue: 0x0b00)
                     let data1 = Int((systemKey << 16) | 0x0b00)
@@ -289,12 +298,12 @@ class GameController {
                         data2: -1)
                     ev?.cgEvent?.post(tap: .cghidEventTap)
                 } else {
-                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCodes![0]), keyDown: false)
+                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCodes![index]), keyDown: false)
                     event?.flags = CGEventFlags(rawValue: CGEventFlags.RawValue(config.modifiers))
                     event?.post(tap: .cghidEventTap)
                 }
-                    
                 metaKeyEvent(config: config, keyDown: false)
+            
             }
 
             if config.mouseButton >= 0 {
@@ -362,21 +371,67 @@ class GameController {
     func leftStickHandler(newDirection: JoyCon.StickDirection, oldDirection: JoyCon.StickDirection) {
         if self.currentLStickMode == .Key {
             if let config = self.currentLStickConfig[oldDirection] {
-                self.buttonReleaseHandler(config: config)
+                self.buttonReleaseHandler(config: config, index: 0)
             }
             if let config = self.currentLStickConfig[newDirection] {
-                self.buttonPressHandler(config: config)
+                self.buttonPressHandler(config: config, index: 0)
             }
         }
     }
 
     func rightStickHandler(newDirection: JoyCon.StickDirection, oldDirection: JoyCon.StickDirection) {
         if self.currentRStickMode == .Key {
-            if let config = self.currentRStickConfig[oldDirection] {
-                self.buttonReleaseHandler(config: config)
-            }
-            if let config = self.currentRStickConfig[newDirection] {
-                self.buttonPressHandler(config: config)
+            let diagonals: [JoyCon.StickDirection:[JoyCon.StickDirection]] = [.DownRight: [.Down, .Right], .DownLeft: [.Down, .Left], .UpLeft: [.Up, .Left], .UpRight: [.Up, .Right]
+            ]
+            if self.currentConfigData.rightStick?.diagonalsCombine == true {
+                // from normal to diagonal
+                if diagonals.keys.contains(newDirection) && !diagonals.keys.contains(oldDirection) {
+                    // we filter out already pressed directions, and only press new ones
+                    var keepOld: Bool = false
+                    for dir in diagonals[newDirection]! {
+                        if dir == oldDirection { keepOld = true; continue }
+                        if let config = self.currentRStickConfig[dir] {
+                            self.buttonPressHandler(config: config, index: 0)
+                        }
+                    }
+                    if keepOld == false {
+                        if let config = self.currentRStickConfig[oldDirection] {
+                            self.buttonReleaseHandler(config: config, index: 0)
+                        }
+                    }
+                    
+                }
+                // from diagonal to normal
+                else if diagonals.keys.contains(oldDirection) && !diagonals.keys.contains(newDirection) {
+                    // we filter out already pressed directions, and only press new ones
+                    var keepNew: Bool = false
+                    for dir in diagonals[oldDirection]! {
+                        if dir == newDirection { keepNew = true; continue }
+                        if let config = self.currentRStickConfig[dir] {
+                            self.buttonReleaseHandler(config: config, index: 0)
+                        }
+                    }
+                    if keepNew == false {
+                        if let config = self.currentRStickConfig[newDirection] {
+                            self.buttonPressHandler(config: config, index: 0)
+                        }
+                    }
+                    
+                } else {
+                    if let config = self.currentRStickConfig[oldDirection] {
+                        self.buttonReleaseHandler(config: config, index: 0)
+                    }
+                    if let config = self.currentRStickConfig[newDirection] {
+                        self.buttonPressHandler(config: config, index: 0)
+                    }
+                }
+            } else {
+                if let config = self.currentRStickConfig[oldDirection] {
+                    self.buttonReleaseHandler(config: config, index: 0)
+                }
+                if let config = self.currentRStickConfig[newDirection] {
+                    self.buttonPressHandler(config: config, index: 0)
+                }
             }
         }
     }

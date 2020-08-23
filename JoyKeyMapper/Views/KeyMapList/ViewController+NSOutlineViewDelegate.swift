@@ -136,7 +136,7 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
         
         switch(typeStr) {
         case StickType.Key.rawValue:
-            return 4
+            return 5
         case StickType.Mouse.rawValue:
             return 1
         case StickType.MouseWheel.rawValue:
@@ -372,41 +372,59 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
         }
         
         guard let keyMaps = stickConfig.keyMaps else { return nil }
-        let direction = stickerDirections[row]
-        let directionName = directionNames[direction] ?? ""
-        guard let keyMap = keyMaps.first(where: { map in
-            guard let keyMap = map as? KeyMap else { return false }
-            return keyMap.button == directionName
-        }) as? KeyMap else { return nil }
-        
-        if column.identifier.rawValue == buttonNameColumnID {
-            guard let itemView = self.configTableView.makeView(withIdentifier: column.identifier, owner: self) as? ButtonNameCellView else {
-                return nil
+        if row < stickerDirections.count {
+            let direction = stickerDirections[row]
+            let directionName = directionNames[direction] ?? ""
+            guard let keyMap = keyMaps.first(where: { map in
+                guard let keyMap = map as? KeyMap else { return false }
+                return keyMap.button == directionName
+            }) as? KeyMap else { return nil }
+            
+            if column.identifier.rawValue == buttonNameColumnID {
+                guard let itemView = self.configTableView.makeView(withIdentifier: column.identifier, owner: self) as? ButtonNameCellView else {
+                    return nil
+                }
+                
+                itemView.buttonName.state = keyMap.isEnabled ? .on : .off
+                itemView.buttonName.title = NSLocalizedString(directionName, comment: "")
+                if stick == .LStick {
+                    itemView.buttonName.action = #selector(self.leftStickDirectionCheckDidChange(_:))
+                } else if stick == .RStick {
+                    itemView.buttonName.action = #selector(self.rightStickDirectionCheckDidChange(_:))
+                }
+                itemView.buttonName.target = self
+                
+                return itemView
             }
             
-            itemView.buttonName.state = keyMap.isEnabled ? .on : .off
-            itemView.buttonName.title = NSLocalizedString(directionName, comment: "")
-            if stick == .LStick {
-                itemView.buttonName.action = #selector(self.leftStickDirectionCheckDidChange(_:))
-            } else if stick == .RStick {
-                itemView.buttonName.action = #selector(self.rightStickDirectionCheckDidChange(_:))
+            if column.identifier.rawValue == buttonKeyColumnID {
+                guard let itemView = self.configTableView.makeView(withIdentifier: column.identifier, owner: self) as? NSTableCellView else {
+                    return nil
+                }
+                
+                let keyName = convertKeyName(keyMap: keyMap)
+                itemView.textField?.stringValue = keyName
+                
+                return itemView
             }
-            itemView.buttonName.target = self
-            
-            return itemView
+        } else {
+            if column.identifier.rawValue == buttonNameColumnID {
+                guard let itemView = self.configTableView.makeView(withIdentifier: column.identifier, owner: self) as? ButtonNameCellView else {
+                    return nil
+                }
+                
+                itemView.buttonName.state = stickConfig.diagonalsCombine ? .on : .off
+                itemView.buttonName.title = NSLocalizedString("Diagonals", comment: "")
+                if stick == .LStick {
+                    itemView.buttonName.action = #selector(self.toggleLeftDiagonalsCombine(_:))
+                } else if stick == .RStick {
+                    itemView.buttonName.action = #selector(self.toggleRightDiagonalsCombine(_:))
+                }
+                itemView.buttonName.target = self
+                return itemView
+            }
         }
-        
-        if column.identifier.rawValue == buttonKeyColumnID {
-            guard let itemView = self.configTableView.makeView(withIdentifier: column.identifier, owner: self) as? NSTableCellView else {
-                return nil
-            }
-            
-            let keyName = convertKeyName(keyMap: keyMap)
-            itemView.textField?.stringValue = keyName
-            
-            return itemView
-        }
-        
+
         return nil
     }
 
@@ -598,6 +616,20 @@ extension ViewController: NSOutlineViewDelegate, NSOutlineViewDataSource, KeyCon
         config.rightStick?.type = type?.rawValue ?? ""
         self.configTableView.reloadData()
         self.selectedController?.updateKeyMap()
+    }
+    
+    @objc func toggleLeftDiagonalsCombine(_ sender: NSButton) {
+        guard let controller = self.selectedController else { return }
+        guard let config = self.selectedKeyConfig else { return }
+        config.leftStick?.diagonalsCombine = sender.state == .on
+        controller.updateKeyMap()
+    }
+    
+    @objc func toggleRightDiagonalsCombine(_ sender: NSButton) {
+        guard let controller = self.selectedController else { return }
+        guard let config = self.selectedKeyConfig else { return }
+        config.rightStick?.diagonalsCombine = sender.state == .on
+        controller.updateKeyMap()
     }
     
     @objc func leftStickDirectionCheckDidChange(_ sender: NSButton) {
