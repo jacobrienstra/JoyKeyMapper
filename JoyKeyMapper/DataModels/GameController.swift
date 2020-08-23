@@ -91,6 +91,7 @@ class GameController {
         }
         self.currentConfigData = defaultConfig
         self.currentGyroConfig = self.currentConfigData.gyroConfig
+        self.currentGyroConfig?.calibration?.isCalibrating = false
 
         let type = JoyCon.ControllerType(rawValue: data.type ?? "")
         self.type = type ?? JoyCon.ControllerType(rawValue: "unknown")!

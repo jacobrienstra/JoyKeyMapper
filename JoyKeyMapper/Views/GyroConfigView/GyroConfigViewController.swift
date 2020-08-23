@@ -120,7 +120,7 @@ class GyroConfigViewController: NSViewController {
                     maxVals.z = max(maxVals.z, value.z)
                 }
                 let diffs = SCNVector3(maxVals.x - minVals.x, maxVals.y - minVals.y, maxVals.z - minVals.z)
-                print("DIFF: (\(diffs.x), \(diffs.y), \(diffs.z))")
+//                print("DIFF: (\(diffs.x), \(diffs.y), \(diffs.z))")
                 return abs(diffs.x) < minDiff && abs(diffs.y) < minDiff && abs(diffs.z) < minDiff
             }
             return false
@@ -134,7 +134,7 @@ class GyroConfigViewController: NSViewController {
                 avgValues[i] = newVal ?? SCNVector3(0,0,0)
                 usleep(500000)
                 i = (i + 1) % 10
-            } while (!totalDifferenceIsUnder(avgValues, 0.001))
+            } while (!totalDifferenceIsUnder(avgValues, 0.007) && self.gyroConfig?.calibration?.isCalibrating == true)
             DispatchQueue.main.async {
                 self.calibrationState = .Done
             }

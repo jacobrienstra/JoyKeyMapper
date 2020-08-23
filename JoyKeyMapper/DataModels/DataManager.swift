@@ -261,6 +261,7 @@ class DataManager: NSObject {
 //    
     func createGyroCalibration() -> GyroCalibration {
         let gyroCalibration = GyroCalibration(context: self.container.viewContext)
+        gyroCalibration.windows = [GyroAveragingWindow](repeating: GyroAveragingWindow(), count: Int(gyroCalibration.numWindows))
         return gyroCalibration
     }
     

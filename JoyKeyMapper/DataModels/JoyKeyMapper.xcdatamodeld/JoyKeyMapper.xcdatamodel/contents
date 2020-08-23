@@ -25,6 +25,7 @@
         <attribute name="dt" attributeType="Integer 32" minValueString="0" defaultValueString="15" usesScalarValueType="YES"/>
         <attribute name="numWindows" attributeType="Integer 32" defaultValueString="16" usesScalarValueType="YES"/>
         <attribute name="windowLength" attributeType="Integer 64" defaultValueString="600000" usesScalarValueType="YES"/>
+        <attribute name="windows" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[GyroAveragingWindow]"/>
         <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="GyroConfig" inverseName="calibration" inverseEntity="GyroConfig"/>
     </entity>
     <entity name="GyroConfig" representedClassName=".GyroConfig" syncable="YES" codeGenerationType="class">
@@ -70,7 +71,7 @@
         <element name="AppConfig" positionX="-85.96484375" positionY="15.00390625" width="128" height="88"/>
         <element name="AppData" positionX="104" positionY="-23.0703125" width="128" height="103"/>
         <element name="ControllerData" positionX="-298.58984375" positionY="28.92578125" width="128" height="163"/>
-        <element name="GyroCalibration" positionX="-63" positionY="162" width="128" height="103"/>
+        <element name="GyroCalibration" positionX="-63" positionY="162" width="128" height="118"/>
         <element name="GyroConfig" positionX="-151.93359375" positionY="257.78125" width="128" height="238"/>
         <element name="KeyConfig" positionX="157.140625" positionY="133.359375" width="128" height="133"/>
         <element name="KeyMap" positionX="442.92578125" positionY="237.43359375" width="128" height="148"/>

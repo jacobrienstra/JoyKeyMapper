@@ -30,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, UNUserNoti
         // Window initialization
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         self.windowController = storyboard.instantiateController(withIdentifier: "JoyKeyMapperWindowController") as? NSWindowController
+
         
         // Menu settings
         let icon = NSImage(named: "menu_icon")
@@ -259,6 +260,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, UNUserNoti
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return false
     }
+    
     
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         let isSucceeded = self.dataManager?.save() ?? false

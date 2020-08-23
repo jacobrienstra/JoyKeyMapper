@@ -11,35 +11,76 @@ import Foundation
 import CoreData
 import SceneKit
 
+
+public class GyroAveragingWindow: NSSecureUnarchiveFromDataTransformer, NSCoding {
+    public var x: CGFloat = 0
+    public var y: CGFloat = 0
+    public var z: CGFloat = 0
+    public var numSamples: Int = 0
+    
+    enum Key: String {
+        case x = "x"
+        case y = "y"
+        case z = "z"
+        case numSamples = "numSamples"
+    }
+        
+    public override init() {
+        super.init()
+        self.x = 0
+        self.y = 0
+        self.z = 0
+        self.numSamples = 0
+    }
+    
+    init(x: CGFloat, y: CGFloat, z: CGFloat, numSamples: Int) {
+        self.x = x
+        self.y = y
+        self.z = z
+        self.numSamples = numSamples
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(Float(x), forKey: Key.x.rawValue)
+        aCoder.encode(Float(y), forKey: Key.y.rawValue)
+        aCoder.encode(Float(z), forKey: Key.z.rawValue)
+        aCoder.encode(Int32(numSamples), forKey: Key.numSamples.rawValue)
+    }
+    
+    public required convenience init?(coder aDecoder: NSCoder) {
+        let mNumSamples = aDecoder.decodeInt32(forKey: Key.numSamples.rawValue)
+        let mX = aDecoder.decodeFloat(forKey: Key.x.rawValue)
+        let mY = aDecoder.decodeFloat(forKey: Key.y.rawValue)
+        let mZ = aDecoder.decodeFloat(forKey: Key.z.rawValue)
+        
+        self.init(x: CGFloat(mX), y: CGFloat(mY), z: CGFloat(mZ), numSamples: Int(mNumSamples))
+    }
+    
+}
+
+
+
 // http://gyrowiki.jibbsmart.com/
 @objc(GyroCalibration)
 public class GyroCalibration: NSManagedObject {
     var frontIndex: Int = 0
-    var windows: [GyroAveragingWindow] = []
-    public var isCalibrating: Bool = false
+    public var isCalibrating: Bool = false {
+        didSet {
+//            print("isCalibrating", isCalibrating)
+        }
+    }
 
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        self.windows = [GyroAveragingWindow](repeating: GyroAveragingWindow(), count: Int(numWindows))
-        self.isCalibrating = false
     }
     
     public override func awakeFromFetch() {
         super.awakeFromFetch()
-        self.windows = [GyroAveragingWindow](repeating: GyroAveragingWindow(), count: Int(numWindows))
-        self.isCalibrating = false
-    }
-
-    struct GyroAveragingWindow {
-        var x: CGFloat = 0
-        var y: CGFloat = 0
-        var z: CGFloat = 0
-        var numSamples: Int = 0
     }
 
     public func resetContCalibration() {
         for i in 0..<self.numWindows {
-            self.windows[Int(i)] = GyroAveragingWindow()
+            self.windows?[Int(i)] = GyroAveragingWindow()
         }
     }
 
@@ -52,15 +93,15 @@ public class GyroCalibration: NSManagedObject {
     }
 
     public func pushSensorSamples(x: CGFloat, y: CGFloat, z: CGFloat) {
-            if self.windows[self.frontIndex].numSamples >= self.getNumSingleSamples() {
+        if self.windows?[self.frontIndex].numSamples ?? 0 >= self.getNumSingleSamples() {
                 // next
                 self.frontIndex = Int((Int32(self.frontIndex + 1) + self.numWindows) % self.numWindows)
-                self.windows[self.frontIndex] = GyroAveragingWindow()
+            self.windows?[self.frontIndex] = GyroAveragingWindow()
             }
-            self.windows[self.frontIndex].numSamples += 1
-            self.windows[self.frontIndex].x += x
-            self.windows[self.frontIndex].y += y
-            self.windows[self.frontIndex].z += z
+        self.windows?[self.frontIndex].numSamples += 1
+        self.windows?[self.frontIndex].x += x
+        self.windows?[self.frontIndex].y += y
+        self.windows?[self.frontIndex].z += z
     }
 
     public func getAverage() -> SCNVector3? {
@@ -77,22 +118,22 @@ public class GyroCalibration: NSManagedObject {
         for i in 0..<self.numWindows {
             if (samplesWanted == 0) { break }
             let cycledIndex: Int = Int((i + Int32(self.frontIndex)) % self.numWindows)
-            let window = self.windows[cycledIndex]
-            if window.numSamples == 0 {
+            let window = self.windows?[cycledIndex]
+            if window?.numSamples == 0 || window == nil {
                 continue;
             }
             var thisWeight: CGFloat = 1.0
-            if (samplesWanted < window.numSamples) {
-                thisWeight = CGFloat(samplesWanted) / CGFloat(window.numSamples)
+            if (samplesWanted < window!.numSamples) {
+                thisWeight = CGFloat(samplesWanted) / CGFloat(window!.numSamples)
                 samplesWanted = 0
             } else {
-                thisWeight = CGFloat(window.numSamples) / samplesPerWindow
-                samplesWanted -= window.numSamples
+                thisWeight = CGFloat(window!.numSamples) / samplesPerWindow
+                samplesWanted -= window!.numSamples
             }
 
-            totalX += window.x / CGFloat(window.numSamples) * thisWeight
-            totalY += window.y / CGFloat(window.numSamples) * thisWeight
-            totalZ += window.z / CGFloat(window.numSamples) * thisWeight
+            totalX += window!.x / CGFloat(window!.numSamples) * thisWeight
+            totalY += window!.y / CGFloat(window!.numSamples) * thisWeight
+            totalZ += window!.z / CGFloat(window!.numSamples) * thisWeight
             weight += thisWeight
         }
         if weight > 0.0 {
@@ -104,5 +145,3 @@ public class GyroCalibration: NSManagedObject {
         return nil
     }
 }
-
-
