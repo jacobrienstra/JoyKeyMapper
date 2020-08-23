@@ -42,8 +42,8 @@ func convertKeyName(keyMap: KeyMap?) -> String {
 
     let modifiers = convertModifierKeys(NSEvent.ModifierFlags(rawValue: UInt(map.modifiers)))
 
-    if map.keyCode >= 0 {
-        let keyName = getKeyName(keyCode: UInt16(map.keyCode))
+    if map.keyCodes?[0] ?? -1 >= 0 {
+        let keyName = getKeyName(keyCode: UInt16(map.keyCodes![0]))
         return "\(modifiers)\(keyName)"
     }
     

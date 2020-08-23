@@ -16,7 +16,7 @@ protocol KeyConfigSetDelegate {
 class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigComboBoxDelegate {
     var delegate: KeyConfigSetDelegate?
     var keyMap: KeyMap?
-    var keyCode: Int16 = -1
+    var keyCodes: [Int16]? = [-1]
     
     @IBOutlet weak var titleLabel: NSTextField!
     
@@ -46,14 +46,14 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
         self.controlKey.state = modifiers.contains(.control) ? .on : .off
         self.commandKey.state = modifiers.contains(.command) ? .on : .off
         
-        if keyMap.keyCode >= 0 {
+        if keyMap.keyCodes?[0] ?? -1 >= 0 {
             self.keyRadioButton.state = .on
-            self.keyAction.stringValue = getKeyName(keyCode: UInt16(keyMap.keyCode))
+            self.keyAction.stringValue = getKeyName(keyCode: UInt16(keyMap.keyCodes![0]))
         } else {
             self.mouseRadioButton.state = .on
             self.mouseAction.selectItem(withTag: Int(keyMap.mouseButton))
         }
-        self.keyCode = keyMap.keyCode
+        self.keyCodes = keyMap.keyCodes
         self.keyAction.configDelegate = self
         self.keyAction.delegate = self
     }
@@ -91,10 +91,10 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
         keyMap.modifiers = Int32(flags.rawValue)
 
         if self.keyRadioButton.state == .on {
-            keyMap.keyCode = self.keyCode
+            keyMap.keyCodes = self.keyCodes
             keyMap.mouseButton = -1
         } else {
-            keyMap.keyCode = -1
+            keyMap.keyCodes?[0] = -1
             keyMap.mouseButton = Int16(self.mouseAction.selectedTag())
         }
         
@@ -112,7 +112,7 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
     }
     
     func setKeyCode(_ keyCode: UInt16) {
-        self.keyCode = Int16(keyCode)
+        self.keyCodes?[0] = Int16(keyCode)
         self.keyAction.stringValue = getKeyName(keyCode: keyCode)
         self.keyRadioButton.state = .on
     }

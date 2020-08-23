@@ -54,7 +54,7 @@
     <entity name="KeyMap" representedClassName=".KeyMap" syncable="YES" codeGenerationType="class">
         <attribute name="button" attributeType="String"/>
         <attribute name="isEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="keyCode" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="keyCodes" optional="YES" attributeType="Transformable" customClassName="[Int16]"/>
         <attribute name="modifiers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mouseButton" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeyConfig" inverseName="keyMaps" inverseEntity="KeyConfig"/>

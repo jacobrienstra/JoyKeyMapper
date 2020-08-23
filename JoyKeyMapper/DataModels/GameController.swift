@@ -209,13 +209,13 @@ class GameController {
     
     func buttonPressHandler(config: KeyMap) {
         DispatchQueue.main.async {
-            print(config.keyCode, "pressed")
+            print(config.keyCodes?[0] ?? -1, "pressed")
             let source = CGEventSource(stateID: .hidSystemState)
 
-            if config.keyCode >= 0 {
+            if config.keyCodes?[0] ?? -1 >= 0 {
                 metaKeyEvent(config: config, keyDown: true)
                 
-                if let systemKey = systemDefinedKey[Int(config.keyCode)] {
+                if let systemKey = systemDefinedKey[Int(config.keyCodes![0])] {
                     let mousePos = NSEvent.mouseLocation
                     let flags = NSEvent.ModifierFlags(rawValue: 0x0a00)
                     let data1 = Int((systemKey << 16) | 0x0a00)
@@ -232,7 +232,7 @@ class GameController {
                         data2: -1)
                     ev?.cgEvent?.post(tap: .cghidEventTap)
                 } else {
-                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCode), keyDown: true)
+                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCodes![0]), keyDown: true)
                     event?.flags = CGEventFlags(rawValue: CGEventFlags.RawValue(config.modifiers))
                     event?.post(tap: .cghidEventTap)
                 }
@@ -269,10 +269,10 @@ class GameController {
     func buttonReleaseHandler(config: KeyMap) {
         DispatchQueue.main.async {
             let source = CGEventSource(stateID: .hidSystemState)
-            print(config.keyCode, "release")
+            print(config.keyCodes?[0] ?? -1, "release")
             
-            if config.keyCode >= 0 {
-                if let systemKey = systemDefinedKey[Int(config.keyCode)] {
+            if config.keyCodes?[0] ?? -1 >= 0 {
+                if let systemKey = systemDefinedKey[Int(config.keyCodes![0])] {
                     let mousePos = NSEvent.mouseLocation
                     let flags = NSEvent.ModifierFlags(rawValue: 0x0b00)
                     let data1 = Int((systemKey << 16) | 0x0b00)
@@ -289,7 +289,7 @@ class GameController {
                         data2: -1)
                     ev?.cgEvent?.post(tap: .cghidEventTap)
                 } else {
-                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCode), keyDown: false)
+                    let event = CGEvent(keyboardEventSource: source, virtualKey: CGKeyCode(config.keyCodes![0]), keyDown: false)
                     event?.flags = CGEventFlags(rawValue: CGEventFlags.RawValue(config.modifiers))
                     event?.post(tap: .cghidEventTap)
                 }

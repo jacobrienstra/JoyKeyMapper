@@ -220,6 +220,7 @@ class DataManager: NSObject {
 
     func createKeyMap() -> KeyMap {
         let keyMap = KeyMap(context: self.container.viewContext)
+        keyMap.keyCodes = [-1]
         
         return keyMap
     }
