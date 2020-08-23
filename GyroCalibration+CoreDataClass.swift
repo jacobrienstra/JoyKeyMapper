@@ -11,14 +11,23 @@ import Foundation
 import CoreData
 import SceneKit
 
+// http://gyrowiki.jibbsmart.com/
 @objc(GyroCalibration)
 public class GyroCalibration: NSManagedObject {
     var frontIndex: Int = 0
     var windows: [GyroAveragingWindow] = []
+    public var isCalibrating: Bool = false
 
     public override func awakeFromInsert() {
         super.awakeFromInsert()
         self.windows = [GyroAveragingWindow](repeating: GyroAveragingWindow(), count: Int(numWindows))
+        self.isCalibrating = false
+    }
+    
+    public override func awakeFromFetch() {
+        super.awakeFromFetch()
+        self.windows = [GyroAveragingWindow](repeating: GyroAveragingWindow(), count: Int(numWindows))
+        self.isCalibrating = false
     }
 
     struct GyroAveragingWindow {
@@ -29,13 +38,13 @@ public class GyroCalibration: NSManagedObject {
     }
 
     public func resetContCalibration() {
-        for i in 0...self.numWindows {
+        for i in 0..<self.numWindows {
             self.windows[Int(i)] = GyroAveragingWindow()
         }
     }
 
     func getNumTotalSamples() -> Int { // dt in ms
-        return Int(round(1000.0 / CGFloat(self.dt) * CGFloat(self.windowLength)))
+        return Int(round(CGFloat(self.windowLength) / CGFloat(self.dt)))
     }
 
     func getNumSingleSamples() -> Int {
@@ -45,7 +54,7 @@ public class GyroCalibration: NSManagedObject {
     public func pushSensorSamples(x: CGFloat, y: CGFloat, z: CGFloat) {
             if self.windows[self.frontIndex].numSamples >= self.getNumSingleSamples() {
                 // next
-                self.frontIndex = Int((Int32(self.frontIndex) + self.numWindows - 1) % self.numWindows)
+                self.frontIndex = Int((Int32(self.frontIndex + 1) + self.numWindows) % self.numWindows)
                 self.windows[self.frontIndex] = GyroAveragingWindow()
             }
             self.windows[self.frontIndex].numSamples += 1

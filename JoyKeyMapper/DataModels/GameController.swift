@@ -398,9 +398,13 @@ class GameController {
             }
     }
     
+    // http://gyrowiki.jibbsmart.com/
     func sensorHandler(accData: SCNVector3, gyroData: SCNVector3) {
-        if self.currentGyroConfig?.enabled == true {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            if self.currentGyroConfig?.enabled == false && self.currentGyroConfig?.calibration?.isCalibrating == true {
+                self.currentGyroConfig?.calibration?.pushSensorSamples(x: gyroData.x, y: gyroData.y, z: gyroData.z)
+            }
+            if self.currentGyroConfig?.enabled == true {
                 guard let gyroConfig = self.currentGyroConfig else { return }
                 var gyro = gyroData
                 var dt: CGFloat = 15
@@ -416,7 +420,6 @@ class GameController {
                         gyro.x -= offset?.x ?? 0
                         gyro.y -= offset?.y ?? 0
                         gyro.z -= offset?.z ?? 0
-                        print(String(format: "%.2f, %.2f", offset?.z ?? 0, offset?.y ?? 0))
                     }
                 }
                 

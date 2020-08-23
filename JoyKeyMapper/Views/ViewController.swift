@@ -154,15 +154,18 @@ class ViewController: NSViewController {
     func updateGyroButtonState() {
         guard self.selectedKeyConfig != nil else {
             gyroButton.isEnabled = false
+            gyroButton.state = .off
             gyroSettingsButton.isEnabled = false
             return
         }
         if self.selectedController?.type == .JoyConR  {
             gyroButton.isEnabled = true
+            gyroButton.state = selectedKeyConfig?.gyroConfig?.enabled ?? false ? .on : .off
             gyroSettingsButton.isEnabled = true
 
         } else {
             gyroButton.isEnabled = false
+            gyroButton.state = .off
             gyroSettingsButton.isEnabled = false
 
         }
@@ -170,8 +173,7 @@ class ViewController: NSViewController {
     
     @IBAction func toggleGyroButton(_ sender: NSButton) {
         guard self.selectedKeyConfig != nil else { return }
-        self.selectedKeyConfig?.gyroConfig?.enabled
-            = sender.state == .on
+        self.selectedKeyConfig?.gyroConfig?.enabled = sender.state == .on
     }
     
     func reloadKeyConfigTableData() {
