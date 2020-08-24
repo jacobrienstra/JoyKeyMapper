@@ -32,7 +32,7 @@ extension JoyCon.BatteryStatus {
 let diagonals: [JoyCon.StickDirection:[JoyCon.StickDirection]] = [.DownRight: [.Down, .Right], .DownLeft: [.Down, .Left], .UpLeft: [.Up, .Left], .UpRight: [.Up, .Right]
 ]
 
-let GYRO_ADJUSTMENT_FACTOR: CGFloat = 50
+let GYRO_ADJUSTMENT_FACTOR: CGFloat = 1 / 18 // 180 = 180degrees == full horizontal
 let MaxSmoothingSamples: Int = 64
 var GyroSmoothingBuffer: [SCNVector3] = [SCNVector3](repeating: SCNVector3(0,0,0), count: MaxSmoothingSamples)
 let GyroSmoothingIndex: Int = 0
@@ -225,8 +225,8 @@ class GameController {
                     let source = CGEventSource(stateID: .hidSystemState)
                     let pos = CGPoint(x: NSScreen.main!.frame.midX, y: NSScreen.main!.frame.midY)
                     let loc = NSEvent.mouseLocation
-                    let speed = GYRO_ADJUSTMENT_FACTOR * CGFloat(self.currentGyroConfig?.defaultSensitivity ?? 1)
-                    let delta = CGPoint(x: (pos.x - loc.x) / speed, y: (767 - pos.y - loc.y) / speed)
+                    let speed = GYRO_ADJUSTMENT_FACTOR * CGFloat(self.currentGyroConfig?.defaultSensitivity ?? 900)
+                    let delta = CGPoint(x: (pos.x - loc.x) / speed, y: (NSScreen.main!.frame.maxY - pos.y - loc.y) / speed)
                     if self.isLeftDragging {
                         let event = CGEvent(mouseEventSource: source, mouseType: .leftMouseDragged, mouseCursorPosition: pos, mouseButton: .left)
                         event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(delta.x))
@@ -402,35 +402,41 @@ class GameController {
             }
             let mousePos = NSEvent.mouseLocation
             var newX = mousePos.x + pos.x * speed
-            var newY = NSScreen.main!.frame.maxY - mousePos.y - pos.y * speed
-            newX = max(min(newX, NSScreen.main!.frame.maxX - 1), 0)
-            newY = max(min(newY, 767), 0) //NSScreen.main!.frame.maxY
+            // for pos (delta), positive Y == upwards
+            // for mouseLocation and frame, origin is BOTTOM left, positiveY upwards
+            // for CGEvent, origin is top left of main screen. positiveY downwards
+            // for deltaY values, positiveY is downwards
+            var newY = mousePos.y + pos.y * speed
+            newX = max(min(newX, NSScreen.screens[1].frame.maxX), 0)
+            newY = max(min(newY, NSScreen.screens[1].frame.maxY), NSScreen.screens[1].frame.minY) //NSScreen.main!.frame.maxY
+            newY = NSScreen.screens[0].frame.maxY - newY
             let newPos = CGPoint(x: newX, y: newY)
             
             let source = CGEventSource(stateID: .hidSystemState)
             if self.isLeftDragging {
                 let event = CGEvent(mouseEventSource: source, mouseType: .leftMouseDragged, mouseCursorPosition: newPos, mouseButton: .left)
                 event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
-                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(-pos.y * speed))
                 event?.post(tap: .cghidEventTap)
             } else if self.isRightDragging {
                 let event = CGEvent(mouseEventSource: source, mouseType: .rightMouseDragged, mouseCursorPosition: newPos, mouseButton: .right)
                 event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
-                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(-pos.y * speed))
                 event?.post(tap: .cghidEventTap)
             } else if self.isCenterDragging {
                 let event = CGEvent(mouseEventSource: source, mouseType: .otherMouseDragged, mouseCursorPosition: newPos, mouseButton: .center)
                 event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
-                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(-pos.y * speed))
                 event?.post(tap: .cghidEventTap)
             } else {
-                let event = CGEvent(mouseEventSource: source, mouseType: .mouseMoved, mouseCursorPosition: newPos, mouseButton: .left)
+                let event = CGEvent(mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: newPos, mouseButton: .left)
                 event?.setIntegerValueField(.mouseEventDeltaX, value: Int64(pos.x * speed))
-                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(pos.y * speed))
+                event?.setIntegerValueField(.mouseEventDeltaY, value: Int64(-pos.y * speed))
                 event?.post(tap: .cghidEventTap)
 //                CGDisplayMoveCursorToPoint(CGMainDisplayID(), newPos)
             }
-//            print(Int64(pos.x * speed), Int64(pos.y * speed))
+//            print(String(format: "%.1f", (newX)), String(format: "%.1f", (newY)))
+//            print(String(format: "%.1f", (pos.x * speed)), String(format: "%.1f", (-pos.y * speed)))
         }
     }
     
@@ -649,8 +655,8 @@ class GameController {
                     slowFastFactor = clamp(value: slowFastFactor, lower: 0.0, upper: 1.0)
                     let newSensitivity: CGFloat = CGFloat(gyroConfig.slowAccSensitivity) * (1 - slowFastFactor) + CGFloat(gyroConfig.fastAccSensitivity) * slowFastFactor
                     
-                    pos.x = gyro.z * newSensitivity * dt
-                    pos.y = gyro.y * newSensitivity * dt
+                    pos.x = gyro.z * newSensitivity * GYRO_ADJUSTMENT_FACTOR * dt
+                    pos.y = gyro.y * newSensitivity * GYRO_ADJUSTMENT_FACTOR * dt
                 }
 
                 self.stickMouseHandler(pos: pos, speed: GYRO_ADJUSTMENT_FACTOR * CGFloat(gyroConfig.defaultSensitivity))

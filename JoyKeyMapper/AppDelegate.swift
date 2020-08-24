@@ -31,8 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, UNUserNoti
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         self.windowController = storyboard.instantiateController(withIdentifier: "JoyKeyMapperWindowController") as? NSWindowController
 //        let handler: (NSEvent?) -> () = { (mouseEvent: NSEvent?) in
-//            print(NSEvent.mouseLocation)
-//            print("(\(mouseEvent?.deltaX), \(mouseEvent?.deltaY))")
+//            print("(", String(format: "%.1f", (NSEvent.mouseLocation.x)), String(format: "%.1f", (NSEvent.mouseLocation.y)), ")")
+//            print("(\(mouseEvent!.deltaX), \(mouseEvent!.deltaY))")
 //        }
 //        let monitor = NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: handler)
 

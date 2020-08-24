@@ -11,7 +11,7 @@ import Cocoa
 @IBDesignable public class LabelledSlider: NSControl {
     
     private var slider = NSSlider()
-    private var label =  NSTextField(frame: NSMakeRect(0, 0, 30, 20))
+    private var label =  NSTextField(frame: NSMakeRect(0, 0, 45, 20))
     private let baseLayer = CALayer()
     
     @IBInspectable public var min: CGFloat = 0 {
@@ -97,8 +97,8 @@ import Cocoa
     private func updateLayerFrames() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        slider.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width - 30, height: bounds.height)
-        label.setFrameOrigin(CGPoint(x: bounds.maxX - 30, y: bounds.midY - 10))
+        slider.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width - 45, height: bounds.height)
+        label.setFrameOrigin(CGPoint(x: bounds.maxX - 45, y: bounds.midY - 10))
         baseLayer.setNeedsDisplay()
         CATransaction.commit()
     }

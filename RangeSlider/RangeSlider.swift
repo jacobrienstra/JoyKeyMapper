@@ -132,8 +132,8 @@ extension CGFloat {
     private let trackLayer = RangeSliderTrackLayer()
     private let lowerKnob = CustomKnob()
     private let upperKnob = CustomKnob()
-    var firstLabel: NSTextField = NSTextField(frame: NSMakeRect(0, -2, 30, 20))
-    var secondLabel: NSTextField = NSTextField(frame: NSMakeRect(0, -2, 30, 20))
+    var firstLabel: NSTextField = NSTextField(frame: NSMakeRect(0, 0, 45, 20))
+    var secondLabel: NSTextField = NSTextField(frame: NSMakeRect(0, 0, 45, 20))
     var textYOrigin: CGFloat = 0
     var trackYOrigin: CGFloat = 0
     var maxLineWidth: CGFloat {
