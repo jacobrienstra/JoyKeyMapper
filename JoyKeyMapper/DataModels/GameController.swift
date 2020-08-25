@@ -61,6 +61,7 @@ class GameController {
     var currentRStickConfig: [JoyCon.StickDirection:KeyMap] = [:]
     var currentGyroConfig: GyroConfig?
     var tempGyroEnabled: Bool? = nil
+    var opQueue = OperationQueue.init()
 
     var isEnabled: Bool = true {
         didSet {
@@ -88,6 +89,7 @@ class GameController {
 
     init(data: ControllerData) {
         self.data = data
+        self.opQueue.maxConcurrentOperationCount = 1
         
         
         guard let defaultConfig = self.data.defaultConfig else {
@@ -208,6 +210,22 @@ class GameController {
     
     func buttonPressHandler(button: JoyCon.Button) {
         guard let config = self.currentConfig[button] else { return }
+        if config.musicAction >= 0 {
+            let action = MusicPiece.init(rawValue: Int(config.musicAction))
+            self.opQueue.cancelAllOperations()
+            switch(action) {
+                case .HarryPotter1:
+                    playSong(controller: self.controller, queue: self.opQueue, notes: harryPotter1)
+                    break
+                case .HarryPotter2:
+                    playSong(controller: self.controller, queue: self.opQueue, notes: harryPotter2)
+                case .none:
+                    break
+            }
+        } else {
+            self.opQueue.cancelAllOperations()
+            
+        }
         if config.gyroAction >= 0 {
             let action = GyroAction.init(rawValue: Int(config.gyroAction))
             switch(action) {
@@ -407,8 +425,8 @@ class GameController {
             // for CGEvent, origin is top left of main screen. positiveY downwards
             // for deltaY values, positiveY is downwards
             var newY = mousePos.y + pos.y * speed
-            newX = max(min(newX, NSScreen.screens[1].frame.maxX), 0)
-            newY = max(min(newY, NSScreen.screens[1].frame.maxY), NSScreen.screens[1].frame.minY) //NSScreen.main!.frame.maxY
+            newX = max(min(newX, NSScreen.screens[0].frame.maxX), 0)
+            newY = max(min(newY, NSScreen.screens[0].frame.maxY), NSScreen.screens[0].frame.minY) //NSScreen.main!.frame.maxY
             newY = NSScreen.screens[0].frame.maxY - newY
             let newPos = CGPoint(x: newX, y: newY)
             

@@ -58,6 +58,7 @@
         <attribute name="keyCodes" attributeType="Transformable" customClassName="[Int16]"/>
         <attribute name="modifiers" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mouseButton" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="musicAction" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="KeyConfig" inverseName="keyMaps" inverseEntity="KeyConfig"/>
         <relationship name="stick" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StickConfig"/>
     </entity>
@@ -76,7 +77,7 @@
         <element name="GyroCalibration" positionX="-63" positionY="162" width="128" height="118"/>
         <element name="GyroConfig" positionX="-151.93359375" positionY="257.78125" width="128" height="238"/>
         <element name="KeyConfig" positionX="157.140625" positionY="133.359375" width="128" height="133"/>
-        <element name="KeyMap" positionX="442.92578125" positionY="237.43359375" width="128" height="163"/>
+        <element name="KeyMap" positionX="442.92578125" positionY="237.43359375" width="128" height="178"/>
         <element name="StickConfig" positionX="132.7109375" positionY="466.421875" width="128" height="133"/>
     </elements>
 </model>

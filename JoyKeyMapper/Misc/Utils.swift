@@ -60,6 +60,11 @@ func convertKeyName(keyMap: KeyMap?) -> String {
         return buttonName
     }
     
+    if map.musicAction >= 0 {
+        let buttonName = getMusicPieceName(MusicPiece.init(rawValue: Int(map.musicAction)))
+        return buttonName
+    }
+    
     return none
 }
 

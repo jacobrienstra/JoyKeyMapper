@@ -50,10 +50,12 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
     @IBOutlet weak var keyRadioButton: NSButton!
     @IBOutlet weak var gyroRadioButton: NSButton!
     @IBOutlet weak var mouseRadioButton: NSButton!
+    @IBOutlet weak var musicRadioButton: NSButton!
     
     @IBOutlet weak var keyAction: KeyConfigComboBox!
     @IBOutlet weak var mouseAction: NSPopUpButton!
     @IBOutlet weak var gyroAction: NSPopUpButton!
+    @IBOutlet weak var musicAction: NSPopUpButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,9 +78,12 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
         } else if keyMap.gyroAction >= 0 {
             self.gyroRadioButton.state = .on
             self.gyroAction.selectItem(withTag: Int(keyMap.gyroAction))
-        } else {
+        } else if keyMap.mouseButton >= 0 {
             self.mouseRadioButton.state = .on
             self.mouseAction.selectItem(withTag: Int(keyMap.mouseButton))
+        } else {
+            self.musicRadioButton.state = .on
+            self.musicAction.selectItem(withTag: Int(keyMap.musicAction))
         }
         self.keyCodes = keyMap.keyCodes
         self.keyAction.configDelegate = self
@@ -121,13 +126,21 @@ class KeyConfigViewController: NSViewController, NSComboBoxDelegate, KeyConfigCo
             keyMap.keyCodes = self.keyCodes
             keyMap.mouseButton = -1
             keyMap.gyroAction = -1
+            keyMap.musicAction = -1
         } else if mouseRadioButton.state == .on {
-            keyMap.keyCodes?[0] = -1
+            keyMap.keyCodes = [-1]
             keyMap.gyroAction = -1
             keyMap.mouseButton = Int16(self.mouseAction.selectedTag())
-        } else {
+            keyMap.musicAction = -1
+        } else if gyroRadioButton.state == .on {
             keyMap.gyroAction = Int16(self.gyroAction.selectedTag())
-            keyMap.keyCodes?[0] = -1
+            keyMap.keyCodes = [-1]
+            keyMap.mouseButton = -1
+            keyMap.musicAction = -1
+        } else {
+            keyMap.musicAction = Int16(self.musicAction.selectedTag())
+            keyMap.keyCodes = [-1]
+            keyMap.gyroAction = -1
             keyMap.mouseButton = -1
         }
         

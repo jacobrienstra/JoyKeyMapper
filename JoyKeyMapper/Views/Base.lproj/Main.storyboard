@@ -1921,20 +1921,11 @@ DQ
             <objects>
                 <viewController storyboardIdentifier="KeyConfigViewController" id="QdI-e0-9PQ" customClass="KeyConfigViewController" customModule="JoyKeyMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="s3K-bV-d1v">
-                        <rect key="frame" x="0.0" y="0.0" width="383" height="234"/>
+                        <rect key="frame" x="0.0" y="0.0" width="383" height="294"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5a-wy-mWK">
-                                <rect key="frame" x="140" y="103" width="24" height="29"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="+" id="NQd-Sp-Kwg">
-                                    <font key="font" metaFont="system" size="24"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <box fixedFrame="YES" title="Meta key" translatesAutoresizingMaskIntoConstraints="NO" id="AEN-O6-rpW">
-                                <rect key="frame" x="17" y="50" width="126" height="139"/>
+                                <rect key="frame" x="17" y="110" width="126" height="139"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="wrw-hL-Xm1">
                                     <rect key="frame" x="3" y="3" width="120" height="121"/>
@@ -2008,14 +1999,14 @@ Gw
                                 </connections>
                             </button>
                             <box fixedFrame="YES" title="Key/Mouse" translatesAutoresizingMaskIntoConstraints="NO" id="b0g-eI-pTE">
-                                <rect key="frame" x="161" y="50" width="205" height="139"/>
+                                <rect key="frame" x="161" y="74" width="205" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="QgD-Th-HYa">
-                                    <rect key="frame" x="3" y="3" width="199" height="121"/>
+                                    <rect key="frame" x="3" y="3" width="199" height="157"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bq5-IR-POi">
-                                            <rect key="frame" x="19" y="84" width="45" height="18"/>
+                                            <rect key="frame" x="19" y="120" width="45" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Key" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="p27-22-D1P">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2026,7 +2017,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQ2-SC-6Ls">
-                                            <rect key="frame" x="19" y="22" width="63" height="18"/>
+                                            <rect key="frame" x="19" y="57" width="63" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Mouse" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5Ib-X3-FLc">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2037,7 +2028,7 @@ Gw
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vHi-du-evn">
-                                            <rect key="frame" x="86" y="17" width="105" height="25"/>
+                                            <rect key="frame" x="86" y="52" width="105" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Left Button" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="k0S-HH-PzZ" id="dQ0-Cr-1Yo">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2058,7 +2049,7 @@ Gw
                                             </popUpButtonCell>
                                         </popUpButton>
                                         <comboBox verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUh-WT-7Zv" customClass="KeyConfigComboBox" customModule="JoyKeyMapper" customModuleProvider="target">
-                                            <rect key="frame" x="88" y="79" width="103" height="26"/>
+                                            <rect key="frame" x="88" y="115" width="103" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ad5-U5-6EO">
                                                 <font key="font" metaFont="system"/>
@@ -2070,7 +2061,7 @@ Gw
                                             </comboBoxCell>
                                         </comboBox>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuW-ys-H2q">
-                                            <rect key="frame" x="19" y="52" width="51" height="18"/>
+                                            <rect key="frame" x="19" y="88" width="51" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="radio" title="Gyro" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Tee-1f-TK5">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -2081,7 +2072,7 @@ Gw
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIN-RI-Lwy">
-                                            <rect key="frame" x="86" y="48" width="105" height="25"/>
+                                            <rect key="frame" x="86" y="84" width="105" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Toggle" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NZu-hP-1G2" id="gal-8J-Fsd">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -2104,13 +2095,51 @@ Gw
                                                 </menu>
                                             </popUpButtonCell>
                                         </popUpButton>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8jB-at-837">
+                                            <rect key="frame" x="19" y="27" width="58" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="radio" title="Music" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Ta5-g8-SVJ">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="didPushRadioButton:" target="QdI-e0-9PQ" id="GpX-hv-GV9"/>
+                                            </connections>
+                                        </button>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZb-hL-fZ6">
+                                            <rect key="frame" x="86" y="22" width="105" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <popUpButtonCell key="cell" type="push" title="Harry Potter 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Utp-aQ-J9E" id="cBY-ya-EkO">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="ZCS-zh-rth">
+                                                    <items>
+                                                        <menuItem title="Harry Potter 1" state="on" id="Utp-aQ-J9E">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="Harry Potter 2" tag="1" id="wta-rw-Hfw">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
                                     </subviews>
                                 </view>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3wV-Zh-wSh">
-                                <rect key="frame" x="18" y="198" width="347" height="16"/>
+                                <rect key="frame" x="18" y="258" width="347" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="ZeP-if-fJr">
                                     <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5a-wy-mWK">
+                                <rect key="frame" x="140" y="160" width="24" height="29"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="+" id="NQd-Sp-Kwg">
+                                    <font key="font" metaFont="system" size="24"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -2135,6 +2164,8 @@ Gw
                         <outlet property="keyRadioButton" destination="Bq5-IR-POi" id="agg-v0-ySN"/>
                         <outlet property="mouseAction" destination="vHi-du-evn" id="hfc-BF-RQ2"/>
                         <outlet property="mouseRadioButton" destination="gQ2-SC-6Ls" id="6Zv-Sw-Yq8"/>
+                        <outlet property="musicAction" destination="oZb-hL-fZ6" id="wCT-y4-B6h"/>
+                        <outlet property="musicRadioButton" destination="8jB-at-837" id="qwo-ae-hyk"/>
                         <outlet property="optionKey" destination="uj8-Te-HR9" id="P5h-2e-7MX"/>
                         <outlet property="shiftKey" destination="kcg-x8-y5E" id="d8C-04-igx"/>
                         <outlet property="titleLabel" destination="3wV-Zh-wSh" id="BfP-VB-5TB"/>
@@ -2142,7 +2173,7 @@ Gw
                 </viewController>
                 <customObject id="ZXo-oA-QzJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719.5" y="719"/>
+            <point key="canvasLocation" x="719.5" y="749"/>
         </scene>
     </scenes>
     <resources>
